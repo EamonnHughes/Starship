@@ -19,3 +19,4 @@ object Starships extends App {
   PApplet.main(classOf[Starships])
 
 }
+
