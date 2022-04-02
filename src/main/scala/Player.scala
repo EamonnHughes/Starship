@@ -1,3 +1,3 @@
-case class Player {
+case class Player() {
 
 }
