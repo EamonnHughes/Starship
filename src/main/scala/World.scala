@@ -1,3 +1,3 @@
 object World {
-var player = Player()
+var player = Player(50, 50)
 }
