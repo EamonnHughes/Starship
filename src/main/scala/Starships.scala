@@ -14,6 +14,8 @@ class Starships extends PApplet{
     World.player.draw(this)
     World.projectilesList.foreach(p => p.draw(this))
 
+    World.projectilesList.foreach(p => p.shootForward())
+
   }
 
   override def keyPressed(event: KeyEvent): Unit = {
