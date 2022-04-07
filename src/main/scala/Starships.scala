@@ -12,6 +12,7 @@ class Starships extends PApplet{
   override def draw(): Unit = {
     background(10, 10, 10)
     World.player.draw(this)
+    World.projectilesList.foreach(p => p.draw(this))
 
   }
 
