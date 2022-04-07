@@ -1,5 +1,5 @@
 import processing.core._
-import processing.event.MouseEvent
+import processing.event.{KeyEvent, MouseEvent}
 
 class Starships extends PApplet{
   override def setup(): Unit = {}
@@ -13,6 +13,9 @@ class Starships extends PApplet{
     background(10, 10, 10)
     World.player.draw(this)
 
+  }
+
+  override def keyPressed(event: KeyEvent): Unit = {
   }
 
 }
