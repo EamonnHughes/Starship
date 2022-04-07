@@ -21,6 +21,8 @@ class Starships extends PApplet{
       World.player.y -= 10
     } else if(event.getKey == 's'){
       World.player.y += 10
+    } else if(event.getKey == 'q'){
+      World.projectilesList = Projectile(World.player.x, World.player.y) :: World.projectilesList
     }
   }
 
