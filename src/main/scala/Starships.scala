@@ -16,7 +16,7 @@ class Starships extends PApplet{
   }
 
   override def keyPressed(event: KeyEvent): Unit = {
-    if(event.getKey == 'W'){
+    if(event.getKey == 'w'){
       World.player.y -= 10
     } else if(event.getKey == 's'){
       World.player.y += 10
