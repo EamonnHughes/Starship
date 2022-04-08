@@ -23,6 +23,7 @@ class Starships extends PApplet {
     World.enemies.foreach(enemy => enemy.draw(this))
     World.projectilesList.foreach(p => p.draw(this))
     World.walls.foreach(wall => wall.draw(this))
+    drawUI(this)
     World.projectilesList.foreach(p => p.shootForward())
     scroll
     World.player.checkForCollision()
@@ -66,6 +67,12 @@ class Starships extends PApplet {
       sPressed = false
     } else if (event.getKey == 'q') {
       shooting = false
+    }
+  }
+  def drawUI(p: PApplet): Unit = {
+    for (i <- 0 until World.player.lives) {
+      p.fill(255, 255, 0)
+      p.rect(40 * i, 20, 20, 0)
     }
   }
 }
