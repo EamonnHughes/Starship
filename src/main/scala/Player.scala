@@ -10,13 +10,13 @@ case class Player(
   var time: Long = System.currentTimeMillis
   def draw(p: PApplet): Unit = {
     p.fill(240, 240, 240)
-    p.ellipse(x, y, 20, 20)
+    p.rect(x, y, 20, 20)
   }
   def checkForCollision(): Unit = {
     if (
       World.walls.exists(wall =>
-        x < wall.x + wall.dimensionX && x >= wall.x && y < wall.y + wall.dimensionY && y >= wall.y
-      ) || y < 20 || y > 492
+        x < wall.x + wall.dimensionX && x + 20 >= wall.x && y < wall.y + wall.dimensionY && y + 20 >= wall.y
+      ) || y < 20 || y + 20 > 492
     ) {
       lives -= 1
       y = 256
@@ -39,7 +39,8 @@ case class Player(
     val currentTime = System.currentTimeMillis
 
     if (currentTime > time + 50 && shooting) {
-      World.projectilesList = Projectile(x, y) :: World.projectilesList
+      World.projectilesList =
+        Projectile(x + 20, y + 10) :: World.projectilesList
 
       time = currentTime
     }
