@@ -18,10 +18,11 @@ class Starships extends PApplet {
 
     val currentTime = System.currentTimeMillis
 
-    if (wPressed != sPressed)
-      World.player.velocity =
-        World.player.velocity + (if (wPressed) -0.1f else 0.1f)
-    else
+    if (wPressed != sPressed) {
+      if (Math.abs(World.player.velocity) <= 3)
+        World.player.velocity =
+          World.player.velocity + (if (wPressed) -0.1f else 0.1f)
+    } else
       World.player.velocity = World.player.velocity * World.player.deceleration
     World.player.y += World.player.velocity
     if (currentTime > time + 50 && shooting) {
