@@ -3,8 +3,6 @@ import processing.event.{KeyEvent, MouseEvent}
 
 class Starships extends PApplet {
 
-  var time: Long = System.currentTimeMillis
-
   override def setup(): Unit = {
     keyRepeatEnabled = false;
   }
@@ -16,23 +14,11 @@ class Starships extends PApplet {
 
   override def draw(): Unit = {
 
-    val currentTime = System.currentTimeMillis
+    World.player.moving(wPressed, sPressed)
 
-    if (wPressed != sPressed) {
-      if (Math.abs(World.player.velocity) <= 4)
-        World.player.velocity =
-          World.player.velocity + (if (wPressed) -0.15f else 0.15f)
-    } else
-      World.player.velocity = World.player.velocity * World.player.deceleration
-    World.player.y += World.player.velocity
-    if (currentTime > time + 50 && shooting) {
-      World.projectilesList =
-        Projectile(World.player.x, World.player.y) :: World.projectilesList
-
-      time = currentTime
-    }
-
+    World.player.shooting(shooting)
     background(10, 10, 10)
+    World.worldBorder.draw(this)
     World.player.draw(this)
     World.projectilesList.foreach(p => p.draw(this))
     World.walls.foreach(wall => wall.draw(this))
