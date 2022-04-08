@@ -23,7 +23,7 @@ case class Player(
   }
   def moving(wPressed: Boolean, sPressed: Boolean): Unit = {
     if (wPressed != sPressed) {
-      if (Math.abs(velocity) <= 3.5)
+      if (Math.abs(velocity) <= 3)
         velocity = velocity + (if (wPressed) -0.15f else 0.15f)
     } else
       velocity = velocity * deceleration
