@@ -37,7 +37,11 @@ class Starships extends PApplet {
     World.projectilesList.foreach(p => p.draw(this))
     World.walls.foreach(wall => wall.draw(this))
     World.projectilesList.foreach(p => p.shootForward())
-
+    World.walls.foreach({
+      case scrolling: Scrolling =>
+        scrolling.x -= 1
+      case _ =>
+    })
   }
 
   var wPressed = false
