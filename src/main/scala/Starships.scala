@@ -20,6 +20,7 @@ class Starships extends PApplet {
     background(10, 10, 10)
     World.worldBorder.draw(this)
     World.player.draw(this)
+    World.enemies.foreach(enemy => enemy.draw(this))
     World.projectilesList.foreach(p => p.draw(this))
     World.walls.foreach(wall => wall.draw(this))
     World.projectilesList.foreach(p => p.shootForward())
