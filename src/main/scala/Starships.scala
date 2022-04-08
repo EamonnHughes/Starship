@@ -70,9 +70,11 @@ class Starships extends PApplet {
     }
   }
   def drawUI(p: PApplet): Unit = {
+    p.fill(255, 255, 255)
+    p.rect(0, 0, 100, 20)
     for (i <- 0 until World.player.lives) {
       p.fill(255, 255, 0)
-      p.rect(40 * i, 20, 20, 0)
+      p.rect(40 * i, 0, 20, 20)
     }
   }
 }
