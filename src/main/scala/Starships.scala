@@ -47,7 +47,6 @@ class Starships extends PApplet {
     } else if (event.getKey == 's') {
       sPressed = true
     }
-
     if (event.getKey == 'q') {
       shooting = true
     }
