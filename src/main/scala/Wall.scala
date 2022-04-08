@@ -7,6 +7,7 @@ case class Wall(
     var dimensionY: Float
 ) extends Scrolling {
   def draw(p: PApplet): Unit = {
+    p.fill(100, 100, 100)
     p.rect(x, y, dimensionX, dimensionY)
   }
 }
