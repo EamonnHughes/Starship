@@ -4,7 +4,8 @@ case class Player(
     var x: Float,
     var y: Float,
     var velocity: Float,
-    var deceleration: Float
+    var deceleration: Float,
+    var lives: Int
 ) {
   var time: Long = System.currentTimeMillis
   def draw(p: PApplet): Unit = {
@@ -17,6 +18,11 @@ case class Player(
         x < wall.x + wall.dimensionX && x >= wall.x && y < wall.y + wall.dimensionY && y >= wall.y
       ) || y < 20 || y > 492
     ) {
+      lives -= 1
+      y = 256
+      velocity = 0
+    }
+    if (lives <= 0) {
       println("YOU DIED!")
       System.exit(0)
     }

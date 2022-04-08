@@ -1,5 +1,5 @@
 object World {
-  var player = Player(50, 50, 0, 0.9f)
+  var player = Player(64, 256, 0, 0.9f, 3)
   var projectilesList = List.empty[Projectile]
   var walls = List(Wall(1024, 0, 60, 100), Wall(1024, 412, 60, 100))
   var worldBorder = Border()
