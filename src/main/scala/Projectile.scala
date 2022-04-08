@@ -6,6 +6,10 @@ case class Projectile(var x: Float, var y: Float) {
     p.ellipse(x, y, 10, 10)
   }
   def shootForward(): Unit = {
-    x += 10
+    x += 8
+    if (x > 1024) {
+      World.projectilesList =
+        World.projectilesList.filterNot(projectile => projectile == this)
+    }
   }
 }

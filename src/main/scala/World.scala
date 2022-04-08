@@ -3,5 +3,5 @@ object World {
   var projectilesList = List.empty[Projectile]
   var walls = List(Wall(1024, 0, 60, 100), Wall(1024, 412, 60, 100))
   var worldBorder = Border()
-  var enemies = List(Enemy(200, 200), Enemy(200, 300))
+  var enemies = List(Enemy(900, 200), Enemy(900, 300))
 }
