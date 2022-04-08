@@ -15,7 +15,7 @@ case class Player(
     if (
       World.walls.exists(wall =>
         x < wall.x + wall.dimensionX && x >= wall.x && y < wall.y + wall.dimensionY && y >= wall.y
-      )
+      ) || y < 20 || y > 492
     ) {
       println("YOU DIED!")
       System.exit(0)
