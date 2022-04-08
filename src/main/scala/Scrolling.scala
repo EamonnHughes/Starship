@@ -1,1 +1,1 @@
-trait Scrolling {}
+trait Scrolling { var x: Float }
