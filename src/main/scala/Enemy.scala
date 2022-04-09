@@ -35,8 +35,9 @@ case class Enemy(
     else value
   }
   def move: Unit = {
-
-    y += velocity
+    if (!World.enemies.exists(enemy => enemy.y == y + velocity)) {
+      y += velocity
+    } else velocity = velocity * deceleration
   }
   def checkForCollision: Unit = {
     for (i <- World.projectilesList) {
