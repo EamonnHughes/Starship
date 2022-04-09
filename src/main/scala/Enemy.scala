@@ -17,7 +17,7 @@ case class Enemy(
 
     val currentTime = System.currentTimeMillis
     if (Math.abs(World.player.y - y) > 30) {
-      velocity += Math.signum(World.player.y - y) * 0.3f
+      velocity += clamp(Math.signum(World.player.y - y) * 0.3f, 4f)
     } else {
       velocity = velocity * deceleration
       if (currentTime > time + 400) {
@@ -28,6 +28,11 @@ case class Enemy(
 
       }
     }
+  }
+  def clamp(value: Float, max: Float) = {
+    if (value > max) max
+    else if (value < -max) -max
+    else value
   }
   def move: Unit = {
 
