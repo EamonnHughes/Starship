@@ -7,15 +7,26 @@ case class Enemy(
     var deceleration: Float,
     var health: Int
 ) extends Scrolling {
+
+  var time: Long = System.currentTimeMillis
   def draw(p: PApplet): Unit = {
     p.fill(75, 175, 25)
     p.rect(x, y, 20, 20)
   }
   def matchLoc: Unit = {
+
+    val currentTime = System.currentTimeMillis
     if (Math.abs(World.player.y - y) > 30) {
       velocity += Math.signum(World.player.y - y) * 0.2f
     } else {
       velocity = velocity * deceleration
+      if (currentTime > time + 400) {
+        World.projectilesList =
+          Projectile(x - 25, y + 10, -1) :: World.projectilesList
+
+        time = currentTime
+
+      }
     }
   }
   def move: Unit = {

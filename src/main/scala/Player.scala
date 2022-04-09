@@ -50,7 +50,7 @@ case class Player(
 
     if (currentTime > time + 50 && shooting) {
       World.projectilesList =
-        Projectile(x + 25, y + 10) :: World.projectilesList
+        Projectile(x + 25, y + 10, 1) :: World.projectilesList
 
       time = currentTime
     }
