@@ -17,7 +17,7 @@ case class Enemy(
 
     val currentTime = System.currentTimeMillis
     if (Math.abs(World.player.y - y) > 30) {
-      velocity += Math.signum(World.player.y - y) * 0.2f
+      velocity += Math.signum(World.player.y - y) * 0.3f
     } else {
       velocity = velocity * deceleration
       if (currentTime > time + 400) {

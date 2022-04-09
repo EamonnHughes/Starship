@@ -38,9 +38,8 @@ case class Player(
     }
   }
   def moving(wPressed: Boolean, sPressed: Boolean): Unit = {
-    println(s"MOVE $wPressed $sPressed")
     if (wPressed != sPressed) {
-      velocity = clamp(velocity + (if (wPressed) -0.2f else 0.2f), 3f)
+      velocity = clamp(velocity + (if (wPressed) -0.5f else 0.5f), 5f)
 
     } else
       velocity = velocity * deceleration
