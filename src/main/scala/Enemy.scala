@@ -23,13 +23,13 @@ case class Enemy(
     y += velocity
   }
   def checkForCollision: Unit = {
-    if (
-      World.projectilesList.exists(projectile =>
-        projectile.x - 5 < x + 20 && projectile.x + 5 >= x && projectile.y - 5 < y + 20 && projectile.y + 5 >= y
-      )
-    ) {
-      health -= 1
-
+    for (i <- World.projectilesList) {
+      if (
+        i.x - 5 < x + 20 && i.x + 5 >= x && i.y - 5 < y + 20 && i.y + 5 >= y
+      ) {
+        health -= 1
+        World.projectilesList = World.projectilesList.filterNot(p => p == i)
+      }
     }
     if (health <= 0) {
       World.enemies = World.enemies.filterNot(enemy => enemy == this)
