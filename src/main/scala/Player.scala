@@ -38,13 +38,21 @@ case class Player(
     }
   }
   def moving(wPressed: Boolean, sPressed: Boolean): Unit = {
+    println(s"MOVE $wPressed $sPressed")
     if (wPressed != sPressed) {
-      if (Math.abs(velocity) <= 3)
-        velocity = velocity + (if (wPressed) -0.2f else 0.2f)
+      velocity = clamp(velocity + (if (wPressed) -0.2f else 0.2f), 3f)
+
     } else
       velocity = velocity * deceleration
     y += velocity
   }
+
+  def clamp(value: Float, max: Float) = {
+    if (value > max) max
+    else if (value < -max) -max
+    else value
+  }
+
   def shooting(shooting: Boolean): Unit = {
     val currentTime = System.currentTimeMillis
 
