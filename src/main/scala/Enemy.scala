@@ -11,5 +11,12 @@ case class Enemy(
     p.fill(75, 175, 25)
     p.ellipse(x, y, 20, 20)
   }
+  def matchLoc: Unit = {
+    velocity += Math.signum(World.player.y - y) * 0.2f
+  }
+  def move: Unit = {
+
+    y += velocity
+  }
 
 }
