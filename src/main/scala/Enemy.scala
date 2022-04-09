@@ -12,7 +12,11 @@ case class Enemy(
     p.ellipse(x, y, 20, 20)
   }
   def matchLoc: Unit = {
-    velocity += Math.signum(World.player.y - y) * 0.2f
+    if (Math.abs(World.player.y - y) > 30) {
+      velocity += Math.signum(World.player.y - y) * 0.2f
+    } else {
+      velocity = velocity * deceleration
+    }
   }
   def move: Unit = {
 
