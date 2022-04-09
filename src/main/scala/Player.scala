@@ -22,6 +22,16 @@ case class Player(
       y = 256
       velocity = 0
     }
+    for (i <- World.projectilesList) {
+      if (
+        i.x - 5 < x + 20 && i.x + 5 >= x && i.y - 5 < y + 20 && i.y + 5 >= y
+      ) {
+        lives -= 1
+        y = 256
+        velocity = 0
+        World.projectilesList = World.projectilesList.filterNot(p => p == i)
+      }
+    }
     if (lives <= 0) {
       println("YOU DIED!")
       System.exit(0)
@@ -40,7 +50,7 @@ case class Player(
 
     if (currentTime > time + 50 && shooting) {
       World.projectilesList =
-        Projectile(x + 20, y + 10) :: World.projectilesList
+        Projectile(x + 25, y + 10) :: World.projectilesList
 
       time = currentTime
     }
