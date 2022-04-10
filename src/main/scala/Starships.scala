@@ -40,7 +40,7 @@ class Starships extends PApplet {
         scrolling.x -= 1
       case _ =>
     })
-    Spawner.distance += 1
+    Spawner.distance += .1
   }
 
   override def keyPressed(event: KeyEvent): Unit = {
