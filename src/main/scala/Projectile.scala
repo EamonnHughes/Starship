@@ -10,7 +10,7 @@ case class Projectile(var x: Float, var y: Float, direction: Int)
     shootForward()
   }
   def shootForward(): Unit = {
-    x += 8 * direction
+    x += 6 * direction
     if (x > 1024) {
       World.projectilesList =
         World.projectilesList.filterNot(projectile => projectile == this)
