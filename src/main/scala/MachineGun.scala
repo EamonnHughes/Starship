@@ -1,1 +1,1 @@
-case class MachineGun(var fireRate: Float, var damage: Float) extends Weapon {}
+case class MachineGun(var fireRate: Int, var damage: Int) extends Weapon {}

@@ -1,4 +1,4 @@
 trait Weapon {
-  var fireRate: Float
-  var damage: Float
+  var fireRate: Int
+  var damage: Int
 }
