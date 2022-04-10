@@ -22,6 +22,8 @@ class Starships extends PApplet {
     drawUI(this)
     World.player.primary.drawPoints(this)
     scroll
+    Spawner.checkForSpawn()
+    Spawner.spawnWalls()
   }
 
   def scroll: Unit = {
@@ -35,6 +37,7 @@ class Starships extends PApplet {
         scrolling.x -= 1
       case _ =>
     })
+    Spawner.distance += 1
   }
 
   override def keyPressed(event: KeyEvent): Unit = {
