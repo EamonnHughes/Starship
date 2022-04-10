@@ -15,8 +15,9 @@ class Starships extends PApplet {
   override def draw(): Unit = {
 
     World.player.moving(wPressed, sPressed)
-
-    World.player.shooting(shooting)
+    if (shooting) {
+      World.player.shooting()
+    }
     background(10, 10, 10)
     World.worldBorder.draw(this)
     World.player.draw(this)

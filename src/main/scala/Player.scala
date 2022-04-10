@@ -52,7 +52,7 @@ case class Player(
     else value
   }
 
-  def shooting(shooting: Boolean): Unit = {
+  def shooting(): Unit = {
 
     primary.shoot()
 
