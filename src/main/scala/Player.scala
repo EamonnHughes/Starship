@@ -5,7 +5,8 @@ case class Player(
     var y: Float,
     var velocity: Float,
     var deceleration: Float,
-    var lives: Int
+    var lives: Int,
+    var primary: Weapon
 ) {
   var time: Long = System.currentTimeMillis
   def draw(p: PApplet): Unit = {
@@ -55,7 +56,7 @@ case class Player(
   def shooting(shooting: Boolean): Unit = {
     val currentTime = System.currentTimeMillis
 
-    if (currentTime > time + 150 && shooting) {
+    if (currentTime > time + primary.fireRate && shooting) {
       World.projectilesList =
         Projectile(x + 25, y + 10, 1) :: World.projectilesList
 

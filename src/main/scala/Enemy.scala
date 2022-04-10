@@ -44,7 +44,7 @@ case class Enemy(
       if (
         i.x - 5 < x + 20 && i.x + 5 >= x && i.y - 5 < y + 20 && i.y + 5 >= y
       ) {
-        health -= 1
+        health -= World.player.primary.damage
         World.projectilesList = World.projectilesList.filterNot(p => p == i)
       }
     }
