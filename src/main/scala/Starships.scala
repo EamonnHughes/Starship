@@ -14,13 +14,8 @@ class Starships extends PApplet {
 
   override def draw(): Unit = {
 
-    World.player.moving(wPressed, sPressed)
-    if (shooting) {
-      World.player.shooting()
-    }
     background(10, 10, 10)
     World.worldBorder.draw(this)
-    World.player.draw(this)
     World.enemies.foreach(enemy => enemy.draw(this))
     World.enemies.foreach(enemy => enemy.move)
     World.enemies.foreach(enemy => enemy.matchLoc)
@@ -45,20 +40,16 @@ class Starships extends PApplet {
     })
   }
 
-  var wPressed = false
-  var sPressed = false
-  var shooting = false
-
   override def keyPressed(event: KeyEvent): Unit = {
 
     if (event.getKey == 'w') {
-      wPressed = true
+      Controls.wPressed = true
     }
     if (event.getKey == 's') {
-      sPressed = true
+      Controls.sPressed = true
     }
     if (event.getKey == ' ') {
-      shooting = true
+      Controls.shooting = true
     }
 
   }
@@ -66,11 +57,11 @@ class Starships extends PApplet {
   override def keyReleased(event: KeyEvent): Unit = {
 
     if (event.getKey == 'w') {
-      wPressed = false
+      Controls.wPressed = false
     } else if (event.getKey == 's') {
-      sPressed = false
+      Controls.sPressed = false
     } else if (event.getKey == ' ') {
-      shooting = false
+      Controls.shooting = false
     }
   }
   def drawUI(p: PApplet): Unit = {

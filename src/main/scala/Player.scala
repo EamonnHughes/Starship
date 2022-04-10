@@ -7,10 +7,17 @@ case class Player(
     var deceleration: Float,
     var lives: Int,
     var primary: Weapon
-) {
+) extends Actor {
   def draw(p: PApplet): Unit = {
     p.fill(240, 240, 240)
     p.rect(x, y, 20, 20)
+  }
+  def update(): Unit = {
+    checkForCollision()
+    moving()
+    if (Controls.shooting) {
+      World.player.shooting()
+    }
   }
   def checkForCollision(): Unit = {
     if (
@@ -37,9 +44,9 @@ case class Player(
       System.exit(0)
     }
   }
-  def moving(wPressed: Boolean, sPressed: Boolean): Unit = {
-    if (wPressed != sPressed) {
-      velocity = clamp(velocity + (if (wPressed) -0.5f else 0.5f), 5f)
+  def moving(): Unit = {
+    if (Controls.wPressed != Controls.sPressed) {
+      velocity = clamp(velocity + (if (Controls.wPressed) -0.5f else 0.5f), 5f)
 
     } else
       velocity = velocity * deceleration
