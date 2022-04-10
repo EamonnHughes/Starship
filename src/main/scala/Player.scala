@@ -8,7 +8,6 @@ case class Player(
     var lives: Int,
     var primary: Weapon
 ) {
-  var time: Long = System.currentTimeMillis
   def draw(p: PApplet): Unit = {
     p.fill(240, 240, 240)
     p.rect(x, y, 20, 20)
@@ -54,15 +53,9 @@ case class Player(
   }
 
   def shooting(shooting: Boolean): Unit = {
-    val currentTime = System.currentTimeMillis
 
-    if (currentTime > time + primary.fireRate && shooting) {
-      World.projectilesList =
-        Projectile(x + 25, y + 10, 1) :: World.projectilesList
-      if (primary == MachineGun) {}
+    primary.shoot()
 
-      time = currentTime
-    }
   }
 
 }
