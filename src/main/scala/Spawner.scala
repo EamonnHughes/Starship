@@ -4,6 +4,7 @@ object Spawner {
   var distance = 0
   var nextWall = Math.random() * 100
   var spawnOnTop = Random.nextBoolean()
+  var length = Math.random * 3
 
   def checkForSpawn(): Unit = {
     if (World.enemies.length < 2) {
@@ -20,10 +21,21 @@ object Spawner {
     ) {
       nextWall = Math.random() * 100
       if (spawnOnTop) {
-        World.walls = Wall(1224 + nextWall.toFloat, 20, 80, 120) :: World.walls
+        World.walls = Wall(
+          1224 + nextWall.toFloat,
+          20,
+          80 * length.toFloat,
+          120
+        ) :: World.walls
       } else {
-        World.walls = Wall(1224 + nextWall.toFloat, 372, 80, 120) :: World.walls
+        World.walls = Wall(
+          1224 + nextWall.toFloat,
+          498 - 80 * length.toFloat,
+          80 * length.toFloat,
+          120
+        ) :: World.walls
       }
+      length = Math.random * 3
       spawnOnTop = Random.nextBoolean()
     }
 
