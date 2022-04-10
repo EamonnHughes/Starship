@@ -6,12 +6,18 @@ case class Enemy(
     var velocity: Float,
     var deceleration: Float,
     var health: Int
-) extends Scrolling {
+) extends Scrolling
+    with Actor {
 
   var time: Long = System.currentTimeMillis
   def draw(p: PApplet): Unit = {
     p.fill(75, 175, 25)
     p.rect(x, y, 20, 20)
+  }
+  def update(): Unit = {
+    move
+    matchLoc
+    checkForCollision
   }
   def matchLoc: Unit = {
 

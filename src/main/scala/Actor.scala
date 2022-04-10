@@ -1,4 +1,6 @@
+import processing.core.PApplet
+
 trait Actor {
   def update()
-  def draw()
+  def draw(p: PApplet)
 }

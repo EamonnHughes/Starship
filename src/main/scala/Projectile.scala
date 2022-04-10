@@ -6,6 +6,9 @@ case class Projectile(var x: Float, var y: Float, direction: Int)
     p.fill(255, 0, 0)
     p.ellipse(x, y, 10, 10)
   }
+  def update(): Unit = {
+    shootForward()
+  }
   def shootForward(): Unit = {
     x += 8 * direction
     if (x > 1024) {

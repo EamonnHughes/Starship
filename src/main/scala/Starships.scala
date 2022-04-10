@@ -16,15 +16,9 @@ class Starships extends PApplet {
 
     background(10, 10, 10)
     World.worldBorder.draw(this)
-    World.enemies.foreach(enemy => enemy.move)
-    World.enemies.foreach(enemy => enemy.matchLoc)
-    World.enemies.foreach(enemy => enemy.checkForCollision)
-    World.projectilesList.foreach(p => p.draw(this))
     World.walls.foreach(wall => wall.draw(this))
     drawUI(this)
-    World.projectilesList.foreach(p => p.shootForward())
     scroll
-    World.player.checkForCollision()
   }
   def scroll: Unit = {
     World.walls.foreach({
