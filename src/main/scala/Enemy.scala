@@ -61,6 +61,9 @@ case class Enemy(
       velocity = -velocity
       y += velocity * 5
     }
+    if (x <= 0) {
+      World.enemies = World.enemies.filterNot(enemy => enemy == this)
+    }
   }
 
 }
