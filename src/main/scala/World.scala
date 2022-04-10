@@ -8,4 +8,7 @@ object World {
     Enemy(900, 250, 0, 0.9f, 3),
     Enemy(925, 300, 0, 0.9f, 3)
   )
+  def everything: List[Actor] = {
+    player :: projectilesList ::: enemies
+  }
 }
