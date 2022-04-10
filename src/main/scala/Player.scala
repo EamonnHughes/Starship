@@ -61,9 +61,7 @@ case class Player(
   }
 
   def shooting(): Unit = {
-
     primary.shoot()
-
   }
 
 }
