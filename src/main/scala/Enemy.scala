@@ -23,10 +23,10 @@ case class Enemy(
 
     val currentTime = System.currentTimeMillis
     if (Math.abs(World.player.y - y) > 30) {
-      velocity += clamp(Math.signum(World.player.y - y) * 0.3f, 4f)
+      velocity += clamp(Math.signum(World.player.y - y) * 0.2f, 3f)
     } else {
       velocity = velocity * deceleration
-      if (currentTime > time + 400) {
+      if (currentTime > time + 500) {
         World.projectilesList =
           Projectile(x - 25, y + 10, -1) :: World.projectilesList
 
@@ -52,6 +52,8 @@ case class Enemy(
       ) {
         health -= World.player.primary.damage
         World.projectilesList = World.projectilesList.filterNot(p => p == i)
+
+        Starships.score += 1
       }
     }
     if (health <= 0) {
@@ -63,7 +65,6 @@ case class Enemy(
     }
     if (x <= 0) {
       World.enemies = World.enemies.filterNot(enemy => enemy == this)
-      Starships.score += 1
     }
   }
 
