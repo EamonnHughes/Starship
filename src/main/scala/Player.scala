@@ -16,8 +16,9 @@ case class Player(
     checkForCollision()
     moving()
     if (Controls.shooting) {
-      World.player.shooting()
+      shooting()
     }
+    primary.special()
   }
   def checkForCollision(): Unit = {
     if (
