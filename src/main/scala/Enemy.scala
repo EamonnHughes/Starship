@@ -63,6 +63,7 @@ case class Enemy(
     }
     if (x <= 0) {
       World.enemies = World.enemies.filterNot(enemy => enemy == this)
+      Starships.score += 1
     }
   }
 

@@ -1,3 +1,4 @@
+import Starships.score
 import processing.core._
 import processing.event.{KeyEvent, MouseEvent}
 
@@ -24,7 +25,7 @@ class Starships extends PApplet {
     World.player.primary.drawPoints(this)
     scroll
     fill(255, 255, 255)
-    text(Spawner.distance, 999, 20)
+    text(score, 999, 20)
     Spawner.checkForSpawn()
     Spawner.spawnWalls()
   }
@@ -78,6 +79,8 @@ class Starships extends PApplet {
 }
 
 object Starships extends App {
+
+  var score = 0
   PApplet.main(classOf[Starships])
 
 }
