@@ -3,11 +3,7 @@ object World {
   var projectilesList = List.empty[Projectile]
   var walls = List.empty[Wall]
   var worldBorder = Border()
-  var enemies = List(
-    Enemy(900, 200, 0, 0.9f, 3),
-    Enemy(900, 250, 0, 0.9f, 3),
-    Enemy(925, 300, 0, 0.9f, 3)
-  )
+  var enemies = List.empty[Enemy]
   def everything: List[Actor] = {
     player :: projectilesList ::: enemies
   }
