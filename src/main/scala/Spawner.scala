@@ -6,7 +6,7 @@ object Spawner {
   var spawnOnTop = Random.nextBoolean()
 
   def checkForSpawn(): Unit = {
-    if (World.enemies.length < 0) {
+    if (World.enemies.length < 2) {
       spawnEnemies()
     }
   }
