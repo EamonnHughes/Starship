@@ -1,6 +1,9 @@
+import scala.util.Random
+
 object Spawner {
   var distance = 0
   var nextWall = Math.random() * 100
+  var spawnOnTop = Random.nextBoolean()
 
   def checkForSpawn(): Unit = {
     if (World.enemies.length < 0) {
@@ -16,7 +19,12 @@ object Spawner {
         .forall(wall => wall.rightX < 1024)
     ) {
       nextWall = Math.random() * 100
-      World.walls = Wall(1424 + nextWall.toFloat, 20, 80, 120) :: World.walls
+      if (spawnOnTop) {
+        World.walls = Wall(1224 + nextWall.toFloat, 20, 80, 120) :: World.walls
+      } else {
+        World.walls = Wall(1224 + nextWall.toFloat, 372, 80, 120) :: World.walls
+      }
+      spawnOnTop = Random.nextBoolean()
     }
 
   }
