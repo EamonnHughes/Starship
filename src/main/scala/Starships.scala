@@ -23,6 +23,8 @@ class Starships extends PApplet {
     drawUI(this)
     World.player.primary.drawPoints(this)
     scroll
+    fill(255, 255, 255)
+    text(Spawner.distance, 999, 20)
     Spawner.checkForSpawn()
     Spawner.spawnWalls()
   }
