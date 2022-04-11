@@ -41,7 +41,7 @@ case class Player(
       }
     }
     if (lives <= 0) {
-      println("YOU DIED!")
+      println("YOU DIED! SCORE: " + Starships.score)
       System.exit(0)
     }
   }

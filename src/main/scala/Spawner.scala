@@ -15,6 +15,7 @@ object Spawner {
     World.enemies = Enemy(1000, 256, 0, 0.9f, 3) :: World.enemies
   }
   def spawnWalls(): Unit = {
+
     if (
       World.walls.headOption
         .forall(wall => wall.rightX < 1024)
