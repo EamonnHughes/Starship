@@ -26,14 +26,14 @@ object Spawner {
           1224 + nextWall.toFloat,
           20,
           120,
-          80 * length.toFloat
+          80 * Math.ceil(length).toFloat
         ) :: World.walls
       } else {
         World.walls = Wall(
           1224 + nextWall.toFloat,
-          498 - (80 * length.toFloat),
+          492 - (80 * Math.ceil(length).toFloat),
           120,
-          80 * length.toFloat
+          80 * Math.ceil(length).toFloat
         ) :: World.walls
       }
       length = Math.random * 2
