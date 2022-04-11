@@ -26,13 +26,14 @@ case class Enemy(
       velocity += clamp(Math.signum(World.player.y - y) * 0.2f, 3f)
     } else {
       velocity = velocity * deceleration
-      if (currentTime > time + 500) {
-        World.projectilesList =
-          Projectile(x - 25, y + 10, -1) :: World.projectilesList
+    }
 
-        time = currentTime
+    if (currentTime > time + 500) {
+      World.projectilesList =
+        Projectile(x - 25, y + 10, -1) :: World.projectilesList
 
-      }
+      time = currentTime
+
     }
   }
   def clamp(value: Float, max: Float) = {
@@ -41,7 +42,6 @@ case class Enemy(
     else value
   }
   def move: Unit = {
-
     y += velocity
 
   }
