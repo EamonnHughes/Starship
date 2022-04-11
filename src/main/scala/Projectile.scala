@@ -11,9 +11,14 @@ case class Projectile(var x: Float, var y: Float, direction: Int)
   }
   def shootForward(): Unit = {
     x += 6 * direction
-    if (x > 1024) {
+    if (
+      x > 1024 || World.walls.exists(wall =>
+        x - 5 < wall.x + wall.dimensionX && x + 5 >= wall.x && y - 5 < wall.y + wall.dimensionY && y + 5 >= wall.y
+      )
+    ) {
       World.projectilesList =
         World.projectilesList.filterNot(projectile => projectile == this)
     }
+
   }
 }
