@@ -28,7 +28,7 @@ case class Enemy(
       velocity = velocity * deceleration
     }
 
-    if (currentTime > time + 500) {
+    if (currentTime > time + 900) {
       World.projectilesList =
         Projectile(x - 25, y + 10, -1) :: World.projectilesList
 
