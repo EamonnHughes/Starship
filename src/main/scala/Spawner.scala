@@ -12,7 +12,7 @@ object Spawner {
     }
   }
   def spawnEnemies(): Unit = {
-    World.enemies = Enemy(1000, 256, 0, 0.9f, 3) :: World.enemies
+    World.enemies = Enemy(1040, 256, 0, 0.9f, 3) :: World.enemies
   }
   def spawnWalls(): Unit = {
 
