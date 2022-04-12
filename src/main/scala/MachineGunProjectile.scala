@@ -1,6 +1,6 @@
 import processing.core.PApplet
 
-case class Projectile(var x: Float, var y: Float, direction: Int)
+case class MachineGunProjectile(var x: Float, var y: Float, direction: Int)
     extends Actor {
   def draw(p: PApplet): Unit = {
     p.fill(255, 0, 0)

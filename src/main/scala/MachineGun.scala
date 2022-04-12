@@ -8,7 +8,7 @@ case class MachineGun(var fireRate: Int, var damage: Int, var overHeat: Float)
     val currentTime = System.currentTimeMillis
 
     if (currentTime > time + fireRate && overHeat < 40) {
-      World.projectilesList = Projectile(
+      World.projectilesList = MachineGunProjectile(
         World.player.x + 25,
         World.player.y + 10,
         1

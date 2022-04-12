@@ -30,7 +30,7 @@ case class Enemy(
 
     if (currentTime > time + 900) {
       World.projectilesList =
-        Projectile(x - 25, y + 10, -1) :: World.projectilesList
+        MachineGunProjectile(x - 25, y + 10, -1) :: World.projectilesList
 
       time = currentTime
 
