@@ -3,7 +3,10 @@ import processing.core.PApplet
 case class MiningLaser(var fireRate: Int, var damage: Int, var length: Int)
     extends Weapon {
 
-  def shoot(): Unit = {}
+  def shoot(): Unit = {
+
+    World.Laser = List(Laser(World.player.x, World.player.y))
+  }
   def special(): Unit = {
 
     if (!Controls.shooting) {
