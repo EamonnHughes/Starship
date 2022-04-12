@@ -1,7 +1,8 @@
 import processing.core.PApplet
 
 case class MachineGunProjectile(var x: Float, var y: Float, direction: Int)
-    extends Actor {
+    extends Actor
+    with Projectile {
   def draw(p: PApplet): Unit = {
     p.fill(255, 0, 0)
     p.ellipse(x, y, 10, 10)
