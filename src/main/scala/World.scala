@@ -4,7 +4,7 @@ object World {
   var walls = List.empty[Wall]
   var worldBorder = Border()
   var enemies = List.empty[Enemy]
-  var Laser = List.empty[Laser]
+  var pLaser = Option.empty[Laser]
   def everything: List[Actor] = {
     player :: projectilesList ::: enemies
   }
