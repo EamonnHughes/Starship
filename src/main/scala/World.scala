@@ -6,6 +6,6 @@ object World {
   var enemies = List.empty[Enemy]
   var pLaser = Option.empty[Laser]
   def everything: List[Actor] = {
-    player :: projectilesList ::: enemies
+    player :: projectilesList ::: pLaser.toList ::: enemies
   }
 }

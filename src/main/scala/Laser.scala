@@ -5,7 +5,7 @@ case class Laser(var x: Float, var y: Float) extends Actor with Projectile {
   var time: Long = System.currentTimeMillis
   def draw(p: PApplet): Unit = {
     p.fill(255, 0, 0)
-    p.rect(World.player.x, World.player.y, 1024 - x, 10)
+    p.rect(World.player.x, World.player.y + 9, 1024 - x, 20)
   }
 
   def update(): Unit = {
