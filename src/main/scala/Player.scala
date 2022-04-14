@@ -13,6 +13,7 @@ case class Player(
     p.rect(x, y, 20, 20)
   }
   def update(): Unit = {
+    World.player.primary = World.weaponList(World.selectWeapon)
     checkForCollision()
     moving()
     if (Controls.shooting) {

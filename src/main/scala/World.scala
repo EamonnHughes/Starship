@@ -1,5 +1,5 @@
 object World {
-  var player = Player(64, 256, 0, 0.9f, 3, MissileArray(500, 3))
+  var player = Player(64, 256, 0, 0.9f, 3, MachineGun(50, 1, 0))
   var projectilesList = List.empty[Projectile]
   var walls = List.empty[Wall]
   var worldBorder = Border()
@@ -7,4 +7,6 @@ object World {
   def everything: List[Actor] = {
     player :: projectilesList ::: enemies
   }
+  var selectWeapon = 0
+  var weaponList = List(MachineGun(50, 1, 0), MissileArray(500, 3))
 }

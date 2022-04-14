@@ -49,6 +49,9 @@ class Starships extends PApplet {
     if (event.getKey == 'w') {
       Controls.wPressed = true
     }
+    if (event.getKey == 'q') {
+      World.selectWeapon = (World.selectWeapon + 1) % World.weaponList.length
+    }
     if (event.getKey == 's') {
       Controls.sPressed = true
     }
