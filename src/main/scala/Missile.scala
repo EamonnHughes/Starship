@@ -3,23 +3,28 @@ import processing.core.PApplet
 case class Missile(
     var x: Float,
     var y: Float,
-    var target: Enemy,
+    var target: Actor,
     var velX: Float,
-    var velY: Float
+    var velY: Float,
+    var direction: Int
 ) extends Actor
     with Projectile {
   def draw(p: PApplet): Unit = {
     p.fill(90, 90, 90)
-    p.ellipse(x, y, 20, 10)
+    p.ellipse(x, y, 10, 10)
 
-    p.fill(255, 0, 0)
-    p.ellipse(x, y, 10, 5)
+    p.fill(90, 90, 90)
+    p.ellipse(x + 10, y, 10, 10)
+
+    p.fill(90, 90, 90)
+    p.rect(x, y - 5, 10, 10)
+
   }
   def update(): Unit = {
     shootForward()
     x += velX
     y += velY
-    velX += 0.06f
+    velX += 0.06f * direction.toFloat
   }
   def shootForward(): Unit = {
 
