@@ -26,7 +26,7 @@ case class Missile(
     } else {
       velX = clamp(velX - 0.5f, 5f)
     }
-    if (target.y > x + 10) {
+    if (target.y > y + 10) {
       velY = clamp(velY + 0.5f, 5f)
     } else {
       velY = clamp(velY - 0.5f, 5f)
