@@ -10,10 +10,10 @@ case class Missile(
     with Projectile {
   def draw(p: PApplet): Unit = {
     p.fill(90, 90, 90)
-    p.ellipse(x, y, 10, 10)
+    p.ellipse(x, y, 20, 10)
 
     p.fill(255, 0, 0)
-    p.ellipse(x + 1, y + 1, 2, 2)
+    p.ellipse(x, y, 10, 5)
   }
   def update(): Unit = {
     shootForward()
