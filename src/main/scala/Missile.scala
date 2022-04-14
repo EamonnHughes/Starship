@@ -10,13 +10,13 @@ case class Missile(
 ) extends Actor
     with Projectile {
   def draw(p: PApplet): Unit = {
-    p.fill(90, 90, 90)
+    p.fill(190, 90, 90)
     p.ellipse(x, y, 10, 10)
 
-    p.fill(90, 90, 90)
+    p.fill(190, 90, 90)
     p.ellipse(x + 10, y, 10, 10)
 
-    p.fill(90, 90, 90)
+    p.fill(190, 90, 90)
     p.rect(x, y - 5, 10, 10)
 
   }

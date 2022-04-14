@@ -53,7 +53,7 @@ case class Enemy(
         health -= World.player.primary.damage
         World.projectilesList = World.projectilesList.filterNot(p => p == i)
 
-        Starships.score += 1
+        Starships.score += World.player.primary.damage
       }
     }
     if (health <= 0) {
