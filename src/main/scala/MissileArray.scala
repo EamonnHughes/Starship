@@ -12,7 +12,8 @@ case class MissileArray(var fireRate: Int, var damage: Int) extends Weapon {
         World.player.y + 10,
         World.enemies.head,
         0,
-        0
+        0,
+        1
       ) :: World.projectilesList
       time = currentTime
     }
