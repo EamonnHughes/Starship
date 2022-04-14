@@ -5,6 +5,6 @@ object World {
   var worldBorder = Border()
   var enemies = List.empty[Enemy]
   def everything: List[Actor] = {
-    player :: projectilesList ::: pLaser.toList ::: enemies
+    player :: projectilesList ::: enemies
   }
 }
