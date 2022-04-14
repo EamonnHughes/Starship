@@ -24,7 +24,7 @@ case class Missile(
     shootForward()
     x += velX
     y += velY
-    velX += 0.06f * direction.toFloat
+    velX += 06f * direction.toFloat
   }
   def shootForward(): Unit = {
 
