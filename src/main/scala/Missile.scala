@@ -13,23 +13,22 @@ case class Missile(
     p.ellipse(x, y, 10, 10)
 
     p.fill(255, 0, 0)
-    p.ellipse(x + 4, y + 4, 2, 2)
+    p.ellipse(x + 1, y + 1, 2, 2)
   }
   def update(): Unit = {
     shootForward()
     x += velX
     y += velY
+    velX += 0.06f
   }
   def shootForward(): Unit = {
-    if (target.x > x + 10) {
-      velX = clamp(velX + 0.5f, 5f)
-    } else {
-      velX = clamp(velX - 0.5f, 5f)
-    }
+
     if (target.y > y + 10) {
-      velY = clamp(velY + 0.5f, 5f)
+      velY = clamp(velY + 0.1f, 5f)
+    } else if (target.y < y) {
+      velY = clamp(velY - 0.1f, 5f)
     } else {
-      velY = clamp(velY - 0.5f, 5f)
+      velY *= 0.9f
     }
     if (
       x > 1024 || World.walls.exists(wall =>
