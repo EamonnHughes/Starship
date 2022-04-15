@@ -22,14 +22,15 @@ class Starships extends PApplet {
     World.everything.foreach(actor => actor.draw(this))
     World.everything.foreach(actor => actor.update())
     World.weaponList.foreach(weapon => weapon.special())
-
     drawUI(this)
     World.player.primary.drawPoints(this)
     scroll
     fill(255, 255, 255)
     text(score, 999, 20)
     Spawner.checkForSpawn()
-    Spawner.spawnWalls()
+    if (!Spawner.isBossFight) {
+      Spawner.spawnWalls()
+    }
   }
 
   def scroll: Unit = {

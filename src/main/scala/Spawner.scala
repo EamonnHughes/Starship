@@ -5,6 +5,7 @@ object Spawner {
   var nextWall = Math.random() * 100
   var spawnOnTop = Random.nextBoolean()
   var length = Math.random * 2
+  var isBossFight = false
 
   def checkForSpawn(): Unit = {
     if (World.enemies.length < 2) {
