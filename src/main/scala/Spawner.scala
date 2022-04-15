@@ -8,7 +8,7 @@ object Spawner {
   var isBossFight = false
 
   def checkForSpawn(): Unit = {
-    if (World.enemies.length < 2) {
+    if (World.enemies.length < 2 && !isBossFight) {
       spawnEnemies()
     }
   }
