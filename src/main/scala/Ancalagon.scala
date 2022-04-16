@@ -49,6 +49,8 @@ case class Ancalagon(var health: Int, var x: Float, var y: Float) extends Boss {
     }
     if (health <= 0) {
       Spawner.isBossFight = false
+      Spawner.hasFoughtBoss = true
+      Starships.score += 100
     }
 
   }

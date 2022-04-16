@@ -35,7 +35,7 @@ class Starships extends PApplet {
     if (!Spawner.isBossFight) {
       Spawner.spawnWalls()
     }
-    if (score >= 100) {
+    if (score >= 100 && !Spawner.hasFoughtBoss) {
       Spawner.isBossFight = true
     }
   }
