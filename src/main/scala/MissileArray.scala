@@ -6,7 +6,7 @@ case class MissileArray(var fireRate: Int, var damage: Int) extends Weapon {
   def shoot(): Unit = {
     val currentTime = System.currentTimeMillis
 
-    if (currentTime > time + fireRate) {
+    if (currentTime > time + fireRate && World.enemies.nonEmpty) {
       World.projectilesList = Missile(
         World.player.x + 25,
         World.player.y + 10,
