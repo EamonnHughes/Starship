@@ -7,9 +7,7 @@ case class Ancalagon(var health: Int, var x: Float, var y: Float) extends Boss {
     p.fill(240, 100, 240)
     p.rect(x, y, 40, 40)
   }
-
-  def update(): Unit = {
-
+  def shoot: Unit = {
     val currentTime = System.currentTimeMillis
     if (currentTime > time + 900) {
       World.projectilesList =
@@ -18,5 +16,10 @@ case class Ancalagon(var health: Int, var x: Float, var y: Float) extends Boss {
       time = currentTime
 
     }
+  }
+  def move: Unit = {}
+  def update(): Unit = {
+    shoot
+    move
   }
 }
