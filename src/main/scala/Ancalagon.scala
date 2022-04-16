@@ -32,6 +32,7 @@ case class Ancalagon(var health: Int, var x: Float, var y: Float) extends Boss {
   def update(): Unit = {
     shoot
     move
+    checkForCollision
   }
   def checkForCollision: Unit = {
     for (i <- World.projectilesList) {
