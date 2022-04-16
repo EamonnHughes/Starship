@@ -1,7 +1,7 @@
 import processing.core.PApplet
 
 case class Ancalagon(var health: Int, var x: Float, var y: Float) extends Boss {
-
+  var goingUp = false
   var time: Long = System.currentTimeMillis
   def draw(p: PApplet): Unit = {
     p.fill(240, 100, 240)
@@ -17,7 +17,18 @@ case class Ancalagon(var health: Int, var x: Float, var y: Float) extends Boss {
 
     }
   }
-  def move: Unit = {}
+  def move: Unit = {
+    if (!goingUp && y < 487) {
+      y += 5
+    } else if (!goingUp && y >= 487) {
+      goingUp = true
+    }
+    if (goingUp && y > 25) {
+      y -= 5
+    } else if (goingUp && y <= 25) {
+      goingUp = false
+    }
+  }
   def update(): Unit = {
     shoot
     move
