@@ -1,11 +1,14 @@
 import Starships.score
 import processing.core._
 import processing.event.{KeyEvent, MouseEvent}
-
+import processing.awt.PGraphicsJava2D
+import processing.opengl.PGraphicsOpenGL
 class Starships extends PApplet {
 
   override def setup(): Unit = {
     keyRepeatEnabled = false;
+
+    Player.loadImages(this)
   }
 
   override def settings(): Unit = {

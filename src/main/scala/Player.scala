@@ -1,4 +1,4 @@
-import processing.core.PApplet
+import processing.core.{PApplet, PImage}
 
 case class Player(
     var x: Float,
@@ -9,8 +9,8 @@ case class Player(
     var primary: Weapon
 ) extends Actor {
   def draw(p: PApplet): Unit = {
-    p.fill(240, 240, 240)
-    p.rect(x, y, 20, 20)
+
+    p.image(Player.Swordfish, x, y, 20, 20)
   }
   def update(): Unit = {
     World.player.primary = World.weaponList(World.selectWeapon)
@@ -65,4 +65,12 @@ case class Player(
     primary.shoot()
   }
 
+}
+
+object Player {
+  var Swordfish: PImage = _
+  def loadImages(p: PApplet): Unit = {
+    Swordfish = p.loadImage("src/main/Resources/Swordfish.png")
+
+  }
 }

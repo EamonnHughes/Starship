@@ -5,7 +5,7 @@ case class MachineGunProjectile(var x: Float, var y: Float, var direction: Int)
     with Projectile {
   def draw(p: PApplet): Unit = {
     p.fill(255, 0, 0)
-    p.ellipse(x, y, 10, 10)
+    p.ellipse(x, y, 4, 4)
   }
   def update(): Unit = {
     shootForward()
