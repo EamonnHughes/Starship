@@ -21,6 +21,10 @@ class Starships extends PApplet {
     World.walls.foreach(wall => wall.checkForEnd())
     World.everything.foreach(actor => actor.draw(this))
     World.everything.foreach(actor => actor.update())
+    if (Spawner.isBossFight) {
+      World.bossList(World.currentBoss).draw(this)
+      World.bossList(World.currentBoss).update()
+    }
     World.weaponList.foreach(weapon => weapon.special())
     drawUI(this)
     World.player.primary.drawPoints(this)
