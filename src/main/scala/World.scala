@@ -4,7 +4,7 @@ object World {
   var walls = List.empty[Wall]
   var worldBorder = Border()
   var enemies = List.empty[Enemy]
-  var bossList = List(Ancalagon(30, 900, 236))
+  var bossList = List(Ancalagon(20, 900, 236))
   var currentBoss = 0
   def everything: List[Actor] = {
     player :: World.bossList(World.currentBoss) :: projectilesList ::: enemies
