@@ -35,6 +35,9 @@ class Starships extends PApplet {
     if (!Spawner.isBossFight) {
       Spawner.spawnWalls()
     }
+    if (score >= 100) {
+      Spawner.isBossFight = true
+    }
   }
 
   def scroll: Unit = {
