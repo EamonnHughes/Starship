@@ -9,7 +9,7 @@ case class Ancalagon(var health: Int, var x: Float, var y: Float) extends Boss {
   }
   def shoot: Unit = {
     val currentTime = System.currentTimeMillis
-    if (currentTime > time + 900) {
+    if (currentTime > time + 400) {
       World.projectilesList =
         MachineGunProjectile(x - 25, y + 10, -1) :: World.projectilesList
 
@@ -18,9 +18,9 @@ case class Ancalagon(var health: Int, var x: Float, var y: Float) extends Boss {
     }
   }
   def move: Unit = {
-    if (!goingUp && y < 487) {
+    if (!goingUp && y + 40 < 487) {
       y += 5
-    } else if (!goingUp && y >= 487) {
+    } else if (!goingUp && y + 40 >= 487) {
       goingUp = true
     }
     if (goingUp && y > 25) {
