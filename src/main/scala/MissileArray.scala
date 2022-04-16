@@ -16,6 +16,16 @@ case class MissileArray(var fireRate: Int, var damage: Int) extends Weapon {
         1
       ) :: World.projectilesList
       time = currentTime
+    } else if (currentTime > time + fireRate) {
+      World.projectilesList = Missile(
+        World.player.x + 25,
+        World.player.y + 10,
+        World.player,
+        0,
+        0,
+        1
+      ) :: World.projectilesList
+      time = currentTime
     }
   }
   def special(): Unit = {}
