@@ -1,18 +1,19 @@
 import processing.core.PApplet
 
 case class Enemy(
-    var x: Float,
-    var y: Float,
+    var location: Vec2,
+    var size: Vec2,
     var velocity: Float,
     var deceleration: Float,
     var health: Int
 ) extends Scrolling
     with Actor {
 
+  def box: Box2 = Box2(location, size)
   var time: Long = System.currentTimeMillis
   def draw(p: PApplet): Unit = {
     p.fill(75, 175, 25)
-    p.rect(x, y, 20, 20)
+    p.rect(location.x, location.y, 20, 20)
   }
   def update(): Unit = {
     move
@@ -22,15 +23,21 @@ case class Enemy(
   def matchLoc: Unit = {
 
     val currentTime = System.currentTimeMillis
-    if (Math.abs(World.player.y - y) > 30) {
-      velocity += clamp(Math.signum(World.player.y - y) * 0.1f, 3f)
+    if (Math.abs(World.player.location.y - location.y) > 30) {
+      velocity += clamp(
+        Math.signum(World.player.location.y - location.y) * 0.1f,
+        3f
+      )
     } else {
       velocity = velocity * deceleration
     }
 
     if (currentTime > time + 900) {
-      World.projectilesList =
-        MachineGunProjectile(x - 25, y + 10, -1) :: World.projectilesList
+      World.projectilesList = MachineGunProjectile(
+        Vec2(location.x - 25, location.y + 10),
+        Vec2(10, 10),
+        -1
+      ) :: World.projectilesList
 
       time = currentTime
 
@@ -42,14 +49,12 @@ case class Enemy(
     else value
   }
   def move: Unit = {
-    y += velocity
+    location = location.addY(velocity)
 
   }
   def checkForCollision: Unit = {
     for (i <- World.projectilesList) {
-      if (
-        i.x - 5 < x + 20 && i.x + 5 >= x && i.y - 5 < y + 20 && i.y + 5 >= y && i.direction == 1
-      ) {
+      if (box.intersects(i.box) && i.direction == 1) {
         health -= World.player.primary.damage
         World.projectilesList = World.projectilesList.filterNot(p => p == i)
 
@@ -59,11 +64,10 @@ case class Enemy(
     if (health <= 0) {
       World.enemies = World.enemies.filterNot(enemy => enemy == this)
     }
-    if (y <= 20 || y >= 492) {
+    if (box.top <= 20 || box.bottom >= 492) {
       velocity = -velocity
-      y += velocity * 5
     }
-    if (x <= 0) {
+    if (box.right <= 0) {
       World.enemies = World.enemies.filterNot(enemy => enemy == this)
     }
   }

@@ -14,28 +14,22 @@ object Spawner {
     }
   }
   def spawnEnemies(): Unit = {
-    World.enemies = Enemy(1040, 256, 0, 0.9f, 3) :: World.enemies
+    World.enemies =
+      Enemy(Vec2(1040, 256), Vec2(20, 20), 0, 0.9f, 3) :: World.enemies
   }
   def spawnWalls(): Unit = {
 
-    if (
-      World.walls.headOption
-        .forall(wall => wall.rightX < 1024)
-    ) {
+    if (World.walls.headOption.forall(wall => wall.box.right < 1024)) {
       nextWall = Math.random() * 100
       if (spawnOnTop) {
         World.walls = Wall(
-          1224 + nextWall.toFloat,
-          20,
-          120,
-          80 * Math.ceil(length).toFloat
+          Vec2(1224 + nextWall.toFloat, 20),
+          Vec2(20, 80 * Math.ceil(length).toFloat)
         ) :: World.walls
       } else {
         World.walls = Wall(
-          1224 + nextWall.toFloat,
-          492 - (80 * Math.ceil(length).toFloat),
-          120,
-          80 * Math.ceil(length).toFloat
+          Vec2(1224 + nextWall.toFloat, 492 - 80 * Math.ceil(length).toFloat),
+          Vec2(20, 80 * Math.ceil(length).toFloat)
         ) :: World.walls
       }
       length = Math.random * 2

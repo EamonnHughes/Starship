@@ -46,12 +46,12 @@ class Starships extends PApplet {
   def scroll: Unit = {
     World.walls.foreach({
       case scrolling: Scrolling =>
-        scrolling.x -= 1
+        scrolling.location.x -= 1
       case _ =>
     })
     World.enemies.foreach({
       case scrolling: Scrolling =>
-        scrolling.x -= 1
+        scrolling.location.x -= 1
       case _ =>
     })
     Spawner.distance += 1

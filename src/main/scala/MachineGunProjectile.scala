@@ -8,7 +8,7 @@ case class MachineGunProjectile(
     with Projectile {
   def draw(p: PApplet): Unit = {
     p.fill(255, 0, 0)
-    p.ellipse(x, y, 4, 4)
+    p.rect(location.x, location.y, size.x, size.y)
   }
 
   def box: Box2 = Box2(location, size)
@@ -17,7 +17,9 @@ case class MachineGunProjectile(
   }
   def shootForward(): Unit = {
     location.addX(direction * 6)
-    if (x > 1024 || World.walls.exists(wall => box.intersects(wall.box))) {
+    if (
+      location.x > 1024 || World.walls.exists(wall => box.intersects(wall.box))
+    ) {
       World.projectilesList =
         World.projectilesList.filterNot(projectile => projectile == this)
     }

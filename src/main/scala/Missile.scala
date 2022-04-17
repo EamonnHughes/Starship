@@ -30,7 +30,9 @@ case class Missile(
     } else {
       velY *= 0.9f
     }
-    if (x > 1024 || World.walls.exists(wall => box.intersects(wall.box))) {
+    if (
+      location.x > 1024 || World.walls.exists(wall => box.intersects(wall.box))
+    ) {
       World.projectilesList =
         World.projectilesList.filterNot(projectile => projectile == this)
     }
