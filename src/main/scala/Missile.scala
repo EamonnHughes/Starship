@@ -18,7 +18,7 @@ case class Missile(
   }
   def update(): Unit = {
     shootForward()
-    location.add(velX, velY)
+    location = location.add(velX, velY)
     velX += .06f * direction.toFloat
   }
   def shootForward(): Unit = {

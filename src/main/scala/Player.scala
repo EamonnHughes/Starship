@@ -53,7 +53,7 @@ case class Player(
 
     } else
       velocity = velocity * deceleration
-    location.addY(velocity)
+    location = location.addY(velocity)
   }
 
   def clamp(value: Float, max: Float) = {

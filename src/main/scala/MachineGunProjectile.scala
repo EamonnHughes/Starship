@@ -16,7 +16,7 @@ case class MachineGunProjectile(
     shootForward()
   }
   def shootForward(): Unit = {
-    location.addX(direction * 6)
+    location = location.addX(direction * 6)
     if (
       location.x > 1024 || World.walls.exists(wall => box.intersects(wall.box))
     ) {
