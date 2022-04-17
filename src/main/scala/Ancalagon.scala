@@ -1,11 +1,14 @@
 import processing.core.PApplet
 
-case class Ancalagon(var health: Int, var x: Float, var y: Float) extends Boss {
+case class Ancalagon(var health: Int, var location: Vec2, var size: Vec2)
+    extends Boss {
   var goingUp = false
   var time: Long = System.currentTimeMillis
+
+  def box: Box2 = Box2(location, size)
   def draw(p: PApplet): Unit = {
     p.fill(240, 100, 240)
-    p.rect(x, y, 40, 40)
+    p.rect(location.x, location.y, size.x, size.y)
     p.fill(255, 0, 0)
     p.rect(100, 502, health * 20, 10)
   }

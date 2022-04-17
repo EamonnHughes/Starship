@@ -1,18 +1,20 @@
 import processing.core.{PApplet, PImage}
 
 case class Player(
-    var x: Float,
-    var y: Float,
+    var location: Vec2,
+    size: Vec2,
     var velocity: Float,
     var deceleration: Float,
     var lives: Int,
     var primary: Weapon
 ) extends Actor {
 
+  def box: Box2 = Box2(location, size)
   def draw(p: PApplet): Unit = {
 
-    p.image(Player.Swordfish, x, y, 20, 20)
+    p.image(Player.Swordfish, location.x, location.y, size.x, size.y)
   }
+
   def update(): Unit = {
     World.player.primary = World.weaponList(World.selectWeapon)
     checkForCollision()
@@ -25,19 +27,19 @@ case class Player(
   def checkForCollision(): Unit = {
     if (
       World.walls.exists(wall =>
-        x < wall.x + wall.dimensionX && x + 20 >= wall.x && y < wall.y + wall.dimensionY && y + 20 >= wall.y
-      ) || y < 20 || y + 20 > 492
+        box.intersects(wall.box)
+      ) || box.top < 20 || box.bottom > 492
     ) {
       lives -= 1
-      y = 256
+      location = location.setY(256)
       velocity = 0
     }
     for (i <- World.projectilesList) {
       if (
-        i.x - 5 < x + 20 && i.x + 5 >= x && i.y - 5 < y + 20 && i.y + 5 >= y && i.direction == -1
+        i.x < box.right && i.x + 10 >= box.left && i.y < box.bottom && i.y + 10 >= box.top && i.direction == -1
       ) {
         lives -= 1
-        y = 256
+        location = location.setY(256)
         velocity = 0
         World.projectilesList = World.projectilesList.filterNot(p => p == i)
       }
@@ -53,7 +55,7 @@ case class Player(
 
     } else
       velocity = velocity * deceleration
-    y += velocity
+    location.addY(velocity)
   }
 
   def clamp(value: Float, max: Float) = {
@@ -74,4 +76,5 @@ object Player {
     Swordfish = p.loadImage("src/main/Resources/Swordfish.png")
 
   }
+
 }
