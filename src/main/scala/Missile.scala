@@ -1,39 +1,36 @@
 import processing.core.PApplet
 
 case class Missile(
-    var x: Float,
-    var y: Float,
+    var location: Vec2,
+    var size: Vec2,
     var target: Actor,
     var velX: Float,
     var velY: Float,
     var direction: Int
 ) extends Actor
     with Projectile {
+
+  def box: Box2 = Box2(location, size)
   def draw(p: PApplet): Unit = {
     p.fill(155, 155, 155)
-    p.ellipse(x, y, 7, 7)
+    p.ellipse(location.x, location.y, size.x, size.y)
 
   }
   def update(): Unit = {
     shootForward()
-    x += velX
-    y += velY
+    location.add(velX, velY)
     velX += .06f * direction.toFloat
   }
   def shootForward(): Unit = {
 
-    if (target.y > y + 5) {
+    if (target.location.y > box.bottom) {
       velY = clamp(velY + 0.1f, 5f)
-    } else if (target.y + 5 < y - 5) {
+    } else if (target.location.y < box.top) {
       velY = clamp(velY - 0.1f, 5f)
     } else {
       velY *= 0.9f
     }
-    if (
-      x > 1024 || World.walls.exists(wall =>
-        x - 5 < wall.x + wall.dimensionX && x + 5 >= wall.x && y - 5 < wall.y + wall.dimensionY && y + 5 >= wall.y
-      )
-    ) {
+    if (x > 1024 || World.walls.exists(wall => box.intersects(wall.box))) {
       World.projectilesList =
         World.projectilesList.filterNot(projectile => projectile == this)
     }

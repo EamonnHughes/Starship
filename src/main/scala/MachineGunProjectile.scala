@@ -1,22 +1,23 @@
 import processing.core.PApplet
 
-case class MachineGunProjectile(var x: Float, var y: Float, var direction: Int)
-    extends Actor
+case class MachineGunProjectile(
+    var location: Vec2,
+    var size: Vec2,
+    var direction: Int
+) extends Actor
     with Projectile {
   def draw(p: PApplet): Unit = {
     p.fill(255, 0, 0)
     p.ellipse(x, y, 4, 4)
   }
+
+  def box: Box2 = Box2(location, size)
   def update(): Unit = {
     shootForward()
   }
   def shootForward(): Unit = {
-    x += 6 * direction
-    if (
-      x > 1024 || World.walls.exists(wall =>
-        x - 5 < wall.x + wall.dimensionX && x + 5 >= wall.x && y - 5 < wall.y + wall.dimensionY && y + 5 >= wall.y
-      )
-    ) {
+    location.addX(direction * 6)
+    if (x > 1024 || World.walls.exists(wall => box.intersects(wall.box))) {
       World.projectilesList =
         World.projectilesList.filterNot(projectile => projectile == this)
     }
