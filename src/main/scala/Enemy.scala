@@ -65,7 +65,7 @@ case class Enemy(
       World.enemies = World.enemies.filterNot(enemy => enemy == this)
       if (Math.random < 0.1) {
         World.upgradeList =
-          HealthUpgrade(location, Vec2(5, 5)) :: World.upgradeList
+          HealthUpgrade(location, Vec2(10, 10)) :: World.upgradeList
       }
     }
     if (box.top <= 20 || box.bottom >= 492) {
