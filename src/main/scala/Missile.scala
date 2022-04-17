@@ -13,7 +13,7 @@ case class Missile(
   def box: Box2 = Box2(location, size)
   def draw(p: PApplet): Unit = {
     p.fill(155, 155, 155)
-    p.ellipse(location.x, location.y, size.x, size.y)
+    p.rect(location.x, location.y, size.x, size.y)
 
   }
   def update(): Unit = {
