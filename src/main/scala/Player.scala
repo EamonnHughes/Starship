@@ -2,7 +2,7 @@ import processing.core.{PApplet, PImage}
 
 case class Player(
     var location: Vec2,
-    size: Vec2,
+    var size: Vec2,
     var velocity: Float,
     var deceleration: Float,
     var lives: Int,
