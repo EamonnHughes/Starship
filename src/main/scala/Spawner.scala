@@ -2,7 +2,7 @@ import scala.util.Random
 
 object Spawner {
   var distance = 0
-  var nextWall = Math.random() * 100
+  var nextWall = Math.random() * 200
   var spawnOnTop = Random.nextBoolean()
   var length = Math.random * 2
   var isBossFight = false
@@ -24,12 +24,12 @@ object Spawner {
       if (spawnOnTop) {
         World.walls = Wall(
           Vec2(1224 + nextWall.toFloat, 20),
-          Vec2(60, 80 * Math.ceil(length).toFloat)
+          Vec2(80, 80 * length.toFloat + 40)
         ) :: World.walls
       } else {
         World.walls = Wall(
-          Vec2(1224 + nextWall.toFloat, 492 - 80 * Math.ceil(length).toFloat),
-          Vec2(60, 80 * Math.ceil(length).toFloat)
+          Vec2(1124 + nextWall.toFloat, 492 - (80 * length.toFloat + 40)),
+          Vec2(80, 80 * length.toFloat + 40)
         ) :: World.walls
       }
       length = Math.random * 2
