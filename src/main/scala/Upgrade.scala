@@ -1,0 +1,1 @@
+trait Upgrade extends Actor {}

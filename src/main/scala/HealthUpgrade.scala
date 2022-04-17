@@ -1,14 +1,15 @@
 import processing.core.PApplet
 
 case class HealthUpgrade(var location: Vec2, var size: Vec2)
-    extends Scrolling
-    with Actor {
+    extends Upgrade
+    with Scrolling {
 
   def box: Box2 = Box2(location, size)
   def update(): Unit = {
     if (World.player.box.intersects(box)) {
       World.player.lives = clamp(World.player.lives + 1, 3).toInt
-
+      World.upgradeList =
+        World.upgradeList.filterNot(upgrade => upgrade == this)
     }
   }
   def draw(p: PApplet): Unit = {

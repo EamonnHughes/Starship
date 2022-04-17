@@ -63,6 +63,8 @@ case class Enemy(
     }
     if (health <= 0) {
       World.enemies = World.enemies.filterNot(enemy => enemy == this)
+      World.upgradeList =
+        HealthUpgrade(location, Vec2(5, 5)) :: World.upgradeList
     }
     if (box.top <= 20 || box.bottom >= 492) {
       velocity = -velocity

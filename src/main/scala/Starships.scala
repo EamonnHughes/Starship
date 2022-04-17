@@ -49,6 +49,11 @@ class Starships extends PApplet {
         scrolling.location.x -= 1
       case _ =>
     })
+    World.upgradeList.foreach({
+      case scrolling: Scrolling =>
+        scrolling.location.x -= 1
+      case _ =>
+    })
     World.enemies.foreach({
       case scrolling: Scrolling =>
         scrolling.location.x -= 1
