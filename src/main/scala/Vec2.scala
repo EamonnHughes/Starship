@@ -17,7 +17,7 @@ case class Box2(left: Float, top: Float, width: Float, height: Float) {
   def bottom: Float = top + height
 
   def intersects(box: Box2): Boolean = {
-    left < box.right && left >= box.left && top < box.bottom && top >= box.top
+    left < box.right && right >= box.left && top < box.bottom && bottom >= box.top
   }
 }
 
