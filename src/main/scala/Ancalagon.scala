@@ -26,14 +26,14 @@ case class Ancalagon(var health: Int, var location: Vec2, var size: Vec2)
     }
   }
   def move: Unit = {
-    if (!goingUp && y + 40 < 487) {
-      y += 2
-    } else if (!goingUp && y + 40 >= 487) {
+    if (!goingUp && box.bottom < 487) {
+      location = location.addY(2)
+    } else if (!goingUp && box.bottom >= 487) {
       goingUp = true
     }
-    if (goingUp && y > 25) {
-      y -= 2
-    } else if (goingUp && y <= 25) {
+    if (goingUp && location.y > 25) {
+      location = location.addY(-2)
+    } else if (goingUp && location.y <= 25) {
       goingUp = false
     }
   }
@@ -44,9 +44,7 @@ case class Ancalagon(var health: Int, var location: Vec2, var size: Vec2)
   }
   def checkForCollision: Unit = {
     for (i <- World.projectilesList) {
-      if (
-        i.x - 5 < x + 40 && i.x + 5 >= x && i.y - 5 < y + 40 && i.y + 5 >= y && i.direction == 1
-      ) {
+      if (box.intersects(i.box)) {
         health -= World.player.primary.damage
         World.projectilesList = World.projectilesList.filterNot(p => p == i)
 
