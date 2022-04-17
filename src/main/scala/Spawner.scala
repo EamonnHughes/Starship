@@ -24,12 +24,12 @@ object Spawner {
       if (spawnOnTop) {
         World.walls = Wall(
           Vec2(1224 + nextWall.toFloat, 20),
-          Vec2(20, 80 * Math.ceil(length).toFloat)
+          Vec2(60, 80 * Math.ceil(length).toFloat)
         ) :: World.walls
       } else {
         World.walls = Wall(
           Vec2(1224 + nextWall.toFloat, 492 - 80 * Math.ceil(length).toFloat),
-          Vec2(20, 80 * Math.ceil(length).toFloat)
+          Vec2(60, 80 * Math.ceil(length).toFloat)
         ) :: World.walls
       }
       length = Math.random * 2
