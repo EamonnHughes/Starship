@@ -15,8 +15,11 @@ case class Ancalagon(var health: Int, var location: Vec2, var size: Vec2)
   def shoot: Unit = {
     val currentTime = System.currentTimeMillis
     if (currentTime > time + 400) {
-      World.projectilesList =
-        MachineGunProjectile(x - 25, y + 10, -1) :: World.projectilesList
+      World.projectilesList = MachineGunProjectile(
+        Vec2(location.x - 25, location.y + 10),
+        Vec2(10, 10),
+        -1
+      ) :: World.projectilesList
 
       time = currentTime
 
