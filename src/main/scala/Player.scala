@@ -35,9 +35,7 @@ case class Player(
       velocity = 0
     }
     for (i <- World.projectilesList) {
-      if (
-        i.x < box.right && i.x + 10 >= box.left && i.y < box.bottom && i.y + 10 >= box.top && i.direction == -1
-      ) {
+      if (box.intersects(i.box)) {
         lives -= 1
         location = location.setY(256)
         velocity = 0
