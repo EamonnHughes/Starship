@@ -33,7 +33,7 @@ case class Player(
     }
     for (i <- World.projectilesList) {
       if (
-        i.x - 5 < x + 20 && i.x + 5 >= x && i.y - 5 < y + 20 && i.y + 5 >= y
+        i.x - 5 < x + 20 && i.x + 5 >= x && i.y - 5 < y + 20 && i.y + 5 >= y && i.direction == -1
       ) {
         lives -= 1
         y = 256

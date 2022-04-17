@@ -8,8 +8,8 @@ case class MissileArray(var fireRate: Int, var damage: Int) extends Weapon {
 
     if (currentTime > time + fireRate && World.enemies.nonEmpty) {
       World.projectilesList = Missile(
-        World.player.x + 25,
-        World.player.y + 10,
+        World.player.x + 15,
+        World.player.y + 15,
         World.enemies.head,
         0,
         0,
