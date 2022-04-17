@@ -13,7 +13,7 @@ case class Enemy(
   var time: Long = System.currentTimeMillis
   def draw(p: PApplet): Unit = {
     p.fill(75, 175, 25)
-    p.rect(location.x, location.y, 20, 20)
+    p.rect(location.x, location.y, size.x, size.y)
   }
   def update(): Unit = {
     move
