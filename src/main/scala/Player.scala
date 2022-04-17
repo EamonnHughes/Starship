@@ -8,6 +8,7 @@ case class Player(
     var lives: Int,
     var primary: Weapon
 ) extends Actor {
+
   def draw(p: PApplet): Unit = {
 
     p.image(Player.Swordfish, x, y, 20, 20)
