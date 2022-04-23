@@ -12,7 +12,8 @@ object World {
     player :: projectilesList ::: enemies ::: upgradeList
   }
   var selectWeapon = 0
-  var weaponList = List(MachineGun(50, 1, 0), MissileArray(500, 3))
+  var weaponList: List[Weapon] =
+    List(MachineGun(50, 1, 0), MissileArray(500, 3))
   def reset: Unit = {
     player =
       Player(Vec2(64, 256), Vec2(40, 40), 0, 0.9f, 3, MachineGun(50, 1, 0))
