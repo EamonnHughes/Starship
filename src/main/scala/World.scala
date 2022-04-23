@@ -27,5 +27,7 @@ object World {
     weaponList = List(MachineGun(50, 1, 0), MissileArray(500, 3))
     selectWeapon = 0
     Starships.score = 0
+    Spawner.isBossFight = false
+    Spawner.hasFoughtBoss = false
   }
 }
