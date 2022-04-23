@@ -1,5 +1,5 @@
 import processing.core.PApplet
-
+//enemy
 case class Enemy(
     var location: Vec2,
     var size: Vec2,

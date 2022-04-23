@@ -1,4 +1,4 @@
 [warn] scala-library-2.12.7-sources.jar no longer exists at /Users/eamonn/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.12.7/scala-library-2.12.7-sources.jar
 [debug] not up to date. inChanged = false, force = false
-[debug] Updating ProjectRef(uri("file:/Users/eamonn/IdeaProjects/Starships/"), "starships")...
-[debug] Done updating ProjectRef(uri("file:/Users/eamonn/IdeaProjects/Starships/"), "starships")
+[debug] Updating ProjectRef(uri("file:/home/eamonn/git/Starships/"), "starships")...
+[debug] Done updating ProjectRef(uri("file:/home/eamonn/git/Starships/"), "starships")
