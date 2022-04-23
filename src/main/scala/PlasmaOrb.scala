@@ -9,7 +9,7 @@ case class PlasmaOrb(var fireRate: Int, var damage: Int) extends Weapon {
     if (currentTime > time + fireRate) {
       World.projectilesList = EnergyOrb(
         Vec2(World.player.location.x + 25, World.player.location.y + 10),
-        Vec2(20, 20),
+        Vec2(40, 40),
         1
       ) :: World.projectilesList
       time = currentTime

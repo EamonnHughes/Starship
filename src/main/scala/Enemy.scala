@@ -66,6 +66,12 @@ case class Enemy(
       if (Math.random < 0.1) {
         World.upgradeList =
           HealthUpgrade(location, Vec2(10, 10)) :: World.upgradeList
+      } else if (Math.random < 0.2) {
+        World.upgradeList = newWeapon(
+          location,
+          Vec2(10, 10),
+          PlasmaOrb(2000, 7)
+        ) :: World.upgradeList
       }
     }
     if (box.top <= 20 || box.bottom >= 492) {

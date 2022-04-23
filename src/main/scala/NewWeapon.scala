@@ -1,13 +1,13 @@
 import processing.core.PApplet
 
-case class newWeapon(var location: Vec2, var size: Vec2)
+case class newWeapon(var location: Vec2, var size: Vec2, var weapon: Weapon)
     extends Upgrade
     with Scrolling {
 
   def box: Box2 = Box2(location, size)
   def update(): Unit = {
     if (World.player.box.intersects(box)) {
-      World.weaponList = PlasmaOrb(10, 7) :: World.weaponList
+      World.weaponList = PlasmaOrb(2000, 7) :: World.weaponList
       World.upgradeList =
         World.upgradeList.filterNot(upgrade => upgrade == this)
     }
