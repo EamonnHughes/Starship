@@ -15,9 +15,22 @@ class Starships extends PApplet {
     size(1024, 512)
     noSmooth()
   }
+  def mainMenu: Unit = {
+    World.reset
 
-  override def draw(): Unit = {
+    background(255, 255, 255)
+    fill(0, 0, 0)
+    text("PRESS X TO BEGIN", 500, 250)
+  }
+  def inMenu: Unit = {
 
+    background(255, 255, 255)
+    fill(0, 0, 0)
+    text("IN PAUSE MENU", 500, 250)
+
+    text("PRESS X TO RESUME", 500, 350)
+  }
+  def playing: Unit = {
     background(10, 10, 10)
     World.worldBorder.draw(this)
     World.walls.foreach(wall => wall.draw(this))
@@ -41,6 +54,17 @@ class Starships extends PApplet {
     if (score >= 100 && !Spawner.hasFoughtBoss) {
       Spawner.isBossFight = true
     }
+  }
+
+  override def draw(): Unit = {
+    if (Starships.state == "Playing") {
+      playing
+    } else if (Starships.state == "Menu") {
+      inMenu
+    } else if (Starships.state == "Home") {
+      mainMenu
+    }
+
   }
 
   def scroll: Unit = {
@@ -76,6 +100,14 @@ class Starships extends PApplet {
     if (event.getKey == ' ') {
       Controls.shooting = true
     }
+    if (event.getKey == 'x' && Starships.state == "Home") {
+      Starships.state = "Playing"
+    } else if (event.getKey == 'x' && Starships.state == "Menu") {
+      Starships.state = "Playing"
+    } else if (event.getKey == 'x') {
+      Starships.state = "Menu"
+      Starships.state = "Menu"
+    }
 
   }
 
@@ -100,6 +132,8 @@ class Starships extends PApplet {
 }
 
 object Starships extends App {
+
+  var state = "Home"
 
   var score = 0
   PApplet.main(classOf[Starships])

@@ -47,7 +47,7 @@ case class Player(
     }
     if (lives <= 0) {
       println("YOU DIED! SCORE: " + Starships.score)
-      System.exit(0)
+      Starships.state = "Home"
     }
   }
   def moving(): Unit = {
