@@ -70,7 +70,7 @@ case class Enemy(
         World.upgradeList = newWeapon(
           location,
           Vec2(10, 10),
-          PlasmaOrb(2000, 7)
+          PlasmaOrb(1000, 7)
         ) :: World.upgradeList
       }
     }
