@@ -30,6 +30,8 @@ class Starships extends PApplet {
     text("IN PAUSE MENU", 500, 250)
 
     text("PRESS X TO RESUME", 500, 350)
+    fill(200, 200, 200)
+    rect(800, 100, 60, 60)
   }
   def playing: Unit = {
     background(10, 10, 10)
