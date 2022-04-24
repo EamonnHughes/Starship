@@ -6,14 +6,16 @@ import processing.opengl.PGraphicsOpenGL
 class Starships extends PApplet {
 
   override def setup(): Unit = {
-    keyRepeatEnabled = false;
+    keyRepeatEnabled = false
+    textFont(new PFont(PFont.findFont("SansSerif"), true), 16)
 
     Player.loadImages(this)
   }
 
   override def settings(): Unit = {
     size(1024, 512)
-    noSmooth()
+    // noSmooth()
+
   }
   def mainMenu: Unit = {
     World.reset
