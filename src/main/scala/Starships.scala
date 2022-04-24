@@ -20,16 +20,26 @@ class Starships extends PApplet {
     World.reset
 
     background(255, 255, 255)
-    fill(0, 0, 0)
-    text("PRESS X TO BEGIN", 500, 250)
+    var begin = MenuItem(Vec2(400, 350), Vec2(224, 100), "Begin")
+    begin.draw(this)
+    if (begin.isMouseOn(mouseBox)) {
+      Starships.state = "Playing"
+    }
   }
+
+  def mouseBox: Box2 = Box2(Vec2(mouseX, mouseY), Vec2(1, 1))
   def inMenu: Unit = {
 
     background(255, 255, 255)
     fill(0, 0, 0)
     text("IN PAUSE MENU", 500, 250)
 
-    text("PRESS X TO RESUME", 500, 350)
+    var resume = MenuItem(Vec2(400, 350), Vec2(224, 100), "Resume")
+    resume.draw(this)
+    if (resume.isMouseOn(mouseBox)) {
+      Starships.state = "Playing"
+    }
+
   }
   def playing: Unit = {
     background(10, 10, 10)
@@ -101,15 +111,17 @@ class Starships extends PApplet {
     if (event.getKey == ' ') {
       Controls.shooting = true
     }
-    if (event.getKey == 'x' && Starships.state == "Home") {
-      Starships.state = "Playing"
-    } else if (event.getKey == 'x' && Starships.state == "Menu") {
-      Starships.state = "Playing"
-    } else if (event.getKey == 'x') {
-      Starships.state = "Menu"
+    if (event.getKey == 'x') {
       Starships.state = "Menu"
     }
 
+  }
+  override def mousePressed(event: MouseEvent): Unit = {
+    def box: Box2 = Box2(Vec2(mouseX, mouseY), Vec2(1, 1))
+    Controls.mousePressed = true
+  }
+  override def mouseReleased(event: MouseEvent): Unit = {
+    Controls.mousePressed = false
   }
 
   override def keyReleased(event: KeyEvent): Unit = {
