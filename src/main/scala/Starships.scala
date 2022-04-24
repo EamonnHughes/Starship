@@ -20,7 +20,9 @@ class Starships extends PApplet {
     World.reset
 
     background(255, 255, 255)
-    var begin = MenuItem(Vec2(400, 350), Vec2(224, 100), "Begin")
+    var begin = MenuItem(Vec2(400, 350), Vec2(224, 100), "Begin", 1)
+
+    begin.isMouseOn(mouseBox)
     begin.draw(this)
     if (begin.isMouseOn(mouseBox)) {
       Starships.state = "Playing"
@@ -30,11 +32,11 @@ class Starships extends PApplet {
   def mouseBox: Box2 = Box2(Vec2(mouseX, mouseY), Vec2(1, 1))
   def inMenu: Unit = {
 
-    background(255, 255, 255)
     fill(0, 0, 0)
     text("IN PAUSE MENU", 500, 250)
 
-    var resume = MenuItem(Vec2(400, 350), Vec2(224, 100), "Resume")
+    var resume = MenuItem(Vec2(20, 20), Vec2(124, 20), "Resume", 1)
+    resume.isMouseOn(mouseBox)
     resume.draw(this)
     if (resume.isMouseOn(mouseBox)) {
       Starships.state = "Playing"
