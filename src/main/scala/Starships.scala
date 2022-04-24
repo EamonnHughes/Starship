@@ -14,7 +14,6 @@ class Starships extends PApplet {
 
   override def settings(): Unit = {
     size(1024, 512)
-    // noSmooth()
 
   }
   def mainMenu: Unit = {
