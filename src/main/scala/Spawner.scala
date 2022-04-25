@@ -11,7 +11,7 @@ object Spawner {
   def checkForSpawn(): Unit = {
     if (
       World.enemies.length < 2 && !isBossFight && !World.walls
-        .exists(wall => wall.box.intersects(Box2(Vec2(1039, 0), Vec2(2, 512))))
+        .exists(wall => wall.box.intersects(Box2(Vec2(1020, 0), Vec2(40, 512))))
     ) {
       spawnEnemies()
     }
