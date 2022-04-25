@@ -9,13 +9,21 @@ object Spawner {
   var hasFoughtBoss = false
 
   def checkForSpawn(): Unit = {
-    if (World.enemies.length < 2 && !isBossFight) {
+    if (
+      World.enemies.length < 2 && !isBossFight && !World.walls
+        .exists(wall => wall.box.intersects(Box2(Vec2(1039, 0), Vec2(2, 512))))
+    ) {
       spawnEnemies()
     }
   }
   def spawnEnemies(): Unit = {
-    World.enemies =
-      Enemy(Vec2(1040, 256), Vec2(40, 40), 0, 0.9f, 3) :: World.enemies
+    World.enemies = Enemy(
+      Vec2(1040, (Math.random() * 478 + 20).toFloat),
+      Vec2(40, 40),
+      0,
+      0.9f,
+      3
+    ) :: World.enemies
   }
   def spawnWalls(): Unit = {
 

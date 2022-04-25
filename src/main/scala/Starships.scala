@@ -60,10 +60,13 @@ class Starships extends PApplet {
   def playing: Unit = {
     background(10, 10, 10)
     World.worldBorder.draw(this)
-    World.walls.foreach(wall => wall.draw(this))
-    World.walls.foreach(wall => wall.checkForEnd())
+
+    Spawner.checkForSpawn()
     World.everything.foreach(actor => actor.draw(this))
     World.everything.foreach(actor => actor.update())
+
+    World.walls.foreach(wall => wall.draw(this))
+    World.walls.foreach(wall => wall.checkForEnd())
     if (Spawner.isBossFight) {
       World.bossList(World.currentBoss).draw(this)
       World.bossList(World.currentBoss).update()
@@ -74,7 +77,6 @@ class Starships extends PApplet {
     scroll
     fill(255, 255, 255)
     text(score, 999, 20)
-    Spawner.checkForSpawn()
     if (!Spawner.isBossFight) {
       Spawner.spawnWalls()
     }
@@ -95,17 +97,18 @@ class Starships extends PApplet {
   }
 
   def scroll: Unit = {
+
+    World.enemies.foreach({
+      case scrolling: Scrolling =>
+        scrolling.location.x -= 1
+      case _ =>
+    })
     World.walls.foreach({
       case scrolling: Scrolling =>
         scrolling.location.x -= 1
       case _ =>
     })
     World.upgradeList.foreach({
-      case scrolling: Scrolling =>
-        scrolling.location.x -= 1
-      case _ =>
-    })
-    World.enemies.foreach({
       case scrolling: Scrolling =>
         scrolling.location.x -= 1
       case _ =>

@@ -13,22 +13,15 @@ case class Enemy(
   def draw(p: PApplet): Unit = {
     p.image(Enemy.Stingray, location.x, location.y, size.x, size.y)
   }
+
+  var goingUp = false
   def update(): Unit = {
     move
-    matchLoc
+    shoot
     checkForCollision
   }
-  def matchLoc: Unit = {
-
+  def shoot: Unit = {
     val currentTime = System.currentTimeMillis
-    if (Math.abs(World.player.location.y - location.y) > 30) {
-      velocity += clamp(
-        Math.signum(World.player.location.y - location.y) * 0.1f,
-        3f
-      )
-    } else {
-      velocity = velocity * deceleration
-    }
 
     if (currentTime > time + 900) {
       World.projectilesList = MachineGunProjectile(
@@ -47,7 +40,16 @@ case class Enemy(
     else value
   }
   def move: Unit = {
-    location = location.addY(velocity)
+    if (!goingUp && box.bottom < 487) {
+      location = location.addY(2)
+    } else if (!goingUp && box.bottom >= 487) {
+      goingUp = true
+    }
+    if (goingUp && location.y > 25) {
+      location = location.addY(-2)
+    } else if (goingUp && location.y <= 25) {
+      goingUp = false
+    }
 
   }
   def checkForCollision: Unit = {
