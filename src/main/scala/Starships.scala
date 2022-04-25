@@ -126,8 +126,10 @@ class Starships extends PApplet {
     if (event.getKey == ' ') {
       Controls.shooting = true
     }
-    if (event.getKey == 'x') {
-      Starships.state = "Menu"
+
+    if (event.getKey == 27) {
+      if (Starships.state == "Playing") Starships.state = "Menu"
+      key = 0
     }
 
   }
