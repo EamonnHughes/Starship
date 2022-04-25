@@ -10,6 +10,7 @@ class Starships extends PApplet {
     textFont(new PFont(PFont.findFont("SansSerif"), true), 16)
 
     Player.loadImages(this)
+    Enemy.loadImages(this)
   }
 
   override def settings(): Unit = {

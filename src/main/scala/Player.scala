@@ -14,8 +14,6 @@ case class Player(
 
     p.image(Player.Swordfish, location.x, location.y, size.x, size.y)
 
-    p.fill(0, 200, 200, 30)
-    p.rect(location.x, location.y, size.x, size.y)
   }
 
   def update(): Unit = {

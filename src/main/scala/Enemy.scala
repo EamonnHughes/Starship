@@ -1,4 +1,4 @@
-import processing.core.PApplet
+import processing.core.{PApplet, PImage}
 case class Enemy(
     var location: Vec2,
     var size: Vec2,
@@ -11,8 +11,7 @@ case class Enemy(
   def box: Box2 = Box2(location, size)
   var time: Long = System.currentTimeMillis
   def draw(p: PApplet): Unit = {
-    p.fill(75, 175, 25)
-    p.rect(location.x, location.y, size.x, size.y)
+    p.image(Enemy.Stingray, location.x, location.y, size.x, size.y)
   }
   def update(): Unit = {
     move
@@ -79,6 +78,15 @@ case class Enemy(
     if (box.right <= 0) {
       World.enemies = World.enemies.filterNot(enemy => enemy == this)
     }
+  }
+
+}
+
+object Enemy {
+  var Stingray: PImage = _
+  def loadImages(p: PApplet): Unit = {
+    Stingray = p.loadImage("src/main/Resources/Stingray.png")
+
   }
 
 }
