@@ -20,12 +20,19 @@ class Starships extends PApplet {
     World.reset
 
     background(255, 255, 255)
-    var begin = MenuItem(Vec2(400, 350), Vec2(224, 100), "Begin", 1)
+    var begin = MenuItem(Vec2(424, 200), Vec2(100, 50), "Begin", 1)
 
     begin.isMouseOn(mouseBox)
     begin.draw(this)
     if (begin.isMouseOn(mouseBox)) {
       Starships.state = "Playing"
+    }
+    var exit = MenuItem(Vec2(424, 350), Vec2(100, 50), "Exit", 1)
+
+    exit.isMouseOn(mouseBox)
+    exit.draw(this)
+    if (exit.isMouseOn(mouseBox)) {
+      System.exit(0)
     }
   }
 
@@ -40,6 +47,12 @@ class Starships extends PApplet {
     resume.draw(this)
     if (resume.isMouseOn(mouseBox)) {
       Starships.state = "Playing"
+    }
+    var exit = MenuItem(Vec2(20, 50), Vec2(124, 20), "Exit", 1)
+    exit.isMouseOn(mouseBox)
+    exit.draw(this)
+    if (exit.isMouseOn(mouseBox)) {
+      Starships.state = "Home"
     }
 
   }
