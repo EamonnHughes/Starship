@@ -103,17 +103,17 @@ class Starships extends PApplet {
 
     World.enemies.foreach({
       case scrolling: Scrolling =>
-        scrolling.location.x -= 1
+        scrolling.location.x -= scrollspeed
       case _ =>
     })
     World.walls.foreach({
       case scrolling: Scrolling =>
-        scrolling.location.x -= 1
+        scrolling.location.x -= scrollspeed
       case _ =>
     })
     World.upgradeList.foreach({
       case scrolling: Scrolling =>
-        scrolling.location.x -= 1
+        scrolling.location.x -= scrollspeed
       case _ =>
     })
     Spawner.distance += 1
@@ -171,6 +171,8 @@ class Starships extends PApplet {
 object Starships extends App {
 
   var state = "Home"
+
+  var scrollspeed = 1
 
   var score = 0
   PApplet.main(classOf[Starships])

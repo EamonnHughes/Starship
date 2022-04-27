@@ -76,6 +76,9 @@ case class Enemy(
             Random.nextInt(World.weaponOptions.length)
           )
         ) :: World.upgradeList
+      } else if (Math.random < 0.3) {
+        World.upgradeList =
+          HealthUpgrade(location, Vec2(10, 10)) :: World.upgradeList
       }
     }
 
