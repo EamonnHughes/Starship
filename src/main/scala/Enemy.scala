@@ -73,7 +73,7 @@ case class Enemy(
           location,
           Vec2(10, 10),
           World.weaponOptions(
-            Random.nextInt(World.weaponOptions.length) - 1
+            Random.nextInt(World.weaponOptions.length)
           )
         ) :: World.upgradeList
       }
