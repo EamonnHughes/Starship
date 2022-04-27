@@ -78,6 +78,7 @@ case class Enemy(
         ) :: World.upgradeList
       }
     }
+
     if (box.top <= 20 || box.bottom >= 492) {
       velocity = -velocity
     }
