@@ -1,4 +1,6 @@
 import processing.core.{PApplet, PImage}
+
+import scala.util.Random
 case class Enemy(
     var location: Vec2,
     var size: Vec2,
@@ -71,7 +73,7 @@ case class Enemy(
           location,
           Vec2(10, 10),
           World.weaponOptions(
-            (Math.random() * World.weaponOptions.length).toInt - 1
+            Random.nextInt(World.weaponOptions.length) - 1
           )
         ) :: World.upgradeList
       }
