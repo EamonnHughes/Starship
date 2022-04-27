@@ -41,12 +41,12 @@ case class Enemy(
   }
   def move: Unit = {
     if (!goingUp && box.bottom < 487) {
-      location = location.addY(2)
+      location = location.addY(1.3f)
     } else if (!goingUp && box.bottom >= 487) {
       goingUp = true
     }
     if (goingUp && location.y > 25) {
-      location = location.addY(-2)
+      location = location.addY(-1.3f)
     } else if (goingUp && location.y <= 25) {
       goingUp = false
     }

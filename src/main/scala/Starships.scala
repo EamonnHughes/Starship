@@ -70,6 +70,9 @@ class Starships extends PApplet {
     if (Spawner.isBossFight) {
       World.bossList(World.currentBoss).draw(this)
       World.bossList(World.currentBoss).update()
+      World.walls = World.walls.filterNot(wall =>
+        wall.box.intersects(Box2(Vec2(1019, 0), Vec2(800, 512)))
+      )
     }
     World.weaponList.foreach(weapon => weapon.special())
     drawUI(this)
