@@ -29,7 +29,7 @@ case class Enemy(
       World.projectilesList = MachineGunProjectile(
         Vec2(location.x - 25, location.y + 10),
         Vec2(10, 10),
-        -1
+        -Starships.scrollspeed.toInt
       ) :: World.projectilesList
 
       time = currentTime
@@ -77,8 +77,7 @@ case class Enemy(
           )
         ) :: World.upgradeList
       } else if (Math.random < 0.3) {
-        World.upgradeList =
-          HealthUpgrade(location, Vec2(10, 10)) :: World.upgradeList
+        World.upgradeList = SpeedUp(location, Vec2(10, 10)) :: World.upgradeList
       }
     }
 
