@@ -7,9 +7,12 @@ case class newWeapon(var location: Vec2, var size: Vec2, var weapon: Weapon)
   def box: Box2 = Box2(location, size)
   def update(): Unit = {
     if (World.player.box.intersects(box)) {
-      World.weaponList = weapon :: World.weaponList
+      if (World.weaponList.forall(Weapon2 => Weapon2 != weapon)) {
+        World.weaponList = weapon :: World.weaponList
+      } else { World.player.lives = clamp(World.player.lives + 1, 3).toInt }
       World.upgradeList =
         World.upgradeList.filterNot(upgrade => upgrade == this)
+
     }
   }
   def draw(p: PApplet): Unit = {

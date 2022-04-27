@@ -70,7 +70,9 @@ case class Enemy(
         World.upgradeList = newWeapon(
           location,
           Vec2(10, 10),
-          PlasmaOrb(1000, 7)
+          World.weaponOptions(
+            (Math.random() * World.weaponOptions.length).toInt - 1
+          )
         ) :: World.upgradeList
       }
     }
