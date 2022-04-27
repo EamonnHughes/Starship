@@ -40,9 +40,6 @@ class Starships extends PApplet {
   def mouseBox: Box2 = Box2(Vec2(mouseX, mouseY), Vec2(1, 1))
   def inMenu: Unit = {
 
-    fill(0, 0, 0)
-    text("IN PAUSE MENU", 500, 250)
-
     var resume = MenuItem(Vec2(20, 20), Vec2(124, 20), "Resume", 1)
     resume.isMouseOn(mouseBox)
     resume.draw(this)
@@ -55,6 +52,10 @@ class Starships extends PApplet {
     if (exit.isMouseOn(mouseBox)) {
       Starships.state = "Home"
     }
+    fill(255, 255, 255)
+    rect(100, 100, 160, 20)
+    fill(0, 0, 0)
+    text(s"SPEED: ${Starships.scrollspeed} Gs", 105, 115)
 
   }
   def playing: Unit = {
