@@ -10,7 +10,7 @@ case class MissileArray(var fireRate: Int, var damage: Int) extends Weapon {
       World.projectilesList = Missile(
         Vec2(World.player.location.x + 15, World.player.location.y + 15),
         Vec2(10, 10),
-        World.enemies.head,
+        World.enemies.last,
         0,
         0,
         1
