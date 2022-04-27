@@ -7,7 +7,7 @@ case class SpeedUp(var location: Vec2, var size: Vec2)
   def box: Box2 = Box2(location, size)
   def update(): Unit = {
     if (World.player.box.intersects(box)) {
-      Starships.scrollspeed += 0.5
+      Starships.scrollspeed += 0.5f
       World.upgradeList =
         World.upgradeList.filterNot(upgrade => upgrade == this)
     }

@@ -172,7 +172,7 @@ object Starships extends App {
 
   var state = "Home"
 
-  var scrollspeed = 1
+  var scrollspeed = 1f
 
   var score = 0
   PApplet.main(classOf[Starships])
