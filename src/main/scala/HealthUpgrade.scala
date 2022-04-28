@@ -5,7 +5,7 @@ case class HealthUpgrade(var location: Vec2, var size: Vec2)
     with Scrolling {
 
   def box: Box2 = Box2(location, size)
-  def update(): Unit = {
+  def update(timeFactor: Float): Unit = {
     if (World.player.box.intersects(box)) {
       World.player.lives = clamp(World.player.lives + 1, 3).toInt
       World.upgradeList =

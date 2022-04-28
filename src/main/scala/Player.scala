@@ -16,7 +16,7 @@ case class Player(
 
   }
 
-  def update(): Unit = {
+  def update(timeFactor: Float): Unit = {
     World.player.primary = World.weaponList(World.selectWeapon)
     checkForCollision()
     moving()
