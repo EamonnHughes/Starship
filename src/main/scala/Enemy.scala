@@ -11,6 +11,7 @@ case class Enemy(
     with Actor {
 
   def box: Box2 = Box2(location, size)
+
   var time: Long = System.currentTimeMillis
   def draw(p: PApplet): Unit = {
     p.image(Enemy.Stingray, location.x, location.y, size.x, size.y)
