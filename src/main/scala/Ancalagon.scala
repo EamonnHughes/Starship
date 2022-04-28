@@ -25,21 +25,21 @@ case class Ancalagon(var health: Int, var location: Vec2, var size: Vec2)
 
     }
   }
-  def move: Unit = {
+  def move(timeFactor: Float): Unit = {
     if (!goingUp && box.bottom < 487) {
-      location = location.addY(2)
+      location = location.addY(2 * timeFactor)
     } else if (!goingUp && box.bottom >= 487) {
       goingUp = true
     }
     if (goingUp && location.y > 25) {
-      location = location.addY(-2)
+      location = location.addY(-2 * timeFactor)
     } else if (goingUp && location.y <= 25) {
       goingUp = false
     }
   }
   def update(timeFactor: Float): Unit = {
     shoot
-    move
+    move(timeFactor)
     checkForCollision
   }
   def checkForCollision: Unit = {

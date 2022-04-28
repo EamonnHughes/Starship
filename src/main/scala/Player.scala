@@ -19,7 +19,7 @@ case class Player(
   def update(timeFactor: Float): Unit = {
     World.player.primary = World.weaponList(World.selectWeapon)
     checkForCollision()
-    moving()
+    moving(timeFactor)
     if (Controls.shooting) {
       shooting()
     }
@@ -56,13 +56,13 @@ case class Player(
       Starships.state = "Home"
     }
   }
-  def moving(): Unit = {
+  def moving(timeFactor: Float): Unit = {
     if (Controls.wPressed != Controls.sPressed) {
       velocity = clamp(velocity + (if (Controls.wPressed) -0.5f else 0.5f), 5f)
 
     } else
       velocity = velocity * deceleration
-    location = location.addY(velocity)
+    location = location.addY(velocity * timeFactor)
   }
 
   def clamp(value: Float, max: Float) = {

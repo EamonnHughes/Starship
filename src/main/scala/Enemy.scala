@@ -19,7 +19,7 @@ case class Enemy(
 
   var goingUp = false
   def update(timeFactor: Float): Unit = {
-    move
+    move(timeFactor)
     shoot
     checkForCollision
   }
@@ -42,14 +42,14 @@ case class Enemy(
     else if (value < -max) -max
     else value
   }
-  def move: Unit = {
+  def move(timeFactor: Float): Unit = {
     if (!goingUp && box.bottom < 487) {
-      location = location.addY(1.3f)
+      location = location.addY(1.3f * timeFactor)
     } else if (!goingUp && box.bottom >= 487) {
       goingUp = true
     }
     if (goingUp && location.y > 25) {
-      location = location.addY(-1.3f)
+      location = location.addY(-1.3f * timeFactor)
     } else if (goingUp && location.y <= 25) {
       goingUp = false
     }

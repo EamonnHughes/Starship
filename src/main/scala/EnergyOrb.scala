@@ -18,10 +18,10 @@ case class EnergyOrb(
 
   def box: Box2 = Box2(location, size)
   def update(timeFactor: Float): Unit = {
-    shootForward()
+    shootForward(timeFactor)
   }
-  def shootForward(): Unit = {
-    location = location.addX(direction * 3)
+  def shootForward(timeFactor: Float): Unit = {
+    location = location.addX(direction * 3 * timeFactor)
     if (location.x > 1024) {
       World.projectilesList =
         World.projectilesList.filterNot(projectile => projectile == this)

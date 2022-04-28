@@ -17,11 +17,9 @@ case class Missile(
 
   }
   def update(timeFactor: Float): Unit = {
-    shootForward()
-    location = location.add(velX, velY)
-    velX += .03f * direction.toFloat
+    shootForward(timeFactor)
   }
-  def shootForward(): Unit = {
+  def shootForward(timeFactor: Float): Unit = {
 
     if (target.location.y > box.bottom) {
       velY = clamp(velY + 0.1f, 5f)
@@ -36,6 +34,9 @@ case class Missile(
       World.projectilesList =
         World.projectilesList.filterNot(projectile => projectile == this)
     }
+
+    location = location.add(velX * timeFactor, velY * timeFactor)
+    velX += .03f * direction.toFloat
 
   }
   def clamp(value: Float, max: Float) = {
