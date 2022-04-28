@@ -79,8 +79,6 @@ class Starships extends PApplet {
     drawUI(this)
     World.player.primary.drawPoints(this)
     scroll
-    fill(255, 255, 255)
-    text(score, 999, 20)
     if (!Spawner.isBossFight) {
       Spawner.spawnWalls()
     }
