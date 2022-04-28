@@ -5,6 +5,8 @@ import processing.awt.PGraphicsJava2D
 import processing.opengl.PGraphicsOpenGL
 class Starships extends PApplet {
 
+  var time: Long = System.currentTimeMillis
+
   override def setup(): Unit = {
     keyRepeatEnabled = false
     textFont(new PFont(PFont.findFont("SansSerif"), true), 16)
@@ -59,18 +61,19 @@ class Starships extends PApplet {
 
   }
   def playing: Unit = {
+
     background(10, 10, 10)
     World.worldBorder.draw(this)
 
     Spawner.checkForSpawn()
     World.everything.foreach(actor => actor.draw(this))
-    World.everything.foreach(actor => actor.update(1f))
+    World.everything.foreach(actor => actor.update(0.5f))
 
     World.walls.foreach(wall => wall.draw(this))
     World.walls.foreach(wall => wall.checkForEnd())
     if (Spawner.isBossFight) {
       World.bossList(World.currentBoss).draw(this)
-      World.bossList(World.currentBoss).update(1f)
+      World.bossList(World.currentBoss).update(0.5f)
       World.walls = World.walls.filterNot(wall =>
         wall.box.intersects(Box2(Vec2(1019, 0), Vec2(800, 512)))
       )
