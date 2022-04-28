@@ -64,13 +64,13 @@ class Starships extends PApplet {
 
     Spawner.checkForSpawn()
     World.everything.foreach(actor => actor.draw(this))
-    World.everything.foreach(actor => actor.update())
+    World.everything.foreach(actor => actor.update(1f))
 
     World.walls.foreach(wall => wall.draw(this))
     World.walls.foreach(wall => wall.checkForEnd())
     if (Spawner.isBossFight) {
       World.bossList(World.currentBoss).draw(this)
-      World.bossList(World.currentBoss).update()
+      World.bossList(World.currentBoss).update(1f)
       World.walls = World.walls.filterNot(wall =>
         wall.box.intersects(Box2(Vec2(1019, 0), Vec2(800, 512)))
       )

@@ -18,7 +18,7 @@ case class Enemy(
   }
 
   var goingUp = false
-  def update(): Unit = {
+  def update(timeFactor: Float): Unit = {
     move
     shoot
     checkForCollision

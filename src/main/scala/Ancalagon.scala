@@ -37,7 +37,7 @@ case class Ancalagon(var health: Int, var location: Vec2, var size: Vec2)
       goingUp = false
     }
   }
-  def update(): Unit = {
+  def update(timeFactor: Float): Unit = {
     shoot
     move
     checkForCollision

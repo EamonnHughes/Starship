@@ -17,7 +17,7 @@ case class EnergyOrb(
   }
 
   def box: Box2 = Box2(location, size)
-  def update(): Unit = {
+  def update(timeFactor: Float): Unit = {
     shootForward()
   }
   def shootForward(): Unit = {

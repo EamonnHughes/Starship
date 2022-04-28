@@ -16,7 +16,7 @@ case class Missile(
     p.rect(location.x, location.y, size.x, size.y)
 
   }
-  def update(): Unit = {
+  def update(timeFactor: Float): Unit = {
     shootForward()
     location = location.add(velX, velY)
     velX += .03f * direction.toFloat

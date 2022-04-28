@@ -5,7 +5,7 @@ case class newWeapon(var location: Vec2, var size: Vec2, var weapon: Weapon)
     with Scrolling {
 
   def box: Box2 = Box2(location, size)
-  def update(): Unit = {
+  def update(timeFactor: Float): Unit = {
     if (World.player.box.intersects(box)) {
       if (!World.weaponList.exists(w => w.getClass == weapon.getClass)) {
         World.weaponList = weapon :: World.weaponList

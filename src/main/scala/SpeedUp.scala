@@ -5,7 +5,7 @@ case class SpeedUp(var location: Vec2, var size: Vec2)
     with Scrolling {
 
   def box: Box2 = Box2(location, size)
-  def update(): Unit = {
+  def update(timeFactor: Float): Unit = {
     if (World.player.box.intersects(box)) {
       Starships.scrollspeed = clamp(Starships.scrollspeed + 0.5f, 3f)
       World.upgradeList =
