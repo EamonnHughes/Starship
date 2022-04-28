@@ -1,7 +1,6 @@
 import scala.util.Random
 
 object Spawner {
-  var distance = 0
   var nextWall = Math.random() * 200
   var spawnOnTop = Random.nextBoolean()
   var length = Math.random * 2

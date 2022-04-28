@@ -81,7 +81,7 @@ class Starships extends PApplet {
     World.weaponList.foreach(weapon => weapon.special())
     drawUI(this)
     World.player.primary.drawPoints(this)
-    scroll(0.5f)
+    scroll(1f)
     if (!Spawner.isBossFight) {
       Spawner.spawnWalls()
     }
@@ -121,7 +121,6 @@ class Starships extends PApplet {
           scrolling.location.addX(Starships.scrollspeed * timeFactor)
       case _ =>
     })
-    Spawner.distance += 1
   }
 
   override def keyPressed(event: KeyEvent): Unit = {
