@@ -81,7 +81,7 @@ class Starships extends PApplet {
     World.weaponList.foreach(weapon => weapon.special())
     drawUI(this)
     World.player.primary.drawPoints(this)
-    scroll
+    scroll(0.5f)
     if (!Spawner.isBossFight) {
       Spawner.spawnWalls()
     }
@@ -101,21 +101,24 @@ class Starships extends PApplet {
 
   }
 
-  def scroll: Unit = {
+  def scroll(timeFactor: Float): Unit = {
 
     World.enemies.foreach({
       case scrolling: Scrolling =>
-        scrolling.location.x -= Starships.scrollspeed
+        scrolling.location =
+          scrolling.location.addX(Starships.scrollspeed * timeFactor)
       case _ =>
     })
     World.walls.foreach({
       case scrolling: Scrolling =>
-        scrolling.location.x -= Starships.scrollspeed
+        scrolling.location =
+          scrolling.location.addX(Starships.scrollspeed * timeFactor)
       case _ =>
     })
     World.upgradeList.foreach({
       case scrolling: Scrolling =>
-        scrolling.location.x -= Starships.scrollspeed
+        scrolling.location =
+          scrolling.location.addX(Starships.scrollspeed * timeFactor)
       case _ =>
     })
     Spawner.distance += 1
