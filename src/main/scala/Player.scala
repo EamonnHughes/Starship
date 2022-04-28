@@ -35,6 +35,14 @@ case class Player(
       location = location.setY(256)
       velocity = 0
     }
+    for (i <- World.enemies) {
+      if (box.intersects(i.box)) {
+        lives -= 1
+        location = location.setY(256)
+        velocity = 0
+        World.enemies = World.enemies.filterNot(p => p == i)
+      }
+    }
     for (i <- World.projectilesList) {
       if (box.intersects(i.box) && i.direction == -1) {
         lives -= 1
