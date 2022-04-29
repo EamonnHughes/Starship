@@ -63,7 +63,7 @@ class Starships extends PApplet {
   def playing: Unit = {
 
     val currentTime = System.currentTimeMillis
-    var millisPerFrame = time - currentTime
+    var millisPerFrame = currentTime - time
     var timeMulti = 60f * (millisPerFrame / 1000f)
     time = currentTime
     background(10, 10, 10)
