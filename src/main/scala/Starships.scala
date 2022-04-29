@@ -62,18 +62,22 @@ class Starships extends PApplet {
   }
   def playing: Unit = {
 
+    val currentTime = System.currentTimeMillis
+    var millisPerFrame = time - currentTime
+    var timeMulti = 60f * (millisPerFrame / 1000f)
+    time = currentTime
     background(10, 10, 10)
     World.worldBorder.draw(this)
 
     Spawner.checkForSpawn()
     World.everything.foreach(actor => actor.draw(this))
-    World.everything.foreach(actor => actor.update(0.5f))
+    World.everything.foreach(actor => actor.update(timeMulti))
 
     World.walls.foreach(wall => wall.draw(this))
     World.walls.foreach(wall => wall.checkForEnd())
     if (Spawner.isBossFight) {
       World.bossList(World.currentBoss).draw(this)
-      World.bossList(World.currentBoss).update(0.5f)
+      World.bossList(World.currentBoss).update(timeMulti)
       World.walls = World.walls.filterNot(wall =>
         wall.box.intersects(Box2(Vec2(1019, 0), Vec2(800, 512)))
       )
@@ -81,7 +85,7 @@ class Starships extends PApplet {
     World.weaponList.foreach(weapon => weapon.special())
     drawUI(this)
     World.player.primary.drawPoints(this)
-    scroll(1f)
+    scroll(timeMulti)
     if (!Spawner.isBossFight) {
       Spawner.spawnWalls()
     }
@@ -106,19 +110,19 @@ class Starships extends PApplet {
     World.enemies.foreach({
       case scrolling: Scrolling =>
         scrolling.location =
-          scrolling.location.addX(Starships.scrollspeed * timeFactor)
+          scrolling.location.addX(-(Starships.scrollspeed * timeFactor))
       case _ =>
     })
     World.walls.foreach({
       case scrolling: Scrolling =>
         scrolling.location =
-          scrolling.location.addX(Starships.scrollspeed * timeFactor)
+          scrolling.location.addX(-(Starships.scrollspeed * timeFactor))
       case _ =>
     })
     World.upgradeList.foreach({
       case scrolling: Scrolling =>
         scrolling.location =
-          scrolling.location.addX(Starships.scrollspeed * timeFactor)
+          scrolling.location.addX(-(Starships.scrollspeed * timeFactor))
       case _ =>
     })
   }
