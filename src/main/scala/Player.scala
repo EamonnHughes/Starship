@@ -13,8 +13,6 @@ case class Player(
   def draw(p: PApplet): Unit = {
 
     p.image(Player.Swordfish, location.x, location.y, size.x, size.y)
-    p.fill(255, 255, 255)
-    box.drawBox(p)
 
   }
 

@@ -9,7 +9,7 @@ case class MachineGunProjectile(
   var prevLoc = location
 
   def draw(p: PApplet): Unit = {
-    p.fill(255, 255, 0)
+    p.fill(255, 0, 0, 50)
     blur.drawBox(p)
 
     p.fill(255, 0, 0)
