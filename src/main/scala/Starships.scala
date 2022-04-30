@@ -46,7 +46,9 @@ class Starships extends PApplet {
     resume.isMouseOn(mouseBox)
     resume.draw(this)
     if (resume.isMouseOn(mouseBox)) {
+
       Starships.state = "Playing"
+      time = System.currentTimeMillis
     }
     var exit = MenuItem(Vec2(20, 50), Vec2(124, 20), "Exit", 1)
     exit.isMouseOn(mouseBox)
