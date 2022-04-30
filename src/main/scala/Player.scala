@@ -13,6 +13,8 @@ case class Player(
   def draw(p: PApplet): Unit = {
 
     p.image(Player.Swordfish, location.x, location.y, size.x, size.y)
+    p.fill(255, 255, 255)
+    box.drawBox(p)
 
   }
 
@@ -44,7 +46,7 @@ case class Player(
       }
     }
     for (i <- World.projectilesList) {
-      if (box.intersects(i.blur) && i.direction == -1) {
+      if (box.intersects(i.blur) && i.direction < 0) {
         lives -= 1
         location = location.setY(256)
         velocity = 0
