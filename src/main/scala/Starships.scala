@@ -55,9 +55,9 @@ class Starships extends PApplet {
       Starships.state = "Home"
     }
     fill(255, 255, 255)
-    rect(100, 100, 160, 20)
+    rect(154, 20, 160, 20)
     fill(0, 0, 0)
-    text(s"SPEED: ${Starships.scrollspeed} Gs", 105, 115)
+    text(s"SPEED: ${Starships.scrollspeed} Gs", 159, 35)
 
   }
   def playing: Unit = {
