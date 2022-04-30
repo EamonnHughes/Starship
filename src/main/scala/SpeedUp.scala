@@ -14,7 +14,7 @@ case class SpeedUp(var location: Vec2, var size: Vec2)
   }
   def draw(p: PApplet): Unit = {
     p.fill(244, 244, 0)
-    p.rect(location.x, location.y, size.x, size.y)
+    box.drawBox(p)
   }
 
   def clamp(value: Float, max: Float) = {

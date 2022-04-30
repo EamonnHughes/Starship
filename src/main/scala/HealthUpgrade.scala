@@ -14,7 +14,7 @@ case class HealthUpgrade(var location: Vec2, var size: Vec2)
   }
   def draw(p: PApplet): Unit = {
     p.fill(0, 244, 244)
-    p.rect(location.x, location.y, size.x, size.y)
+    box.drawBox(p)
   }
 
   def clamp(value: Float, max: Float) = {
