@@ -1,4 +1,4 @@
-import Starships.score
+import Starships.{score, scrollspeed}
 import processing.core._
 import processing.event.{KeyEvent, MouseEvent}
 import processing.awt.PGraphicsJava2D
@@ -75,8 +75,6 @@ class Starships extends PApplet {
     World.everything.foreach(actor => actor.draw(this))
     World.everything.foreach(actor => actor.update(timeMulti))
 
-    World.walls.foreach(wall => wall.draw(this))
-    World.walls.foreach(wall => wall.checkForEnd())
     if (Spawner.isBossFight) {
       World.bossList(World.currentBoss).draw(this)
       World.bossList(World.currentBoss).update(timeMulti)
@@ -142,6 +140,9 @@ class Starships extends PApplet {
     }
     if (event.getKey == ' ') {
       Controls.shooting = true
+    }
+    if (event.getKey == 'p') {
+      scrollspeed = 3f
     }
 
     if (event.getKey == 27) {

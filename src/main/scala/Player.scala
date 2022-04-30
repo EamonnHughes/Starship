@@ -28,7 +28,7 @@ case class Player(
   def checkForCollision(): Unit = {
     if (
       World.walls.exists(wall =>
-        box.intersects(wall.box)
+        box.intersects(wall.blur)
       ) || box.top < 20 || box.bottom > 492
     ) {
       lives -= 1
@@ -36,7 +36,7 @@ case class Player(
       velocity = 0
     }
     for (i <- World.enemies) {
-      if (box.intersects(i.box)) {
+      if (box.intersects(i.blur)) {
         lives -= 1
         location = location.setY(256)
         velocity = 0
@@ -44,7 +44,7 @@ case class Player(
       }
     }
     for (i <- World.projectilesList) {
-      if (box.intersects(i.box) && i.direction == -1) {
+      if (box.intersects(i.blur) && i.direction == -1) {
         lives -= 1
         location = location.setY(256)
         velocity = 0

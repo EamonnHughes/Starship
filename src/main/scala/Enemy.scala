@@ -57,7 +57,7 @@ case class Enemy(
   }
   def checkForCollision: Unit = {
     for (i <- World.projectilesList) {
-      if (box.intersects(i.box) && i.direction == 1) {
+      if (box.intersects(i.blur) && i.direction == 1) {
         health -= World.player.primary.damage
         World.projectilesList = World.projectilesList.filterNot(p => p == i)
 
