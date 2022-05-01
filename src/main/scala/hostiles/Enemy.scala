@@ -1,3 +1,5 @@
+package hostiles
+
 import geom.Box2
 import processing.core.{PApplet, PImage}
 

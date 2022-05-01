@@ -1,4 +1,4 @@
-import hostiles.Ancalagon
+import hostiles.{Ancalagon, Enemy}
 
 object World {
   var player =

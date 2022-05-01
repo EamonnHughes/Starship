@@ -1,3 +1,5 @@
+package projectiles
+
 import geom.Box2
 import processing.core.PApplet
 
