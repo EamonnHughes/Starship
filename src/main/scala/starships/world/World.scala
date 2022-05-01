@@ -25,7 +25,7 @@ object World {
   }
   var selectWeapon = 0
   var weaponList: List[Weapon] =
-    List(MachineGun(50, 1, 0), MissileArray(500, 3))
+    List(MachineGun(150, 1, 0), MissileArray(500, 3))
   def reset: Unit = {
     player = Player(Vec2(64, 256), 0, 0.9f, 3, MachineGun(50, 1, 0))
     projectilesList = List.empty[Projectile]
@@ -35,7 +35,7 @@ object World {
     enemies = List.empty[Enemy]
     bossList = List(Ancalagon(20, Vec2(900, 236)))
     currentBoss = 0
-    weaponList = List(MachineGun(50, 1, 0), MissileArray(500, 3))
+    weaponList = List(MachineGun(150, 1, 0), MissileArray(500, 3))
     selectWeapon = 0
     Starships.score = 0
     Starships.scrollspeed = 1.0f
@@ -43,5 +43,5 @@ object World {
     Spawner.hasFoughtBoss = false
   }
   var weaponOptions: List[Weapon] =
-    List(MachineGun(50, 1, 0), MissileArray(500, 3), PlasmaOrb(1000, 7))
+    List(MachineGun(150, 1, 0), MissileArray(500, 3), PlasmaOrb(1000, 7))
 }
