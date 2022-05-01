@@ -17,7 +17,7 @@ case class Wall(
 ) extends Scrolling
     with Actor {
 
-  def box: Box2 = Box2(location, size)
+  def box: Box2 = Box2(Vec2(0, 0), size)
   def update(timeFactor: Float): Unit = {
     checkForEnd()
   }
