@@ -19,8 +19,8 @@ case class SpeedUp(var location: Vec2) extends Upgrade with Scrolling {
       new Box2(
         World.player.location.x + World.player.box.left,
         World.player.location.y + World.player.box.top,
-        box.width,
-        box.height
+        World.player.box.width,
+        World.player.box.height
       ).intersects(
         new Box2(
           location.x + box.left,
