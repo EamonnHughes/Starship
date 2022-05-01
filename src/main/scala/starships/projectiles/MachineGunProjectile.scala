@@ -16,7 +16,6 @@ case class MachineGunProjectile(
     var direction: Int
 ) extends Actor
     with Projectile {
-  var prevLoc = location
 
   def draw(p: PApplet): Unit = {
     p.fill(255, 0, 0, 50)
@@ -32,7 +31,6 @@ case class MachineGunProjectile(
     shootForward(timeFactor)
   }
   def shootForward(timeFactor: Float): Unit = {
-    prevLoc = location
     location = location.addX(direction * 6 * timeFactor)
     if (
       location.x > 1024 || World.walls.exists(wall => box.intersects(wall.box))
