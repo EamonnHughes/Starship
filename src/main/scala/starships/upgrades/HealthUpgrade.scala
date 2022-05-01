@@ -17,7 +17,14 @@ case class HealthUpgrade(var location: Vec2, var size: Vec2)
 
   def box: Box2 = Box2(location, size)
   def update(timeFactor: Float): Unit = {
-    if (World.player.box.intersects(box)) {
+    if (
+      new Box2(
+        World.player.location.x + World.player.box.left,
+        World.player.location.y + World.player.box.top,
+        box.width,
+        box.height
+      ).intersects(box)
+    ) {
       World.player.lives = clamp(World.player.lives + 1, 3).toInt
       World.upgradeList =
         World.upgradeList.filterNot(upgrade => upgrade == this)
