@@ -1,5 +1,7 @@
+package world
+
 import geom.Vec2
-import hostiles.{Ancalagon, Enemy}
+import hostiles.Enemy
 import weapons.{MachineGun, MissileArray, PlasmaOrb}
 
 object World {

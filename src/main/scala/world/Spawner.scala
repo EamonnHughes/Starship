@@ -1,5 +1,6 @@
+package world
+
 import geom.Vec2
-import hostiles.Enemy
 
 import scala.util.Random
 
