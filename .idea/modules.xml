@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Starships.iml" filepath="$PROJECT_DIR$/.idea/modules/Starships.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Starships-build.iml" filepath="$PROJECT_DIR$/.idea/modules/Starships-build.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/starships.Starships.iml" filepath="$PROJECT_DIR$/.idea/modules/starships.Starships.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/starships.Starships-build.iml" filepath="$PROJECT_DIR$/.idea/modules/starships.Starships-build.iml" />
     </modules>
   </component>
 </project>
