@@ -33,7 +33,21 @@ case class MachineGunProjectile(
   def shootForward(timeFactor: Float): Unit = {
     location = location.addX(direction * 6 * timeFactor)
     if (
-      location.x > 1024 || World.walls.exists(wall => box.intersects(wall.box))
+      location.x > 1024 || World.walls.exists(wall =>
+        new Box2(
+          location.x + box.left,
+          location.y + box.top,
+          box.width,
+          box.height
+        ).intersects(
+          new Box2(
+            wall.location.x + wall.box.left,
+            wall.location.y + wall.box.top,
+            wall.box.width,
+            wall.box.height
+          )
+        )
+      )
     ) {
       World.projectilesList =
         World.projectilesList.filterNot(projectile => projectile == this)
