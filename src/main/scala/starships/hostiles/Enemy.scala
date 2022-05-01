@@ -104,10 +104,10 @@ case class Enemy(
       }
     }
 
-    if (box.top <= 20 || box.bottom >= 492) {
+    if (box.top + location.y <= 20 || box.bottom + location.y >= 492) {
       velocity = -velocity
     }
-    if (box.right <= 0) {
+    if (box.right + location.x <= 0) {
       World.enemies = World.enemies.filterNot(enemy => enemy == this)
     }
   }
