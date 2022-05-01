@@ -1,14 +1,15 @@
 package starships.world
 
 import processing.core.{PApplet, PImage}
-import hostiles._
-import obstacles._
-import projectiles._
-import starships.geom.{Box2, Vec2}
-import starships.traits.{Actor, Weapon}
-import upgrades._
-import weapons._
-import world._
+import starships.Starships
+import starships.geom._
+import starships.hostiles._
+import starships.obstacles._
+import starships.projectiles._
+import starships.traits._
+import starships.upgrades._
+import starships.weapons._
+import starships.world._
 
 case class Player(
     var location: Vec2,

@@ -1,9 +1,15 @@
 package starships.upgrades
 
 import processing.core.PApplet
-import starships.geom.{Box2, Vec2}
-import starships.traits.{Scrolling, Upgrade}
-import starships.world.World
+import starships.Starships
+import starships.geom._
+import starships.hostiles._
+import starships.obstacles._
+import starships.projectiles._
+import starships.traits._
+import starships.upgrades._
+import starships.weapons._
+import starships.world._
 
 case class SpeedUp(var location: Vec2, var size: Vec2)
     extends Upgrade

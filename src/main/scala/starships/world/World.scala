@@ -1,11 +1,14 @@
 package starships.world
 
-import starships.geom.Vec2
-import starships.hostiles.{Ancalagon, Enemy}
-import starships.obstacles.Wall
-import starships.traits.{Actor, Projectile, Upgrade, Weapon}
-import starships.weapons.{MachineGun, MissileArray, PlasmaOrb}
-import world._
+import starships.Starships
+import starships.geom._
+import starships.hostiles._
+import starships.obstacles._
+import starships.projectiles._
+import starships.traits._
+import starships.upgrades._
+import starships.weapons._
+import starships.world._
 
 object World {
   var player =

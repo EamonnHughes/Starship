@@ -1,10 +1,15 @@
 package starships.weapons
 
 import processing.core.PApplet
-import starships.geom.Vec2
-import starships.projectiles.MachineGunProjectile
-import starships.traits.Weapon
-import starships.world.{Controls, World}
+import starships.Starships
+import starships.geom._
+import starships.hostiles._
+import starships.obstacles._
+import starships.projectiles._
+import starships.traits._
+import starships.upgrades._
+import starships.weapons._
+import starships.world._
 
 case class MachineGun(var fireRate: Int, var damage: Int, var overHeat: Float)
     extends Weapon {

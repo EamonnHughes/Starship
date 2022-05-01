@@ -1,13 +1,14 @@
 package starships.world
 
-import projectiles._
-import starships.geom.Vec2
-import starships.hostiles.Enemy
-import starships.obstacles
-import starships.obstacles.Wall
-import upgrades._
-import weapons._
-import world._
+import starships.Starships
+import starships.geom._
+import starships.hostiles._
+import starships.obstacles._
+import starships.projectiles._
+import starships.traits._
+import starships.upgrades._
+import starships.weapons._
+import starships.world._
 
 import scala.util.Random
 
