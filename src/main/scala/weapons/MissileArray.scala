@@ -1,7 +1,15 @@
 package weapons
 
 import processing.core.PApplet
-import projectiles.Missile
+
+import geom._
+import hostiles._
+import obstacles._
+import projectiles._
+import traits._
+import upgrades._
+import weapons._
+import world._
 
 case class MissileArray(var fireRate: Int, var damage: Int) extends Weapon {
 
