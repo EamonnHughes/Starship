@@ -1,6 +1,13 @@
 package upgrades
 
-import geom.{Box2, Vec2}
+import geom._
+import hostiles._
+import obstacles._
+import projectiles._
+import traits._
+import upgrades._
+import weapons._
+import world._
 import processing.core.PApplet
 
 case class HealthUpgrade(var location: Vec2, var size: Vec2)
