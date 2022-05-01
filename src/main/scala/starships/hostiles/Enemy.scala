@@ -85,18 +85,16 @@ case class Enemy(
       World.enemies = World.enemies.filterNot(enemy => enemy == this)
       var pChance = Math.random()
       if (pChance < 0.1) {
-        World.upgradeList =
-          HealthUpgrade(location, Vec2(10, 10)) :: World.upgradeList
+        World.upgradeList = HealthUpgrade(location) :: World.upgradeList
       } else if (pChance < 0.2) {
         World.upgradeList = newWeapon(
           location,
-          Vec2(10, 10),
           World.weaponOptions(
             Random.nextInt(World.weaponOptions.length)
           )
         ) :: World.upgradeList
       } else if (pChance < 0.3) {
-        World.upgradeList = SpeedUp(location, Vec2(10, 10)) :: World.upgradeList
+        World.upgradeList = SpeedUp(location) :: World.upgradeList
       }
     }
 

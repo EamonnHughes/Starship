@@ -11,11 +11,11 @@ import starships.upgrades._
 import starships.weapons._
 import starships.world._
 
-case class newWeapon(var location: Vec2, var size: Vec2, var weapon: Weapon)
+case class newWeapon(var location: Vec2, var weapon: Weapon)
     extends Upgrade
     with Scrolling {
 
-  def box: Box2 = Box2(location, size)
+  def box: Box2 = Box2(Vec2(0, 0), Vec2(10, 10))
   def update(timeFactor: Float): Unit = {
     if (
       new Box2(
@@ -35,7 +35,13 @@ case class newWeapon(var location: Vec2, var size: Vec2, var weapon: Weapon)
   }
   def draw(p: PApplet): Unit = {
     p.fill(244, 100, 255)
-    box.drawBox(p)
+    p.rect(
+      World.player.location.x + box.left,
+      World.player.location.y + box.top,
+      box.width,
+      box.height
+    )
+
   }
 
   def clamp(value: Float, max: Float) = {

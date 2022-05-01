@@ -11,11 +11,9 @@ import starships.upgrades._
 import starships.weapons._
 import starships.world._
 
-case class HealthUpgrade(var location: Vec2, var size: Vec2)
-    extends Upgrade
-    with Scrolling {
+case class HealthUpgrade(var location: Vec2) extends Upgrade with Scrolling {
 
-  def box: Box2 = Box2(location, size)
+  def box: Box2 = Box2(Vec2(0, 0), Vec2(10, 10))
   def update(timeFactor: Float): Unit = {
     if (
       new Box2(
@@ -32,7 +30,12 @@ case class HealthUpgrade(var location: Vec2, var size: Vec2)
   }
   def draw(p: PApplet): Unit = {
     p.fill(0, 244, 244)
-    box.drawBox(p)
+    p.rect(
+      World.player.location.x + box.left,
+      World.player.location.y + box.top,
+      box.width,
+      box.height
+    )
   }
 
   def clamp(value: Float, max: Float) = {
