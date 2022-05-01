@@ -1,4 +1,5 @@
 import Starships.{score, scrollspeed}
+import geom.Box2
 import processing.core._
 import processing.event.{KeyEvent, MouseEvent}
 import processing.awt.PGraphicsJava2D

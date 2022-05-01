@@ -1,3 +1,4 @@
+import geom.Box2
 import processing.core.PApplet
 
 case class EnergyOrb(

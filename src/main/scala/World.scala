@@ -1,3 +1,5 @@
+import hostiles.Ancalagon
+
 object World {
   var player =
     Player(Vec2(64, 256), Vec2(40, 40), 0, 0.9f, 3, MachineGun(50, 1, 0))

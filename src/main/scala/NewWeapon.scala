@@ -1,3 +1,4 @@
+import geom.Box2
 import processing.core.PApplet
 
 case class newWeapon(var location: Vec2, var size: Vec2, var weapon: Weapon)

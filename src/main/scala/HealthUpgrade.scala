@@ -1,3 +1,4 @@
+import geom.Box2
 import processing.core.PApplet
 
 case class HealthUpgrade(var location: Vec2, var size: Vec2)

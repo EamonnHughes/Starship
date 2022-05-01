@@ -1,3 +1,4 @@
+import geom.Box2
 import processing.core.{PApplet, PImage}
 
 import scala.util.Random
