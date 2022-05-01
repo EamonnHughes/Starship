@@ -1,3 +1,5 @@
+package weapons
+
 import processing.core.PApplet
 import projectiles.MachineGunProjectile
 

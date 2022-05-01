@@ -1,4 +1,5 @@
 import hostiles.{Ancalagon, Enemy}
+import weapons.{MachineGun, MissileArray, PlasmaOrb}
 
 object World {
   var player =
