@@ -2,7 +2,7 @@ import geom.{Box2, Vec2}
 import processing.core._
 import processing.event.{KeyEvent, MouseEvent}
 import traits.Scrolling
-import world.{Spawner, World}
+import world.{Controls, MenuItem, Spawner, World}
 class Starships extends PApplet {
 
   var time: Long = System.currentTimeMillis
@@ -30,7 +30,7 @@ class Starships extends PApplet {
     if (begin.isMouseOn(mouseBox)) {
       Starships.state = "Playing"
     }
-    var exit = MenuItem(Vec2(424, 350), Vec2(100, 50), "Exit", 1)
+    var exit = world.MenuItem(Vec2(424, 350), Vec2(100, 50), "Exit", 1)
 
     exit.isMouseOn(mouseBox)
     exit.draw(this)
@@ -42,7 +42,7 @@ class Starships extends PApplet {
   def mouseBox: Box2 = Box2(Vec2(mouseX, mouseY), Vec2(1, 1))
   def inMenu: Unit = {
 
-    var resume = MenuItem(Vec2(20, 20), Vec2(124, 20), "Resume", 1)
+    var resume = world.MenuItem(Vec2(20, 20), Vec2(124, 20), "Resume", 1)
     resume.isMouseOn(mouseBox)
     resume.draw(this)
     if (resume.isMouseOn(mouseBox)) {
@@ -50,7 +50,7 @@ class Starships extends PApplet {
       Starships.state = "Playing"
       time = System.currentTimeMillis
     }
-    var exit = MenuItem(Vec2(20, 50), Vec2(124, 20), "Exit", 1)
+    var exit = world.MenuItem(Vec2(20, 50), Vec2(124, 20), "Exit", 1)
     exit.isMouseOn(mouseBox)
     exit.draw(this)
     if (exit.isMouseOn(mouseBox)) {

@@ -1,3 +1,5 @@
+package world
+
 import geom.{Box2, Vec2}
 import processing.core.PApplet
 

@@ -1,3 +1,5 @@
+package world
+
 import processing.core.PApplet
 
 case class Border() {

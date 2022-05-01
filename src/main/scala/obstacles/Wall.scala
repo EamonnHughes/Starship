@@ -1,3 +1,5 @@
+package obstacles
+
 import geom.{Box2, Vec2}
 import processing.core.PApplet
 import traits.{Actor, Scrolling}

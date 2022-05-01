@@ -1,7 +1,8 @@
+package world
+
 import geom.{Box2, Vec2}
 import processing.core.{PApplet, PImage}
 import traits.{Actor, Weapon}
-import world.World
 
 case class Player(
     var location: Vec2,

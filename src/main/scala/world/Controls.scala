@@ -1,3 +1,5 @@
+package world
+
 object Controls {
   var wPressed = false
   var sPressed = false
