@@ -13,17 +13,16 @@ import starships.world._
 
 case class Player(
     var location: Vec2,
-    var size: Vec2,
     var velocity: Float,
     var deceleration: Float,
     var lives: Int,
     var primary: Weapon
 ) extends Actor {
 
-  def box: Box2 = Box2(location, size)
+  def box: Box2 = Box2(Vec2(0, 0), Vec2(40, 40))
   def draw(p: PApplet): Unit = {
 
-    p.image(Player.Swordfish, location.x, location.y, size.x, size.y)
+    p.image(Player.Swordfish, location.x, location.y, 40, 40)
 
   }
 
@@ -39,7 +38,13 @@ case class Player(
   def checkForCollision(): Unit = {
     if (
       World.walls.exists(wall =>
-        box.intersects(wall.blur)
+        new Box2(
+          location.x + box.left,
+          location.y + box.top,
+          box.width,
+          box.height
+        )
+          .intersects(wall.blur)
       ) || box.top < 20 || box.bottom > 492
     ) {
       lives -= 1
@@ -47,7 +52,14 @@ case class Player(
       velocity = 0
     }
     for (i <- World.enemies) {
-      if (box.intersects(i.blur)) {
+      if (
+        new Box2(
+          location.x + box.left,
+          location.y + box.top,
+          box.width,
+          box.height
+        ).intersects(i.blur)
+      ) {
         lives -= 1
         location = location.setY(256)
         velocity = 0
@@ -55,7 +67,14 @@ case class Player(
       }
     }
     for (i <- World.projectilesList) {
-      if (box.intersects(i.blur) && i.direction < 0) {
+      if (
+        new Box2(
+          location.x + box.left,
+          location.y + box.top,
+          box.width,
+          box.height
+        ).intersects(i.blur) && i.direction < 0
+      ) {
         lives -= 1
         location = location.setY(256)
         velocity = 0

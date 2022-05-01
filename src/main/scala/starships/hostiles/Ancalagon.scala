@@ -11,15 +11,14 @@ import starships.upgrades._
 import starships.weapons._
 import starships.world._
 
-case class Ancalagon(var health: Int, var location: Vec2, var size: Vec2)
-    extends Boss {
+case class Ancalagon(var health: Int, var location: Vec2) extends Boss {
   var goingUp = false
   var time: Long = System.currentTimeMillis
 
-  def box: Box2 = Box2(location, size)
+  def box: Box2 = Box2(Vec2(0, 0), Vec2(50, 50))
   def draw(p: PApplet): Unit = {
     p.fill(240, 100, 240)
-    p.rect(location.x, location.y, size.x, size.y)
+    p.rect(location.x, location.y, 50, 50)
     p.fill(255, 0, 0)
     p.rect(100, 502, health * 20, 10)
   }
@@ -37,9 +36,9 @@ case class Ancalagon(var health: Int, var location: Vec2, var size: Vec2)
     }
   }
   def move(timeFactor: Float): Unit = {
-    if (!goingUp && box.bottom < 487) {
+    if (!goingUp && box.bottom + location.y < 487) {
       location = location.addY(2 * timeFactor)
-    } else if (!goingUp && box.bottom >= 487) {
+    } else if (!goingUp && box.bottom + location.y >= 487) {
       goingUp = true
     }
     if (goingUp && location.y > 25) {
@@ -55,7 +54,14 @@ case class Ancalagon(var health: Int, var location: Vec2, var size: Vec2)
   }
   def checkForCollision: Unit = {
     for (i <- World.projectilesList) {
-      if (box.intersects(i.box)) {
+      if (
+        new Box2(
+          location.x + box.left,
+          location.y + box.top,
+          box.width,
+          box.height
+        ).intersects(i.box)
+      ) {
         health -= World.player.primary.damage
         World.projectilesList = World.projectilesList.filterNot(p => p == i)
 

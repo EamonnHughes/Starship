@@ -14,18 +14,17 @@ import starships.world._
 import scala.util.Random
 case class Enemy(
     var location: Vec2,
-    var size: Vec2,
     var velocity: Float,
     var deceleration: Float,
     var health: Int
 ) extends Scrolling
     with Actor {
 
-  def box: Box2 = Box2(location, size)
+  def box: Box2 = Box2(0, 0, 40, 40)
 
   var time: Long = System.currentTimeMillis
   def draw(p: PApplet): Unit = {
-    p.image(Enemy.Stingray, location.x, location.y, size.x, size.y)
+    p.image(Enemy.Stingray, location.x, location.y, 40, 40)
   }
 
   var goingUp = false
@@ -54,9 +53,9 @@ case class Enemy(
     else value
   }
   def move(timeFactor: Float): Unit = {
-    if (!goingUp && box.bottom < 487) {
+    if (!goingUp && box.bottom + location.y < 487) {
       location = location.addY(1.3f * timeFactor)
-    } else if (!goingUp && box.bottom >= 487) {
+    } else if (!goingUp && box.bottom + location.y >= 487) {
       goingUp = true
     }
     if (goingUp && location.y > 25) {
@@ -68,7 +67,14 @@ case class Enemy(
   }
   def checkForCollision: Unit = {
     for (i <- World.projectilesList) {
-      if (box.intersects(i.blur) && i.direction == 1) {
+      if (
+        new Box2(
+          location.x + box.left,
+          location.y + box.top,
+          box.width,
+          box.height
+        ).intersects(i.blur) && i.direction == 1
+      ) {
         health -= World.player.primary.damage
         World.projectilesList = World.projectilesList.filterNot(p => p == i)
 
