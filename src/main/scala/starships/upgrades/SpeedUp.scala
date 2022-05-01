@@ -31,8 +31,8 @@ case class SpeedUp(var location: Vec2) extends Upgrade with Scrolling {
   def draw(p: PApplet): Unit = {
     p.fill(244, 244, 0)
     p.rect(
-      World.player.location.x + box.left,
-      World.player.location.y + box.top,
+      location.x + box.left,
+      location.y + box.top,
       box.width,
       box.height
     )

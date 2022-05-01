@@ -31,8 +31,8 @@ case class HealthUpgrade(var location: Vec2) extends Upgrade with Scrolling {
   def draw(p: PApplet): Unit = {
     p.fill(0, 244, 244)
     p.rect(
-      World.player.location.x + box.left,
-      World.player.location.y + box.top,
+      location.x + box.left,
+      location.y + box.top,
       box.width,
       box.height
     )

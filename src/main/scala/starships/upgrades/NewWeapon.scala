@@ -36,8 +36,8 @@ case class newWeapon(var location: Vec2, var weapon: Weapon)
   def draw(p: PApplet): Unit = {
     p.fill(244, 100, 255)
     p.rect(
-      World.player.location.x + box.left,
-      World.player.location.y + box.top,
+      location.x + box.left,
+      location.y + box.top,
       box.width,
       box.height
     )
