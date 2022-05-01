@@ -2,6 +2,15 @@ package geom
 
 import processing.core.PApplet
 
+import geom._
+import hostiles._
+import obstacles._
+import projectiles._
+import traits._
+import upgrades._
+import weapons._
+import world._
+
 case class Box2(left: Float, top: Float, width: Float, height: Float) {
   def right: Float = left + width
   def bottom: Float = top + height

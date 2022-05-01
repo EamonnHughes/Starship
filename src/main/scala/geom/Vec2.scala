@@ -1,5 +1,13 @@
 package geom
 
+import geom._
+import hostiles._
+import obstacles._
+import projectiles._
+import traits._
+import upgrades._
+import weapons._
+import world._
 case class Vec2(var x: Float, var y: Float) {
 
   def +(vec: Vec2) = Vec2(x + vec.x, y + vec.y)

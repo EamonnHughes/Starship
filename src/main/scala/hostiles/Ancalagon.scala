@@ -1,6 +1,13 @@
 package hostiles
 
-import geom.Box2
+import geom._
+import hostiles._
+import obstacles._
+import projectiles._
+import traits._
+import upgrades._
+import weapons._
+import world._
 import processing.core.PApplet
 
 case class Ancalagon(var health: Int, var location: Vec2, var size: Vec2)

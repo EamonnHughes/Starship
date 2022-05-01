@@ -1,9 +1,15 @@
 package obstacles
 
-import geom.{Box2, Vec2}
 import processing.core.PApplet
-import traits.{Actor, Scrolling}
-import world.World
+
+import geom._
+import hostiles._
+import obstacles._
+import projectiles._
+import traits._
+import upgrades._
+import weapons._
+import world._
 
 case class Wall(
     var location: Vec2,
