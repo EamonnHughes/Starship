@@ -21,7 +21,14 @@ case class SpeedUp(var location: Vec2) extends Upgrade with Scrolling {
         World.player.location.y + World.player.box.top,
         box.width,
         box.height
-      ).intersects(box)
+      ).intersects(
+        new Box2(
+          location.x + box.left,
+          location.y + box.top,
+          box.width,
+          box.height
+        )
+      )
     ) {
       Starships.scrollspeed = clamp(Starships.scrollspeed + 0.3f, 3f)
       World.upgradeList =

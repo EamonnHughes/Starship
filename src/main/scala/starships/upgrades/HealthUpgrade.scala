@@ -21,7 +21,14 @@ case class HealthUpgrade(var location: Vec2) extends Upgrade with Scrolling {
         World.player.location.y + World.player.box.top,
         box.width,
         box.height
-      ).intersects(box)
+      ).intersects(
+        new Box2(
+          location.x + box.left,
+          location.y + box.top,
+          box.width,
+          box.height
+        )
+      )
     ) {
       World.player.lives = clamp(World.player.lives + 1, 3).toInt
       World.upgradeList =

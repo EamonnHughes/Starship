@@ -23,7 +23,14 @@ case class newWeapon(var location: Vec2, var weapon: Weapon)
         World.player.location.y + World.player.box.top,
         box.width,
         box.height
-      ).intersects(box)
+      ).intersects(
+        new Box2(
+          location.x + box.left,
+          location.y + box.top,
+          box.width,
+          box.height
+        )
+      )
     ) {
       if (!World.weaponList.exists(w => w.getClass == weapon.getClass)) {
         World.weaponList = weapon :: World.weaponList
