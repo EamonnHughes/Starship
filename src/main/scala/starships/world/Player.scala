@@ -44,7 +44,14 @@ case class Player(
           box.width,
           box.height
         )
-          .intersects(wall.box)
+          .intersects(
+            new Box2(
+              wall.location.x + wall.box.left,
+              wall.location.y + wall.box.top,
+              wall.box.width,
+              wall.box.height
+            )
+          )
       ) || box.top + location.y < 20 || box.bottom + location.y > 492
     ) {
       lives -= 1
@@ -58,7 +65,14 @@ case class Player(
           location.y + box.top,
           box.width,
           box.height
-        ).intersects(i.box)
+        ).intersects(
+          new Box2(
+            i.location.x + i.box.left,
+            i.location.y + i.box.top,
+            i.box.width,
+            i.box.height
+          )
+        )
       ) {
         lives -= 1
         location = location.setY(256)
@@ -73,7 +87,14 @@ case class Player(
           location.y + box.top,
           box.width,
           box.height
-        ).intersects(i.box) && i.direction < 0
+        ).intersects(
+          new Box2(
+            i.location.x + i.box.left,
+            i.location.y + i.box.top,
+            i.box.width,
+            i.box.height
+          )
+        ) && i.direction < 0
       ) {
         lives -= 1
         location = location.setY(256)
