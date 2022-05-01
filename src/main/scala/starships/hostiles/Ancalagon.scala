@@ -27,7 +27,6 @@ case class Ancalagon(var health: Int, var location: Vec2) extends Boss {
     if (currentTime > time + 400) {
       World.projectilesList = MachineGunProjectile(
         Vec2(location.x - 25, location.y + 10),
-        Vec2(10, 10),
         -1
       ) :: World.projectilesList
 

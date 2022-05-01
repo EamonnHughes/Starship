@@ -13,21 +13,20 @@ import starships.world._
 
 case class EnergyOrb(
     var location: Vec2,
-    var size: Vec2,
     var direction: Int
 ) extends Actor
     with Projectile {
   def draw(p: PApplet): Unit = {
     p.fill(255, 255, 0, 50)
     p.ellipse(
-      location.x + (size.x * .5).toFloat,
-      location.y + (size.y * .5).toFloat,
-      size.x,
-      size.y
+      location.x + (20).toFloat,
+      location.y + (20).toFloat,
+      40,
+      40
     )
   }
 
-  def box: Box2 = Box2(location, size)
+  def box: Box2 = Box2(0, 0, 40, 40)
   def update(timeFactor: Float): Unit = {
     shootForward(timeFactor)
   }

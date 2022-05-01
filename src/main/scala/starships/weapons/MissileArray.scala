@@ -20,7 +20,6 @@ case class MissileArray(var fireRate: Int, var damage: Int) extends Weapon {
     if (currentTime > time + fireRate && World.enemies.nonEmpty) {
       World.projectilesList = Missile(
         Vec2(World.player.location.x + 15, World.player.location.y + 15),
-        Vec2(10, 10),
         World.enemies.last,
         0,
         0,
@@ -30,7 +29,6 @@ case class MissileArray(var fireRate: Int, var damage: Int) extends Weapon {
     } else if (currentTime > time + fireRate && Spawner.isBossFight) {
       World.projectilesList = Missile(
         Vec2(World.player.location.x + 15, World.player.location.y + 15),
-        Vec2(10, 10),
         World.bossList(World.currentBoss),
         0,
         0,
@@ -40,7 +38,6 @@ case class MissileArray(var fireRate: Int, var damage: Int) extends Weapon {
     } else if (currentTime > time + fireRate) {
       World.projectilesList = Missile(
         Vec2(World.player.location.x + 15, World.player.location.y + 15),
-        Vec2(10, 10),
         World.player,
         0,
         0,

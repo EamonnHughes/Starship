@@ -39,7 +39,6 @@ case class Enemy(
     if (currentTime > time + 900) {
       World.projectilesList = MachineGunProjectile(
         Vec2(location.x - 25, location.y + 10),
-        Vec2(10, 10),
         -Starships.scrollspeed.toInt
       ) :: World.projectilesList
 

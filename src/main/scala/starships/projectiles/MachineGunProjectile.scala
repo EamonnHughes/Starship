@@ -13,7 +13,6 @@ import starships.world._
 
 case class MachineGunProjectile(
     var location: Vec2,
-    var size: Vec2,
     var direction: Int
 ) extends Actor
     with Projectile {
@@ -23,11 +22,11 @@ case class MachineGunProjectile(
     p.fill(255, 0, 0, 50)
 
     p.fill(255, 0, 0)
-    box.drawBox(p)
+
+    p.rect(location.x, location.y, box.width, box.height)
   }
 
-  def box: Box2 = Box2(location, size)
-  def oldBox: Box2 = Box2(prevLoc, size)
+  def box: Box2 = Box2(0, 0, 10, 10)
 
   def update(timeFactor: Float): Unit = {
     shootForward(timeFactor)

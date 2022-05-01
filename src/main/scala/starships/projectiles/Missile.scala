@@ -13,7 +13,6 @@ import starships.world._
 
 case class Missile(
     var location: Vec2,
-    var size: Vec2,
     var target: Actor,
     var velX: Float,
     var velY: Float,
@@ -21,10 +20,10 @@ case class Missile(
 ) extends Actor
     with Projectile {
 
-  def box: Box2 = Box2(location, size)
+  def box: Box2 = Box2(0, 0, 10, 10)
   def draw(p: PApplet): Unit = {
     p.fill(155, 155, 155)
-    box.drawBox(p)
+    p.rect(location.x, location.y, box.width, box.height)
 
   }
   def update(timeFactor: Float): Unit = {
