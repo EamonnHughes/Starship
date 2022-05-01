@@ -1,3 +1,6 @@
+package hostiles
+
+import geom.Box2
 import processing.core.PApplet
 
 case class Ancalagon(var health: Int, var location: Vec2, var size: Vec2)

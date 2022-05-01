@@ -1,3 +1,5 @@
+package geom
+
 import processing.core.PApplet
 
 case class Box2(left: Float, top: Float, width: Float, height: Float) {
