@@ -1,4 +1,4 @@
-name := "Starships"
+name := "starships.Starships"
 
 version := "0.1"
 
