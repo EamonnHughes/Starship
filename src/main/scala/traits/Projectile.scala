@@ -1,4 +1,4 @@
-import processing.core.PApplet
+package traits
 
 trait Projectile extends Actor {
 

@@ -1,6 +1,7 @@
 import geom.{Box2, Vec2}
 import processing.core._
 import processing.event.{KeyEvent, MouseEvent}
+import traits.Scrolling
 import world.{Spawner, World}
 class Starships extends PApplet {
 
