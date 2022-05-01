@@ -1,6 +1,7 @@
 import geom.{Box2, Vec2}
 import processing.core._
 import processing.event.{KeyEvent, MouseEvent}
+import world.{Spawner, World}
 class Starships extends PApplet {
 
   var time: Long = System.currentTimeMillis

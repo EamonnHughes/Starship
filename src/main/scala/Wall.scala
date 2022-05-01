@@ -1,5 +1,6 @@
 import geom.{Box2, Vec2}
 import processing.core.PApplet
+import world.World
 
 case class Wall(
     var location: Vec2,
