@@ -37,7 +37,10 @@ object Spawner {
   }
   def spawnWalls(): Unit = {
 
-    if (World.walls.headOption.forall(wall => wall.box.right < 1024)) {
+    if (
+      World.walls.headOption
+        .forall(wall => wall.box.right + wall.location.x < 1024)
+    ) {
       nextWall = Math.random() * 100
       if (spawnOnTop) {
         World.walls = Wall(
