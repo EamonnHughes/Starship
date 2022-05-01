@@ -46,7 +46,7 @@ object Spawner {
           Vec2(80, 80 * length.toFloat + 40)
         ) :: World.walls
       } else {
-        World.walls = obstacles.Wall(
+        World.walls = Wall(
           Vec2(1124 + nextWall.toFloat, 492 - (80 * length.toFloat + 40)),
           Vec2(80, 80 * length.toFloat + 40)
         ) :: World.walls
