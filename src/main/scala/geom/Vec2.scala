@@ -1,3 +1,5 @@
+package geom
+
 case class Vec2(var x: Float, var y: Float) {
 
   def +(vec: Vec2) = Vec2(x + vec.x, y + vec.y)
