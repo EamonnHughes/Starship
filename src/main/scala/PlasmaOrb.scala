@@ -1,4 +1,5 @@
 import processing.core.PApplet
+import projectiles.EnergyOrb
 
 case class PlasmaOrb(var fireRate: Int, var damage: Int) extends Weapon {
 

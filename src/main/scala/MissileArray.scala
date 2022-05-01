@@ -1,4 +1,5 @@
 import processing.core.PApplet
+import projectiles.Missile
 
 case class MissileArray(var fireRate: Int, var damage: Int) extends Weapon {
 

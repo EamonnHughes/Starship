@@ -1,3 +1,5 @@
+import hostiles.Enemy
+
 import scala.util.Random
 
 object Spawner {

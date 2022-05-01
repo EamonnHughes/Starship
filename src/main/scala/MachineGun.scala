@@ -1,4 +1,5 @@
 import processing.core.PApplet
+import projectiles.MachineGunProjectile
 
 case class MachineGun(var fireRate: Int, var damage: Int, var overHeat: Float)
     extends Weapon {
