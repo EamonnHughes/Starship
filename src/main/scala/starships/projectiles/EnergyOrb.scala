@@ -1,9 +1,15 @@
 package starships.projectiles
 
 import processing.core.PApplet
-import starships.geom.{Box2, Vec2}
-import starships.traits.{Actor, Projectile}
-import starships.world.World
+import starships.Starships
+import starships.geom._
+import starships.hostiles._
+import starships.obstacles._
+import starships.projectiles._
+import starships.traits._
+import starships.upgrades._
+import starships.weapons._
+import starships.world._
 
 case class EnergyOrb(
     var location: Vec2,
