@@ -2,10 +2,14 @@ package starships.hostiles
 
 import processing.core.PApplet
 import starships.Starships
-import starships.geom.{Box2, Vec2}
-import starships.projectiles.MachineGunProjectile
-import starships.traits.Boss
-import starships.world.{Spawner, World}
+import starships.geom._
+import starships.hostiles._
+import starships.obstacles._
+import starships.projectiles._
+import starships.traits._
+import starships.upgrades._
+import starships.weapons._
+import starships.world._
 
 case class Ancalagon(var health: Int, var location: Vec2, var size: Vec2)
     extends Boss {

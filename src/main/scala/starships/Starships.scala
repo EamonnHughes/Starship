@@ -2,9 +2,14 @@ package starships
 
 import processing.core._
 import processing.event.{KeyEvent, MouseEvent}
-import starships.geom.{Box2, Vec2}
-import starships.hostiles.Enemy
-import starships.traits.Scrolling
+import starships.geom._
+import starships.hostiles._
+import starships.obstacles._
+import starships.projectiles._
+import starships.traits._
+import starships.upgrades._
+import starships.weapons._
+import starships.world._
 
 class Starships extends PApplet {
 

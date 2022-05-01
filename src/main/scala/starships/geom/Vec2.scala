@@ -1,5 +1,12 @@
 package starships.geom
-
+import starships.geom._
+import starships.hostiles._
+import starships.obstacles._
+import starships.projectiles._
+import starships.traits._
+import starships.upgrades._
+import starships.weapons._
+import starships.world._
 case class Vec2(var x: Float, var y: Float) {
 
   def +(vec: Vec2) = Vec2(x + vec.x, y + vec.y)

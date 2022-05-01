@@ -1,8 +1,14 @@
 package starships.geom
 
-import geom._
 import processing.core.PApplet
-
+import starships.geom._
+import starships.hostiles._
+import starships.obstacles._
+import starships.projectiles._
+import starships.traits._
+import starships.upgrades._
+import starships.weapons._
+import starships.world._
 case class Box2(left: Float, top: Float, width: Float, height: Float) {
   def right: Float = left + width
   def bottom: Float = top + height
