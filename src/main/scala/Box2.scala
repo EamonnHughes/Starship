@@ -7,9 +7,6 @@ case class Box2(left: Float, top: Float, width: Float, height: Float) {
   def intersects(box: Box2): Boolean = {
     left < box.right && right >= box.left && top < box.bottom && bottom >= box.top
   }
-  def intersectsAdvanced(boxes: List[Box2]): Boolean = {
-    true
-  }
   def union(box: Box2): Box2 = {
     Box2.ofLTRB(
       box.left min left,
