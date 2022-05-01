@@ -1,7 +1,14 @@
 package weapons
 
 import processing.core.PApplet
-import projectiles.MachineGunProjectile
+import geom._
+import hostiles._
+import obstacles._
+import projectiles._
+import traits._
+import upgrades._
+import weapons._
+import world._
 
 case class MachineGun(var fireRate: Int, var damage: Int, var overHeat: Float)
     extends Weapon {
