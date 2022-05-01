@@ -1,3 +1,5 @@
+package traits
+
 import processing.core.PApplet
 
 trait Weapon {
