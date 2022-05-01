@@ -73,7 +73,7 @@ case class Enemy(
           location.y + box.top,
           box.width,
           box.height
-        ).intersects(i.blur) && i.direction == 1
+        ).intersects(i.box) && i.direction == 1
       ) {
         health -= World.player.primary.damage
         World.projectilesList = World.projectilesList.filterNot(p => p == i)
