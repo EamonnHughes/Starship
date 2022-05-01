@@ -21,7 +21,6 @@ case class MachineGunProjectile(
 
   def draw(p: PApplet): Unit = {
     p.fill(255, 0, 0, 50)
-    blur.drawBox(p)
 
     p.fill(255, 0, 0)
     box.drawBox(p)
@@ -29,7 +28,6 @@ case class MachineGunProjectile(
 
   def box: Box2 = Box2(location, size)
   def oldBox: Box2 = Box2(prevLoc, size)
-  override def blur: Box2 = box.union(oldBox)
 
   def update(timeFactor: Float): Unit = {
     shootForward(timeFactor)
