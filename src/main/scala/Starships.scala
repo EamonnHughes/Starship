@@ -1,4 +1,4 @@
-import geom.Box2
+import geom.{Box2, Vec2}
 import processing.core._
 import processing.event.{KeyEvent, MouseEvent}
 class Starships extends PApplet {

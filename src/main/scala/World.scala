@@ -1,3 +1,4 @@
+import geom.Vec2
 import hostiles.{Ancalagon, Enemy}
 import weapons.{MachineGun, MissileArray, PlasmaOrb}
 
