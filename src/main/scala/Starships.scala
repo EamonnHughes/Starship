@@ -1,8 +1,15 @@
-import geom.{Box2, Vec2}
 import processing.core._
 import processing.event.{KeyEvent, MouseEvent}
-import traits.Scrolling
-import world.{Controls, MenuItem, Spawner, World}
+
+import geom._
+import hostiles._
+import obstacles._
+import projectiles._
+import traits._
+import upgrades._
+import weapons._
+import world._
+import Starships._
 class Starships extends PApplet {
 
   var time: Long = System.currentTimeMillis

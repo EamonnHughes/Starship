@@ -1,8 +1,13 @@
 package world
 
-import geom.Vec2
-import hostiles.Enemy
-import weapons.{MachineGun, MissileArray, PlasmaOrb}
+import geom._
+import hostiles._
+import obstacles._
+import projectiles._
+import traits._
+import upgrades._
+import weapons._
+import world._
 
 object World {
   var player =
