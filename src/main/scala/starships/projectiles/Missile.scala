@@ -31,9 +31,9 @@ case class Missile(
   }
   def shootForward(timeFactor: Float): Unit = {
 
-    if (target.location.y > box.bottom) {
+    if (target.location.y > location.y) {
       velY = clamp(velY + 0.1f, 5f)
-    } else if (target.location.y < box.top) {
+    } else if (target.location.y < location.y) {
       velY = clamp(velY - 0.1f, 5f)
     } else {
       velY *= 0.9f
