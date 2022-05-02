@@ -53,7 +53,7 @@ case class Missile(
             wall.box.height
           )
         )
-      )
+      ) || location.y < 20 || location.y + box.bottom > 492
     ) {
       World.projectilesList =
         World.projectilesList.filterNot(projectile => projectile == this)
