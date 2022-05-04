@@ -19,8 +19,9 @@ class Starships extends PApplet {
     keyRepeatEnabled = false
     textFont(new PFont(PFont.findFont("SansSerif"), true), 16)
 
-    world.Player.loadImages(this)
+    Player.loadImages(this)
     Enemy.loadImages(this)
+    Precursor.loadImages(this)
   }
 
   override def settings(): Unit = {
