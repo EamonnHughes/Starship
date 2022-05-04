@@ -30,22 +30,9 @@ case class Precursor(
   var goingUp = false
   def update(timeFactor: Float): Unit = {
     move(timeFactor)
-    shoot
     checkForCollision
   }
-  def shoot: Unit = {
-    val currentTime = System.currentTimeMillis
 
-    if (currentTime > time + 2100) {
-      World.projectilesList = EnergyOrb(
-        Vec2(location.x - 25, location.y + 10),
-        -Starships.scrollspeed.toInt
-      ) :: World.projectilesList
-
-      time = currentTime
-
-    }
-  }
   def clamp(value: Float, max: Float) = {
     if (value > max) max
     else if (value < -max) -max

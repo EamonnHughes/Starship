@@ -35,7 +35,7 @@ object Spawner {
     }
   }
   def spawnEnemies(): Unit = {
-    World.enemies = Enemy(
+    World.enemies = Precursor(
       Vec2(1040, (Math.random() * 478 + 20).toFloat),
       0,
       0.9f,
