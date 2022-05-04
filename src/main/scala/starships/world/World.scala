@@ -17,7 +17,7 @@ object World {
   var upgradeList = List.empty[Upgrade]
   var walls = List.empty[Wall]
   var worldBorder = Border()
-  var enemies = List.empty[Enemy]
+  var enemies = List.empty[Actor]
   var bossList = List(Ancalagon(20, Vec2(900, 236)))
   var currentBoss = 0
   def everything: List[Actor] = {
