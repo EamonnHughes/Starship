@@ -80,16 +80,17 @@ case class Precursor(
       World.enemies = World.enemies.filterNot(enemy => enemy == this)
       var pChance = Math.random()
       if (pChance < 0.1) {
-        World.upgradeList = HealthUpgrade(location) :: World.upgradeList
+        World.upgradeList = HealthUpgrade(location, 0f) :: World.upgradeList
       } else if (pChance < 0.2) {
         World.upgradeList = newWeapon(
           location,
           World.weaponOptions(
             Random.nextInt(World.weaponOptions.length)
-          )
+          ),
+          0f
         ) :: World.upgradeList
       } else if (pChance < 0.3) {
-        World.upgradeList = SpeedUp(location) :: World.upgradeList
+        World.upgradeList = SpeedUp(location, 0f) :: World.upgradeList
       }
     }
     if (

@@ -40,7 +40,8 @@ case class Enemy(
     if (currentTime > time + 900) {
       World.projectilesList = MachineGunProjectile(
         Vec2(location.x - 25, location.y + 10),
-        -Starships.scrollspeed.toInt
+        -Starships.scrollspeed.toInt,
+        0f
       ) :: World.projectilesList
 
       time = currentTime
@@ -92,16 +93,17 @@ case class Enemy(
       World.enemies = World.enemies.filterNot(enemy => enemy == this)
       var pChance = Math.random()
       if (pChance < 0.1) {
-        World.upgradeList = HealthUpgrade(location) :: World.upgradeList
+        World.upgradeList = HealthUpgrade(location, 0f) :: World.upgradeList
       } else if (pChance < 0.2) {
         World.upgradeList = newWeapon(
           location,
           World.weaponOptions(
             Random.nextInt(World.weaponOptions.length)
-          )
+          ),
+          0f
         ) :: World.upgradeList
       } else if (pChance < 0.3) {
-        World.upgradeList = SpeedUp(location) :: World.upgradeList
+        World.upgradeList = SpeedUp(location, 0f) :: World.upgradeList
       }
     }
 

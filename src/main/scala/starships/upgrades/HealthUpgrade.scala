@@ -12,7 +12,7 @@ import starships.weapons._
 import starships.world._
 
 case class HealthUpgrade(var location: Vec2, var enemyQuantity: Float)
-    extends Upgrades
+    extends Upgrade
     with Scrolling {
 
   def box: Box2 = Box2(Vec2(0, 0), Vec2(10, 10))

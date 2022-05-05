@@ -21,7 +21,9 @@ object Spawner {
 
   def checkForSpawn(): Unit = {
     if (
-      World.enemies.length < 2 && !isBossFight && !World.walls
+      World.enemies
+        .map(enemy => enemy.enemyQuantity)
+        .sum < 3 && !isBossFight && !World.walls
         .exists(wall =>
           new Box2(
             wall.location.x + wall.box.left,
@@ -39,7 +41,8 @@ object Spawner {
       Vec2(1040, (Math.random() * 478 + 20).toFloat),
       0,
       0.9f,
-      1
+      1,
+      0.5f
     ) :: World.enemies
   }
   def spawnWalls(): Unit = {
@@ -52,12 +55,14 @@ object Spawner {
       if (spawnOnTop) {
         World.walls = Wall(
           Vec2(1224 + nextWall.toFloat, 20),
-          Vec2(80, 80 * length.toFloat + 40)
+          Vec2(80, 80 * length.toFloat + 40),
+          0f
         ) :: World.walls
       } else {
         World.walls = Wall(
           Vec2(1124 + nextWall.toFloat, 492 - (80 * length.toFloat + 40)),
-          Vec2(80, 80 * length.toFloat + 40)
+          Vec2(80, 80 * length.toFloat + 40),
+          0f
         ) :: World.walls
       }
       length = Math.random * 2
