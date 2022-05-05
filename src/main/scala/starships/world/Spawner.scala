@@ -37,13 +37,28 @@ object Spawner {
     }
   }
   def spawnEnemies(): Unit = {
-    World.enemies = Precursor(
-      Vec2(1040, (Math.random() * 478 + 20).toFloat),
-      0,
-      0.9f,
-      1,
-      0.5f
-    ) :: World.enemies
+    if (Math.random() * 2 <= 1) {
+      World.enemies = Precursor(
+        Vec2(1040, (Math.random() * 478 + 20).toFloat),
+        0,
+        0.9f,
+        1,
+        0.5f
+      ) :: World.enemies
+    } else if (
+      World.enemies
+        .map(enemy => enemy.enemyQuantity)
+        .sum + 1 <= 3
+    ) {
+      World.enemies = Enemy(
+        Vec2(1040, (Math.random() * 478 + 20).toFloat),
+        0,
+        0.9f,
+        1,
+        1f
+      ) :: World.enemies
+    }
+
   }
   def spawnWalls(): Unit = {
 
