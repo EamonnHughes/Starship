@@ -14,6 +14,7 @@ import starships.world._
 trait Actor {
 
   var location: Vec2
+  var enemyQuantity: Float
   def box: Box2
   def update(timeFactor: Float): Unit
 

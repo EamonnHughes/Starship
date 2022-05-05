@@ -13,7 +13,8 @@ import starships.world._
 
 case class Wall(
     var location: Vec2,
-    var size: Vec2
+    var size: Vec2,
+    var enemyQuantity: Float
 ) extends Scrolling
     with Actor {
 

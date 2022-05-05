@@ -16,6 +16,7 @@ case class Player(
     var velocity: Float,
     var deceleration: Float,
     var lives: Int,
+    var enemyQuantity: Float,
     var primary: Weapon
 ) extends Actor {
 

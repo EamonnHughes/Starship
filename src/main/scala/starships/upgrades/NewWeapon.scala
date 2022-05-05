@@ -11,8 +11,11 @@ import starships.upgrades._
 import starships.weapons._
 import starships.world._
 
-case class newWeapon(var location: Vec2, var weapon: Weapon)
-    extends Upgrade
+case class newWeapon(
+    var location: Vec2,
+    var weapon: Weapon,
+    var enemyQuantity: Float
+) extends Upgrade
     with Scrolling {
 
   def box: Box2 = Box2(Vec2(0, 0), Vec2(10, 10))

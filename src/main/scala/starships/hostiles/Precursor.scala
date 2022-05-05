@@ -16,7 +16,8 @@ case class Precursor(
     var location: Vec2,
     var velocity: Float,
     var deceleration: Float,
-    var health: Int
+    var health: Int,
+    var enemyQuantity: Float
 ) extends Scrolling
     with Actor {
 

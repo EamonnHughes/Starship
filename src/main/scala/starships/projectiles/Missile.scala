@@ -16,7 +16,8 @@ case class Missile(
     var target: Actor,
     var velX: Float,
     var velY: Float,
-    var direction: Int
+    var direction: Int,
+    var enemyQuantity: Float
 ) extends Actor
     with Projectile {
 
