@@ -104,11 +104,11 @@ class Starships extends PApplet {
   }
 
   override def draw(): Unit = {
-    if (Starships.state == "Playing") {
+    if (Starships.state == GameState.InGame) {
       playing
-    } else if (Starships.state == "Menu") {
+    } else if (Starships.state == GameState.Menu) {
       inMenu
-    } else if (Starships.state == "Home") {
+    } else if (Starships.state == GameState.Home) {
       mainMenu
     }
 
