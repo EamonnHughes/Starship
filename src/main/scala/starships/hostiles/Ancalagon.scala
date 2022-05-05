@@ -59,7 +59,14 @@ case class Ancalagon(var health: Int, var location: Vec2) extends Boss {
           location.y + box.top,
           box.width,
           box.height
-        ).intersects(i.box)
+        ).intersects(
+          new Box2(
+            i.location.x + i.box.left,
+            i.location.y + i.box.top,
+            i.box.width,
+            i.box.height
+          )
+        )
       ) {
         health -= World.player.primary.damage
         World.projectilesList = World.projectilesList.filterNot(p => p == i)

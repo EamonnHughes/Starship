@@ -39,7 +39,7 @@ object Spawner {
       Vec2(1040, (Math.random() * 478 + 20).toFloat),
       0,
       0.9f,
-      3
+      1
     ) :: World.enemies
   }
   def spawnWalls(): Unit = {
