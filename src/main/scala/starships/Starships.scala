@@ -140,18 +140,12 @@ class Starships extends PApplet {
 
     if (event.getKey == 'w') {
       Controls.wPressed = true
-    }
-    if (event.getKey == 'q') {
+    } else if (event.getKey == 'q') {
       World.selectWeapon = (World.selectWeapon + 1) % World.weaponList.length
-    }
-    if (event.getKey == 's') {
+    } else if (event.getKey == 's') {
       Controls.sPressed = true
-    }
-    if (event.getKey == ' ') {
+    } else if (event.getKey == ' ') {
       Controls.shooting = true
-    }
-    if (event.getKey == 'p') {
-      Starships.scrollspeed = 3f
     }
 
     if (event.getKey == 27) {
