@@ -91,7 +91,26 @@ case class Precursor(
         World.upgradeList = SpeedUp(location) :: World.upgradeList
       }
     }
-
+    if (
+      World.walls.exists(wall =>
+        new Box2(
+          location.x + box.left,
+          location.y + box.top,
+          box.width,
+          box.height
+        )
+          .intersects(
+            new Box2(
+              wall.location.x + wall.box.left,
+              wall.location.y + wall.box.top,
+              wall.box.width,
+              wall.box.height
+            )
+          )
+      )
+    ) {
+      World.enemies = World.enemies.filterNot(enemy => enemy == this)
+    }
     if (box.top + location.y <= 20 || box.bottom + location.y >= 492) {
       velocity = -velocity
     }
