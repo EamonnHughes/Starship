@@ -37,7 +37,7 @@ class Starships extends PApplet {
     begin.isMouseOn(mouseBox)
     begin.draw(this)
     if (begin.isMouseOn(mouseBox)) {
-      Starships.state = "Playing"
+      Starships.state = GameState.InGame
     }
     var exit = world.MenuItem(Vec2(424, 350), Vec2(100, 50), "Exit", 1)
 
@@ -56,14 +56,14 @@ class Starships extends PApplet {
     resume.draw(this)
     if (resume.isMouseOn(mouseBox)) {
 
-      Starships.state = "Playing"
+      Starships.state = GameState.InGame
       time = System.currentTimeMillis
     }
     var exit = world.MenuItem(Vec2(20, 50), Vec2(124, 20), "Exit", 1)
     exit.isMouseOn(mouseBox)
     exit.draw(this)
     if (exit.isMouseOn(mouseBox)) {
-      Starships.state = "Home"
+      Starships.state = GameState.Home
     }
     fill(255, 255, 255)
     rect(154, 20, 160, 20)
@@ -149,7 +149,7 @@ class Starships extends PApplet {
     }
 
     if (event.getKey == 27) {
-      if (Starships.state == "Playing") Starships.state = "Menu"
+      if (Starships.state == GameState.InGame) Starships.state = GameState.Menu
       key = 0
     }
 
@@ -184,7 +184,7 @@ class Starships extends PApplet {
 
 object Starships extends App {
 
-  var state = "Home"
+  var state: GameState = GameState.Home
 
   var scrollspeed: Float = 1f
 

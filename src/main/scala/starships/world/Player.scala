@@ -105,7 +105,7 @@ case class Player(
     }
     if (lives <= 0) {
       println("YOU DIED! SCORE: " + Starships.score)
-      Starships.state = "Home"
+      Starships.state = GameState.Home
     }
   }
   def moving(timeFactor: Float): Unit = {
