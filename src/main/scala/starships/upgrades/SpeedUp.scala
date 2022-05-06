@@ -32,7 +32,7 @@ case class SpeedUp(var location: Vec2, var enemyQuantity: Float)
         )
       )
     ) {
-      Starships.scrollspeed = clamp(Starships.scrollspeed + 0.3f, 3f)
+      Starships.scrollspeed = clamp(Starships.scrollspeed + 0.2f, 1.8f)
       World.upgradeList =
         World.upgradeList.filterNot(upgrade => upgrade == this)
     }
