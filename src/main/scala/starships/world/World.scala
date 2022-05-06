@@ -43,5 +43,10 @@ object World {
     Spawner.hasFoughtBoss = false
   }
   var weaponOptions: List[Weapon] =
-    List(MachineGun(150, 1, 0), MissileArray(500, 3), PlasmaOrb(1000, 7))
+    List(
+      MachineGun(150, 1, 0),
+      MissileArray(500, 3),
+      PlasmaOrb(1000, 7),
+      MachineGun(350, 1, 0)
+    )
 }
