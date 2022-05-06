@@ -1,6 +1,6 @@
 package starships.hostiles
 
-import processing.core.PApplet
+import processing.core.{PApplet, PImage}
 import starships.Starships
 import starships.geom._
 import starships.hostiles._
@@ -21,8 +21,7 @@ case class Ancalagon(
 
   def box: Box2 = Box2(Vec2(0, 0), Vec2(50, 50))
   def draw(p: PApplet): Unit = {
-    p.fill(240, 100, 240)
-    p.rect(location.x, location.y, 50, 50)
+    p.image(Ancalagon.Stingray, location.x, location.y, 50, 50)
     p.fill(255, 0, 0)
     p.rect(100, 502, health * 20, 10)
   }
@@ -86,4 +85,12 @@ case class Ancalagon(
     }
 
   }
+}
+object Ancalagon {
+  var Stingray: PImage = _
+  def loadImages(p: PApplet): Unit = {
+    Stingray = p.loadImage("src/main/Resources/Stingray.png")
+
+  }
+
 }

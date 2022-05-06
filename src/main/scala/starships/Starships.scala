@@ -22,6 +22,7 @@ class Starships extends PApplet {
     Player.loadImages(this)
     Enemy.loadImages(this)
     Precursor.loadImages(this)
+    Ancalagon.loadImages(this)
   }
 
   override def settings(): Unit = {
