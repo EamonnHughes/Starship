@@ -79,6 +79,7 @@ class Starships extends PApplet {
     var timeMulti = 60f * (millisPerFrame / 1000f)
     time = currentTime
     background(10, 10, 10)
+
     World.worldBorder.draw(this)
 
     Spawner.checkForSpawn()
