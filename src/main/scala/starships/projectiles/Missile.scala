@@ -1,6 +1,6 @@
 package starships.projectiles
 
-import processing.core.PApplet
+import processing.core.{PApplet, PImage}
 import starships.Starships
 import starships.geom._
 import starships.hostiles._
@@ -24,7 +24,7 @@ case class Missile(
   def box: Box2 = Box2(0, 0, 10, 10)
   def draw(p: PApplet): Unit = {
     p.fill(155, 155, 155)
-    p.rect(location.x, location.y, box.width, box.height)
+    p.image(Missile.Missile, location.x, location.y, 10, 10)
 
   }
   def update(timeFactor: Float): Unit = {
@@ -69,4 +69,13 @@ case class Missile(
     else if (value < -max) -max
     else value
   }
+}
+
+object Missile {
+  var Missile: PImage = _
+  def loadImages(p: PApplet): Unit = {
+    Missile = p.loadImage("src/main/Resources/Missile.png")
+
+  }
+
 }
