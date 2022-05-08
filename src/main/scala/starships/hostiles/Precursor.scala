@@ -73,9 +73,12 @@ case class Precursor(
         health -= World.player.primary.damage
         World.projectilesList = World.projectilesList.filterNot(p => p == i)
 
+        if (health <= 0) Starships.score += 2
+
       }
     }
     if (health <= 0) {
+
       World.enemies = World.enemies.filterNot(enemy => enemy == this)
       var pChance = Math.random()
       if (pChance < 0.04) {
@@ -119,7 +122,6 @@ case class Precursor(
       World.enemies = World.enemies.filterNot(enemy => enemy == this)
     }
 
-    Starships.score += 2
   }
 
 }

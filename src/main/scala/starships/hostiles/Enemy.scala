@@ -83,7 +83,10 @@ case class Enemy(
           )
         ) && i.direction == 1
       ) {
+
+        if (health <= 0) Starships.score += 2
         health -= World.player.primary.damage
+        if()
         World.projectilesList = World.projectilesList.filterNot(p => p == i)
 
       }
@@ -104,7 +107,6 @@ case class Enemy(
       } else if (pChance < 0.3) {
         World.upgradeList = SpeedUp(location, 0f) :: World.upgradeList
       }
-      Starships.score += 4
     }
 
     if (box.top + location.y <= 20 || box.bottom + location.y >= 492) {
