@@ -25,7 +25,7 @@ case class Precursor(
 
   var time: Long = System.currentTimeMillis
   def draw(p: PApplet): Unit = {
-    p.image(Precursor.Stingray, location.x, location.y, 30, 30)
+    p.image(Precursor.Shuttle, location.x, location.y, 30, 30)
   }
 
   var goingUp = false
@@ -124,9 +124,9 @@ case class Precursor(
 }
 
 object Precursor {
-  var Stingray: PImage = _
+  var Shuttle: PImage = _
   def loadImages(p: PApplet): Unit = {
-    Stingray = p.loadImage("src/main/Resources/Stingray.png")
+    Shuttle = p.loadImage("src/main/Resources/Shuttle.png")
 
   }
 
