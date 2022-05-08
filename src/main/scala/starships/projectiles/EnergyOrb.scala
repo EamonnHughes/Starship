@@ -1,6 +1,6 @@
 package starships.projectiles
 
-import processing.core.PApplet
+import processing.core.{PApplet, PImage}
 import starships.Starships
 import starships.geom._
 import starships.hostiles._
@@ -19,7 +19,8 @@ case class EnergyOrb(
     with Projectile {
   def draw(p: PApplet): Unit = {
     p.fill(255, 255, 0, 50)
-    p.ellipse(
+    p.image(
+      EnergyOrb.Orb,
       location.x + (20).toFloat,
       location.y + (20).toFloat,
       40,
@@ -39,4 +40,13 @@ case class EnergyOrb(
     }
 
   }
+}
+
+object EnergyOrb {
+  var Orb: PImage = _
+  def loadImages(p: PApplet): Unit = {
+    Orb = p.loadImage("src/main/Resources/Orb.png")
+
+  }
+
 }
