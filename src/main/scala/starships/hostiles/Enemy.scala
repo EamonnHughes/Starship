@@ -87,7 +87,8 @@ case class Enemy(
         if (health <= 0) Starships.score += 2
         health -= World.player.primary.damage
 
-        World.projectilesList = World.projectilesList.filterNot(p => p == i)
+        if (!i.isInstanceOf[EnergyOrb])
+          World.projectilesList = World.projectilesList.filterNot(p => p == i)
 
       }
     }
