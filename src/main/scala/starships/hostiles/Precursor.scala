@@ -68,7 +68,7 @@ case class Precursor(
             i.box.width,
             i.box.height
           )
-        ) && i.direction == 1
+        ) && i.direction > 0
       ) {
         health -= World.player.primary.damage
         World.projectilesList = World.projectilesList.filterNot(p => p == i)
