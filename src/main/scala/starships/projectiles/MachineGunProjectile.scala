@@ -26,7 +26,7 @@ case class MachineGunProjectile(
     p.rect(location.x, location.y, box.width, box.height)
   }
 
-  def box: Box2 = Box2(0, 0, 10, 10)
+  def box: Box2 = Box2(0, 0, 5, 5)
 
   def update(timeFactor: Float): Unit = {
     shootForward(timeFactor)
