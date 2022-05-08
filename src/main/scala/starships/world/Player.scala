@@ -77,7 +77,8 @@ case class Player(
         lives -= 1
         location = location.setY(256)
         velocity = 0
-        i
+        i.health = 0
+        Starships.score += (i.enemyQuantity * 4).toInt
       }
     }
     for (i <- World.projectilesList) {
