@@ -73,7 +73,6 @@ case class Precursor(
         health -= World.player.primary.damage
         World.projectilesList = World.projectilesList.filterNot(p => p == i)
 
-        Starships.score += World.player.primary.damage
       }
     }
     if (health <= 0) {
@@ -119,6 +118,8 @@ case class Precursor(
     if (box.right + location.x <= 0) {
       World.enemies = World.enemies.filterNot(enemy => enemy == this)
     }
+
+    Starships.score += 2
   }
 
 }
