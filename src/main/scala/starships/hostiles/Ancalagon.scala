@@ -29,7 +29,7 @@ case class Ancalagon(
     val currentTime = System.currentTimeMillis
     if (currentTime > time + 400) {
       World.projectilesList = MachineGunProjectile(
-        Vec2(location.x - 25, location.y + 10),
+        Vec2(location.x + 10, location.y + 25),
         -1,
         0f
       ) :: World.projectilesList
