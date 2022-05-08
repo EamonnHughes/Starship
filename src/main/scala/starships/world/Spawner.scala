@@ -20,6 +20,7 @@ object Spawner {
   var hasFoughtBoss = false
 
   def checkForSpawn(): Unit = {
+    var spawnLoc = (Math.random() * 478 + 20).toFloat
     if (
       World.enemies
         .map(enemy => enemy.enemyQuantity)
@@ -31,15 +32,16 @@ object Spawner {
             wall.box.width,
             wall.box.height
           ).intersects(Box2(Vec2(1040, 0), Vec2(40, 512)))
-        )
+        ) && spawnLoc > 20 && spawnLoc + 50 < 492
     ) {
-      spawnEnemies()
+
+      spawnEnemies(spawnLoc)
     }
   }
-  def spawnEnemies(): Unit = {
+  def spawnEnemies(spawnloc: Float): Unit = {
     if (Math.random() * 2 <= 1) {
       World.enemies = Precursor(
-        Vec2(1040, (Math.random() * 478 + 20).toFloat),
+        Vec2(1040, spawnloc),
         0,
         0.9f,
         1,
@@ -51,7 +53,7 @@ object Spawner {
         .sum + 1 <= 3
     ) {
       World.enemies = Enemy(
-        Vec2(1040, (Math.random() * 478 + 20).toFloat),
+        Vec2(1040, spawnloc),
         0,
         0.9f,
         1,

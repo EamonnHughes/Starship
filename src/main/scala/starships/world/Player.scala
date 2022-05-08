@@ -79,6 +79,7 @@ case class Player(
         location = location.setY(256)
         velocity = 0
         World.enemies = World.enemies.filterNot(p => p == i)
+        Starships.score += 6
       }
     }
     for (i <- World.projectilesList) {

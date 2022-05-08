@@ -84,7 +84,7 @@ case class Enemy(
         ) && i.direction > 0
       ) {
 
-        if (health <= 0) Starships.score += 2
+        if (health <= 0) Starships.score += 4
         health -= World.player.primary.damage
 
         if (!i.isInstanceOf[EnergyOrb])
