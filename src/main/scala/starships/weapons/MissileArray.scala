@@ -23,8 +23,7 @@ case class MissileArray(var fireRate: Int, var damage: Int) extends Weapon {
         World.enemies.last,
         0,
         0,
-        1,
-        0f
+        1
       ) :: World.projectilesList
       time = currentTime
     } else if (currentTime > time + fireRate && Spawner.isBossFight) {
@@ -33,8 +32,7 @@ case class MissileArray(var fireRate: Int, var damage: Int) extends Weapon {
         World.bossList(World.currentBoss),
         0,
         0,
-        1,
-        0f
+        1
       ) :: World.projectilesList
       time = currentTime
     } else if (currentTime > time + fireRate) {

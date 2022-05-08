@@ -13,8 +13,7 @@ import starships.world._
 
 case class newWeapon(
     var location: Vec2,
-    var weapon: Weapon,
-    var enemyQuantity: Float
+    var weapon: Weapon
 ) extends Upgrade
     with Scrolling {
 

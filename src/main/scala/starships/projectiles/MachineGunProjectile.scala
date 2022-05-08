@@ -13,8 +13,7 @@ import starships.world._
 
 case class MachineGunProjectile(
     var location: Vec2,
-    var direction: Int,
-    var enemyQuantity: Float
+    var direction: Int
 ) extends Actor
     with Projectile {
 

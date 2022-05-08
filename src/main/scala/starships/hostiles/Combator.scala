@@ -12,20 +12,20 @@ import starships.weapons._
 import starships.world._
 
 import scala.util.Random
-case class Enemy(
+case class Combator(
     var location: Vec2,
     var velocity: Float,
     var deceleration: Float,
     var health: Int,
     var enemyQuantity: Float
 ) extends Scrolling
-    with Actor {
+    with Enemy {
 
   def box: Box2 = Box2(0, 0, 40, 40)
 
   var time: Long = System.currentTimeMillis
   def draw(p: PApplet): Unit = {
-    p.image(Enemy.Stingray, location.x, location.y, 40, 40)
+    p.image(Combator.Stingray, location.x, location.y, 40, 40)
   }
 
   var goingUp = false
@@ -120,7 +120,7 @@ case class Enemy(
 
 }
 
-object Enemy {
+object Combator {
   var Stingray: PImage = _
   def loadImages(p: PApplet): Unit = {
     Stingray = p.loadImage("src/main/Resources/Stingray.png")

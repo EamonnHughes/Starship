@@ -21,8 +21,7 @@ case class MachineGun(var fireRate: Int, var damage: Int, var overHeat: Float)
     if (currentTime > time + fireRate && overHeat < 40) {
       World.projectilesList = MachineGunProjectile(
         Vec2(World.player.location.x + 27, World.player.location.y + 7),
-        1,
-        0f
+        1
       ) :: World.projectilesList
       overHeat += 1
       time = currentTime

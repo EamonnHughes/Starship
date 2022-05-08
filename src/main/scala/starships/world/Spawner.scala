@@ -52,7 +52,7 @@ object Spawner {
         .map(enemy => enemy.enemyQuantity)
         .sum + 1 <= 3
     ) {
-      World.enemies = Enemy(
+      World.enemies = Combator(
         Vec2(1040, spawnloc),
         0,
         0.9f,

@@ -19,7 +19,7 @@ case class Precursor(
     var health: Int,
     var enemyQuantity: Float
 ) extends Scrolling
-    with Actor {
+    with Enemy {
 
   def box: Box2 = Box2(0, 0, 30, 30)
 

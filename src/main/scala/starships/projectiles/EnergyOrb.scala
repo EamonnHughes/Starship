@@ -13,8 +13,7 @@ import starships.world._
 
 case class EnergyOrb(
     var location: Vec2,
-    var direction: Int,
-    var enemyQuantity: Float
+    var direction: Int
 ) extends Actor
     with Projectile {
   def draw(p: PApplet): Unit = {

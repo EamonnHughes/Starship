@@ -20,7 +20,7 @@ class Starships extends PApplet {
     textFont(new PFont(PFont.findFont("SansSerif"), true), 16)
 
     Player.loadImages(this)
-    Enemy.loadImages(this)
+    Combator.loadImages(this)
     Precursor.loadImages(this)
     Ancalagon.loadImages(this)
     Missile.loadImages(this)

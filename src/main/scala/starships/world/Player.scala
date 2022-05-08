@@ -16,7 +16,6 @@ case class Player(
     var velocity: Float,
     var deceleration: Float,
     var lives: Int,
-    var enemyQuantity: Float,
     var primary: Weapon
 ) extends Actor {
 
@@ -78,8 +77,7 @@ case class Player(
         lives -= 1
         location = location.setY(256)
         velocity = 0
-        World.enemies = World.enemies.filterNot(p => p == i)
-        Starships.score += 6
+        i
       }
     }
     for (i <- World.projectilesList) {

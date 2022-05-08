@@ -10,6 +10,6 @@ import starships.upgrades._
 import starships.weapons._
 import starships.world._
 
-trait Boss extends Actor {
+trait Boss extends Enemy {
   var health: Int
 }

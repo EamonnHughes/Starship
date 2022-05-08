@@ -30,8 +30,7 @@ case class Ancalagon(
     if (currentTime > time + 400) {
       World.projectilesList = MachineGunProjectile(
         Vec2(location.x + 10, location.y + 25),
-        -1,
-        0f
+        -1
       ) :: World.projectilesList
 
       time = currentTime
