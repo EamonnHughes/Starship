@@ -70,7 +70,7 @@ case class Ancalagon(
             i.box.width,
             i.box.height
           )
-        )
+        ) && i.direction > 0
       ) {
         health -= World.player.primary.damage
         World.projectilesList = World.projectilesList.filterNot(p => p == i)

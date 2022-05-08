@@ -81,7 +81,7 @@ case class Enemy(
             i.box.width,
             i.box.height
           )
-        ) && i.direction == 1
+        ) && i.direction > 0
       ) {
 
         if (health <= 0) Starships.score += 2
