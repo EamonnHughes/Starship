@@ -26,15 +26,15 @@ case class Wall(
   def draw(p: PApplet): Unit = {
     p.fill(100, 100, 100)
     if (location.y == 20) {
-      for (i <- 0 until size.y.toInt - 10 by 10) {
-        p.image(WallBody, location.x, location.y + i, 80, 10)
+      for (i <- 0 until size.y.toInt - 20 by 20) {
+        p.image(WallBody, location.x, location.y + i, 80, 20)
       }
-      p.image(WallBottom, location.x, location.y + size.y - 10, 80, 10)
+      p.image(WallBottom, location.x, location.y + size.y - 20, 80, 20)
     } else {
-      for (i <- 0 until size.y.toInt - 10 by 10) {
-        p.image(WallBody, location.x, location.y + i + 10, 80, 10)
+      for (i <- 0 until size.y.toInt - 20 by 20) {
+        p.image(WallBody, location.x, location.y + i + 20, 80, 20)
       }
-      p.image(WallTop, location.x, location.y, 80, 10)
+      p.image(WallTop, location.x, location.y, 80, 20)
     }
   }
 
