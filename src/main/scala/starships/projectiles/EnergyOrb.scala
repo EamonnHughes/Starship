@@ -25,6 +25,7 @@ case class EnergyOrb(
       40,
       40
     )
+
   }
 
   def box: Box2 = Box2(0, 0, 40, 40)
