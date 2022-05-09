@@ -4,7 +4,7 @@ import processing.core.{PApplet, PImage}
 import starships.Starships
 import starships.geom._
 import starships.hostiles._
-import starships.obstacles.Wall.WallBody
+import starships.obstacles.Wall.{WallBody, WallBottom, WallTop}
 import starships.obstacles._
 import starships.projectiles._
 import starships.traits._
@@ -25,8 +25,16 @@ case class Wall(
   }
   def draw(p: PApplet): Unit = {
     p.fill(100, 100, 100)
-    for (i <- 0 until size.y.toInt by 10) {
-      p.image(WallBody, location.x, location.y + i, 80, 10)
+    if (location.y == 20) {
+      for (i <- 0 until size.y.toInt - 10 by 10) {
+        p.image(WallBody, location.x, location.y + i, 80, 10)
+      }
+      p.image(WallBottom, location.x, location.y + size.y - 10, 80, 10)
+    } else {
+      for (i <- 0 until size.y.toInt - 10 by 10) {
+        p.image(WallBody, location.x, location.y + i + 10, 80, 10)
+      }
+      p.image(WallTop, location.x, location.y, 80, 10)
     }
   }
 
