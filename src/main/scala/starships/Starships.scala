@@ -83,7 +83,7 @@ class Starships extends PApplet {
     var millisPerFrame = currentTime - time
     var timeMulti = 60f * (millisPerFrame / 1000f)
     time = currentTime
-    background(10, 10, 10)
+    background(10, 10, 50)
 
     Spawner.checkForSpawn()
     World.everything.foreach(actor => actor.draw(this))
