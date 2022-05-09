@@ -13,13 +13,12 @@ import starships.world._
 
 case class Border() {
   def draw(p: PApplet): Unit = {
-    p.fill(100, 100, 100)
-    p.image(Player.tBorder, 0, 0, 1024, 20)
-    p.image(Player.bBorder, 492, 1024, 20)
+    p.image(Border.tBorder, 0, 0, 1024, 20)
+    p.image(Border.bBorder, 0, 492, 1024, 20)
   }
 }
 
-object Player {
+object Border {
   var tBorder: PImage = _
   var bBorder: PImage = _
   def loadImages(p: PApplet): Unit = {
