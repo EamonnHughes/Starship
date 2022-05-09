@@ -84,10 +84,11 @@ class Starships extends PApplet {
     time = currentTime
     background(10, 10, 10)
 
-    World.worldBorder.draw(this)
-
     Spawner.checkForSpawn()
     World.everything.foreach(actor => actor.draw(this))
+
+    World.worldBorder.draw(this)
+
     World.everything.foreach(actor => actor.update(timeMulti))
 
     if (Spawner.isBossFight) {
