@@ -1,6 +1,6 @@
 package starships.obstacles
 
-import processing.core.PApplet
+import processing.core.{PApplet, PImage}
 import starships.Starships
 import starships.geom._
 import starships.hostiles._
@@ -31,6 +31,21 @@ case class Wall(
     if (box.right < 0) {
       World.walls = World.walls.filterNot(wall => wall == this)
     }
+  }
+
+}
+
+object Wall {
+  var WallBody: PImage = _
+
+  var WallTop: PImage = _
+
+  var WallBottom: PImage = _
+  def loadImages(p: PApplet): Unit = {
+    WallBody = p.loadImage("src/main/Resources/WallBody.png")
+    WallTop = p.loadImage("src/main/Resources/WallTop.png")
+    WallBottom = p.loadImage("src/main/Resources/WallBottom.png")
+
   }
 
 }
