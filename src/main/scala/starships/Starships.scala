@@ -27,6 +27,7 @@ class Starships extends PApplet {
     EnergyOrb.loadImages(this)
     Wall.loadImages(this)
     Border.loadImages(this)
+    Explosion.loadImages(this)
   }
 
   override def settings(): Unit = {
