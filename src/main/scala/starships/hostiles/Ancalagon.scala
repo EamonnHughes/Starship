@@ -1,8 +1,10 @@
 package starships.hostiles
 
 import processing.core.{PApplet, PImage}
+import processing.sound.SoundFile
 import starships.Starships
 import starships.geom._
+import starships.hostiles.Ancalagon.Shot
 import starships.hostiles._
 import starships.obstacles._
 import starships.projectiles._
@@ -32,7 +34,7 @@ case class Ancalagon(
         Vec2(location.x + 10, location.y + 25),
         -1
       ) :: World.projectilesList
-
+      Shot.play()
       time = currentTime
 
     }
@@ -92,6 +94,11 @@ object Ancalagon {
   def loadImages(p: PApplet): Unit = {
     Ancalagon = p.loadImage("src/main/Resources/Ancalagon.png")
 
+  }
+
+  var Shot: SoundFile = _
+  def loadSounds(p: PApplet): Unit = {
+    Shot = new SoundFile(p, "src/main/Resources/MachineGunShot.mp3")
   }
 
 }

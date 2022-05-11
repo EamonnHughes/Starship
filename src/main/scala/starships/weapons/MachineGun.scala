@@ -9,6 +9,7 @@ import starships.obstacles._
 import starships.projectiles._
 import starships.traits._
 import starships.upgrades._
+import starships.weapons.MachineGun.Shot
 import starships.weapons._
 import starships.world._
 
@@ -24,6 +25,7 @@ case class MachineGun(var fireRate: Int, var damage: Int, var overHeat: Float)
         Vec2(World.player.location.x + 27, World.player.location.y + 7),
         1
       ) :: World.projectilesList
+      Shot.play()
       overHeat += 1
       time = currentTime
     }
@@ -42,6 +44,6 @@ object MachineGun {
 
   var Shot: SoundFile = _
   def loadSounds(p: PApplet): Unit = {
-    Shot = new SoundFile(p, "src/main/Resources/MachineGunSound.mp3")
+    Shot = new SoundFile(p, "src/main/Resources/MachineGunShot.mp3")
   }
 }

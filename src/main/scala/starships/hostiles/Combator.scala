@@ -1,8 +1,10 @@
 package starships.hostiles
 
 import processing.core.{PApplet, PImage}
+import processing.sound.SoundFile
 import starships.Starships
 import starships.geom._
+import starships.hostiles.Combator.Shot
 import starships.hostiles._
 import starships.obstacles._
 import starships.projectiles._
@@ -42,6 +44,7 @@ case class Combator(
         Vec2(location.x - 25, location.y + 10),
         -Starships.scrollspeed.toInt
       ) :: World.projectilesList
+      Shot.play()
 
       time = currentTime
 
@@ -124,6 +127,11 @@ object Combator {
   def loadImages(p: PApplet): Unit = {
     Stingray = p.loadImage("src/main/Resources/Stingray.png")
 
+  }
+
+  var Shot: SoundFile = _
+  def loadSounds(p: PApplet): Unit = {
+    Shot = new SoundFile(p, "src/main/Resources/MachineGunShot.mp3")
   }
 
 }

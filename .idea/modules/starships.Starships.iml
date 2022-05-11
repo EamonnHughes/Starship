@@ -70,5 +70,6 @@
     <orderEntry type="library" name="sbt: org.processing:core:3.3.6:jar" level="project" />
     <orderEntry type="library" name="sbt: org.scala-lang:scala-library:2.12.7:jar" level="project" />
     <orderEntry type="library" name="sound" level="project" />
+    <orderEntry type="library" name="jsyn-20171016" level="project" />
   </component>
 </module>
