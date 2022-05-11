@@ -32,6 +32,7 @@ class Starships extends PApplet {
     MachineGun.loadSounds(this)
     Ancalagon.loadSounds(this)
     Combator.loadSounds(this)
+    MissileArray.loadSounds(this)
   }
 
   override def settings(): Unit = {
