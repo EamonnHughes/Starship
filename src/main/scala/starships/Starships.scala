@@ -145,8 +145,8 @@ class Starships extends PApplet {
     })
     World.explosions.foreach({
       case scrolling: Scrolling =>
-        scrolling.locaction =
-          scrolling.locaction.addX(-(Starships.scrollspeed * timeFactor))
+        scrolling.location =
+          scrolling.location.addX(-(Starships.scrollspeed * timeFactor))
       case _ =>
     })
   }

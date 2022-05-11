@@ -12,17 +12,18 @@ import starships.weapons._
 import starships.world.Explosion.BasicExplosion
 import starships.world.Player.Swordfish
 import starships.world._
-case class Explosion(var locaction: Vec2, var stage: Int) extends Scrolling {
+case class Explosion(var location: Vec2, var stage: Int) extends Scrolling {
 
   var time: Long = System.currentTimeMillis
   def draw(p: PApplet): Unit = {
     if (stage <= 8) {
 
       val currentTime = System.currentTimeMillis
+      var sprite = BasicExplosion.get((stage - 1) * 512, 0, 512, 512)
 
-      p.image(BasicExplosion, locaction.x, locaction.y, 256, 16)
+      p.image(sprite, location.x, location.y, 16, 16)
 
-      if (currentTime > time + 900) {
+      if (currentTime > time + 3000) {
         stage += 1
       }
     }
