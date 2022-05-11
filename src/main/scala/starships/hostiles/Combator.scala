@@ -106,6 +106,7 @@ case class Combator(
       } else if (pChance < 0.3) {
         World.upgradeList = SpeedUp(location) :: World.upgradeList
       }
+      World.explosions = Explosion(this.location, 0) :: World.explosions
     }
 
     if (box.top + location.y <= 20 || box.bottom + location.y >= 492) {
