@@ -18,21 +18,7 @@ class Starships extends PApplet {
   override def setup(): Unit = {
     keyRepeatEnabled = false
     textFont(new PFont(PFont.findFont("SansSerif"), true), 16)
-
-    Player.loadImages(this)
-    Combator.loadImages(this)
-    Precursor.loadImages(this)
-    Ancalagon.loadImages(this)
-    Missile.loadImages(this)
-    EnergyOrb.loadImages(this)
-    Wall.loadImages(this)
-    Border.loadImages(this)
-    Explosion.loadImages(this)
-    MachineGunProjectile.loadImages(this)
-    MachineGun.loadSounds(this)
-    Ancalagon.loadSounds(this)
-    Combator.loadSounds(this)
-    MissileArray.loadSounds(this)
+    Loading.loadstuff(this)
   }
 
   override def settings(): Unit = {
