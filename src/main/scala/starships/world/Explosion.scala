@@ -13,3 +13,7 @@ import starships.world._
 case class Explosion(loc: Vec2, stage: Int) {
   def draw(p: PApplet): Unit = {}
 }
+object Explosion {
+
+  def loadImages(p: PApplet): Unit = {}
+}
