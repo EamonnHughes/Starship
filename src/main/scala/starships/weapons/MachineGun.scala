@@ -1,6 +1,7 @@
 package starships.weapons
 
-import processing.core.PApplet
+import processing.core.{PApplet, PImage}
+import processing.sound.SoundFile
 import starships.Starships
 import starships.geom._
 import starships.hostiles._
@@ -35,5 +36,12 @@ case class MachineGun(var fireRate: Int, var damage: Int, var overHeat: Float)
   def drawPoints(p: PApplet): Unit = {
     p.fill(255, 0, 0)
     p.rect(120, 0, 4 * overHeat, 20)
+  }
+}
+object MachineGun {
+
+  var Shot: SoundFile = _
+  def loadSounds(p: PApplet): Unit = {
+    Shot = new SoundFile(p, "src/main/Resources/MachineGunSound.mp3")
   }
 }
