@@ -44,7 +44,8 @@ case class Combator(
         Vec2(location.x - 25, location.y + 10),
         -Starships.scrollspeed.toInt
       ) :: World.projectilesList
-      Shot.play()
+
+      Shot.play(1, 0.1f)
 
       time = currentTime
 

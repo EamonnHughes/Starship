@@ -34,7 +34,8 @@ case class Ancalagon(
         Vec2(location.x + 10, location.y + 25),
         -1
       ) :: World.projectilesList
-      Shot.play()
+
+      Shot.play(1, 0.1f)
       time = currentTime
 
     }
