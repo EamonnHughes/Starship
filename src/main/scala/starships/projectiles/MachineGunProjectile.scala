@@ -16,13 +16,23 @@ case class MachineGunProjectile(
     var direction: Int
 ) extends Actor
     with Projectile {
+  var state = 0
 
+  var time: Long = System.currentTimeMillis
   def draw(p: PApplet): Unit = {
-    p.fill(255, 0, 0, 50)
 
-    p.fill(255, 0, 0)
+    val currentTime = System.currentTimeMillis
+    var sprite = MachineGunProjectile.Projectile.get(state * 64, 0, 64, 64)
+    p.image(sprite, location.x, location.y, 5, 5)
+    if (currentTime > time + 20) {
+      if (state < 3) {
+        state += 1
+      } else {
+        state = 0
+      }
 
-    p.image(MachineGunProjectile.Projectile, location.x, location.y, 5, 5)
+      time = currentTime
+    }
   }
 
   def box: Box2 = Box2(0, 0, 5, 5)
