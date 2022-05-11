@@ -81,6 +81,8 @@ case class Ancalagon(
       Spawner.isBossFight = false
       Spawner.hasFoughtBoss = true
       Starships.score += 100
+
+      World.explosions = Explosion(location.copy(), 0, 5) :: World.explosions
     }
 
   }

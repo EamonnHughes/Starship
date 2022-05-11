@@ -94,6 +94,8 @@ case class Precursor(
       } else if (pChance < 0.12) {
         World.upgradeList = SpeedUp(location) :: World.upgradeList
       }
+
+      World.explosions = Explosion(location.copy(), 0, 3) :: World.explosions
     }
     if (
       World.walls.exists(wall =>
