@@ -21,7 +21,7 @@ object World {
   var bossList = List(Ancalagon(20, Vec2(900, 236), 0f))
   var currentBoss = 0
   def everything: List[Actor] = {
-    player :: enemies ::: walls ::: explosions ::: upgradeList ::: projectilesList
+    player :: enemies ::: walls ::: upgradeList ::: projectilesList
   }
   var explosions = List.empty[Explosion]
   var selectWeapon = 0

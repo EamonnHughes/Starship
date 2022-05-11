@@ -142,6 +142,12 @@ class Starships extends PApplet {
           scrolling.location.addX(-(Starships.scrollspeed * timeFactor))
       case _ =>
     })
+    World.explosions.foreach({
+      case scrolling: Scrolling =>
+        scrolling.locaction =
+          scrolling.locaction.addX(-(Starships.scrollspeed * timeFactor))
+      case _ =>
+    })
   }
 
   override def keyPressed(event: KeyEvent): Unit = {
