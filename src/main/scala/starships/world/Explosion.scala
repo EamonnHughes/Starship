@@ -21,10 +21,12 @@ case class Explosion(var location: Vec2, var stage: Int) extends Scrolling {
       val currentTime = System.currentTimeMillis
       var sprite = BasicExplosion.get((stage - 1) * 512, 0, 512, 512)
 
-      p.image(sprite, location.x, location.y, 16, 16)
+      p.image(sprite, location.x, location.y, 40, 40)
 
-      if (currentTime > time + 3000) {
+      if (currentTime > time + 50) {
         stage += 1
+
+        time = currentTime
       }
     }
   }
