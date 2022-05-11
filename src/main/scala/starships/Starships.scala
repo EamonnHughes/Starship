@@ -1,7 +1,7 @@
 package starships
 
 import processing.core._
-import processing.event.{KeyEvent, MouseEvent}
+import processing.event._
 import starships.geom._
 import starships.hostiles._
 import starships.obstacles._
