@@ -1,6 +1,6 @@
 package starships.projectiles
 
-import processing.core.PApplet
+import processing.core.{PApplet, PImage}
 import starships.Starships
 import starships.geom._
 import starships.hostiles._
@@ -22,7 +22,7 @@ case class MachineGunProjectile(
 
     p.fill(255, 0, 0)
 
-    p.rect(location.x, location.y, box.width, box.height)
+    p.image(MachineGunProjectile.Projectile, location.x, location.y, 5, 5)
   }
 
   def box: Box2 = Box2(0, 0, 5, 5)
@@ -54,4 +54,13 @@ case class MachineGunProjectile(
     }
 
   }
+}
+
+object MachineGunProjectile {
+  var Projectile: PImage = _
+  def loadImages(p: PApplet): Unit = {
+    Projectile = p.loadImage("src/main/Resources/MachineGunShot.png")
+
+  }
+
 }
