@@ -32,11 +32,11 @@ case class Missile(
   def shootForward(timeFactor: Float): Unit = {
 
     if (target.location.y > location.y) {
-      velY = clamp(velY + 0.1f, 5f)
+      velY = clamp(velY + 0.1f, 4f)
     } else if (target.location.y < location.y) {
-      velY = clamp(velY - 0.1f, 5f)
+      velY = clamp(velY - 0.1f, 4f)
     } else {
-      velY *= 0.9f
+      velY *= 0.7f
     }
     if (
       location.x > 1024 || World.walls.exists(wall =>
