@@ -28,7 +28,7 @@ class Starships extends PApplet {
   def mainMenu: Unit = {
     World.reset
 
-    background(105, 105, 255)
+    background(105, 105, 105)
     text("SPACESHIP GAME", 424, 100)
     var begin = MenuItem(Vec2(424, 200), Vec2(100, 50), "Begin", 1)
 
