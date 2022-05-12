@@ -33,7 +33,7 @@ case class Missile(
 
     if (target.location.y > location.y) {
       velY = clamp(velY + 0.05f, 4f)
-    } else if (target.location.y < location.y) {
+    } else if (target.location.y + target.box.height < location.y) {
       velY = clamp(velY - 0.05f, 4f)
     } else {
       velY *= 0.7f
