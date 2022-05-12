@@ -4,7 +4,13 @@ import processing.core.{PApplet, PImage}
 import starships.Starships
 import starships.geom._
 import starships.hostiles._
-import starships.obstacles.Wall.{WallBody, WallBottom, WallRoot, WallTop}
+import starships.obstacles.Wall.{
+  WallBody,
+  WallBottom,
+  WallRoot,
+  WallRootTop,
+  WallTop
+}
 import starships.obstacles._
 import starships.projectiles._
 import starships.traits._
@@ -29,14 +35,14 @@ case class Wall(
       for (i <- 0 until size.y.toInt - 40 by 20) {
         p.image(WallBody, location.x, location.y + i + 20, 80, 20)
       }
-      p.image(WallRoot, location.x, location.y, 80, 20)
+      p.image(WallRootTop, location.x, location.y, 80, 20)
       p.image(WallBottom, location.x, location.y + size.y - 20, 80, 20)
     } else {
       for (i <- 0 until size.y.toInt - 40 by 20) {
         p.image(WallBody, location.x, location.y + i + 20, 80, 20)
       }
 
-      p.image(WallRoot, location.x, location.y + size.y - 20, 80, 20)
+      p.image(WallRootBottom, location.x, location.y + size.y - 20, 80, 20)
       p.image(WallTop, location.x, location.y, 80, 20)
     }
   }
@@ -55,13 +61,13 @@ object Wall {
   var WallTop: PImage = _
 
   var WallBottom: PImage = _
-  var WallRoot: PImage = _
+  var WallRootTop: PImage = _
   def loadImages(p: PApplet): Unit = {
     WallBody = p.loadImage("src/main/Resources/WallBody.png")
     WallTop = p.loadImage("src/main/Resources/WallTop.png")
     WallBottom = p.loadImage("src/main/Resources/WallBottom.png")
 
-    WallRoot = p.loadImage("src/main/Resources/WallRoot.png")
+    WallRootTop = p.loadImage("src/main/Resources/WallRootTop.png")
 
   }
 
