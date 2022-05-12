@@ -72,13 +72,13 @@ object Spawner {
       var wLength = 40 + Random.nextInt(4) * 20
       if (spawnOnTop) {
         World.walls = Wall(
-          Vec2(1224 + nextWall.toFloat, 20),
+          Vec2(1224 + nextWall.toFloat, 0),
           Vec2(80, wLength),
           0f
         ) :: World.walls
       } else {
         World.walls = Wall(
-          Vec2(1124 + nextWall.toFloat, 492 - wLength),
+          Vec2(1124 + nextWall.toFloat, 512 - wLength),
           Vec2(80, wLength),
           0f
         ) :: World.walls
