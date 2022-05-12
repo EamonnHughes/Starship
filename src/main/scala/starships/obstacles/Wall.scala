@@ -69,6 +69,8 @@ object Wall {
 
     WallRootTop = p.loadImage("src/main/Resources/WallRootTop.png")
 
+    WallRootTop = p.loadImage("src/main/Resources/WallRootBottom.png")
+
   }
 
 }
