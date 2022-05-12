@@ -69,7 +69,7 @@ object Spawner {
         .forall(wall => wall.box.right + wall.location.x < 1024)
     ) {
       nextWall = Math.random() * 100
-      var wLength = 40 + Random.nextInt(4) * 20
+      var wLength = 60 + Random.nextInt(4) * 20
       if (spawnOnTop) {
         World.walls = Wall(
           Vec2(1224 + nextWall.toFloat, 0),
