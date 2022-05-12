@@ -69,6 +69,16 @@
     <orderEntry type="library" name="sbt: org.jogamp.jogl:newt:2.3.2:ogl:jar" level="project" />
     <orderEntry type="library" name="sbt: org.processing:core:3.3.6:jar" level="project" />
     <orderEntry type="library" name="sbt: org.scala-lang:scala-library:2.12.7:jar" level="project" />
-    <orderEntry type="library" name="javamp3-1.0.4" level="project" />
+    <orderEntry type="module-library">
+      <library name="sbt: unmanaged-jars">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../lib/javamp3-1.0.4.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../lib/jsyn-20171016.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../lib/sound.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
   </component>
 </module>
