@@ -24,7 +24,7 @@ case class MissileArray(var fireRate: Int, var damage: Int) extends Weapon {
       World.projectilesList = Missile(
         Vec2(World.player.location.x + 15, World.player.location.y + 15),
         World.enemies.last,
-        0,
+        2,
         0,
         1
       ) :: World.projectilesList
@@ -34,7 +34,7 @@ case class MissileArray(var fireRate: Int, var damage: Int) extends Weapon {
       World.projectilesList = Missile(
         Vec2(World.player.location.x + 15, World.player.location.y + 15),
         World.bossList(World.currentBoss),
-        0,
+        2,
         0,
         1
       ) :: World.projectilesList
@@ -44,7 +44,7 @@ case class MissileArray(var fireRate: Int, var damage: Int) extends Weapon {
       World.projectilesList = Missile(
         Vec2(World.player.location.x + 15, World.player.location.y + 15),
         World.player,
-        0,
+        2,
         0,
         1
       ) :: World.projectilesList
