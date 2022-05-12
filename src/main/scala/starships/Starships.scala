@@ -77,10 +77,10 @@ class Starships extends PApplet {
     background(10, 10, 50)
 
     Spawner.checkForSpawn()
-    World.explosions.foreach(exp => exp.draw(this))
-    World.everything.foreach(actor => actor.draw(this))
 
     World.worldBorder.draw(this)
+    World.explosions.foreach(exp => exp.draw(this))
+    World.everything.foreach(actor => actor.draw(this))
 
     World.everything.foreach(actor => actor.update(timeMulti))
 
