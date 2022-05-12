@@ -75,6 +75,8 @@ class Starships extends PApplet {
     var timeMulti = 60f * (millisPerFrame / 1000f)
     time = currentTime
     background(0, 0, 0)
+    World.stars.foreach(star => star.draw(this))
+    World.stars.foreach(star => star.location.x -= star.velocity)
 
     Spawner.checkForSpawn()
 
@@ -101,6 +103,7 @@ class Starships extends PApplet {
     if (Starships.score >= 100 && !Spawner.hasFoughtBoss) {
       Spawner.isBossFight = true
     }
+
   }
 
   override def draw(): Unit = {

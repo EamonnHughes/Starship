@@ -10,9 +10,10 @@ import starships.traits._
 import starships.upgrades._
 import starships.weapons._
 import starships.world._
-case class Star(location: Vec2) {
+case class Star(location: Vec2, velocity: Float) {
   def draw(p: PApplet): Unit = {
     p.fill(255, 255, 255)
-    p.rect(location.x, location.y, 5, 5)
+    p.noStroke()
+    p.rect(location.x, location.y, 2, 2)
   }
 }

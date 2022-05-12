@@ -23,6 +23,7 @@ object World {
   def everything: List[Actor] = {
     player :: enemies ::: walls ::: upgradeList ::: projectilesList
   }
+  var stars = List.empty[Star]
   var explosions = List.empty[Explosion]
   var selectWeapon = 0
   var weaponList: List[Weapon] =
@@ -42,6 +43,12 @@ object World {
     Starships.scrollspeed = 1.0f
     Spawner.isBossFight = false
     Spawner.hasFoughtBoss = false
+    for (i <- 0 until 100) {
+      stars = Star(
+        Vec2((Math.random() * 1024).toFloat, (Math.random() * 512).toFloat),
+        (Math.random() * 4).toFloat
+      ) :: stars
+    }
   }
   var weaponOptions: List[Weapon] =
     List(
