@@ -15,14 +15,15 @@ case class Star(
     distance: Float
 ) {
   var scope = (55 + Math.random * distance * 50).toInt
-  val r = scope + (Math.random() * 30).toInt
+  val r = scope - (Math.random() * 30).toInt
 
-  val b = scope + (Math.random() * 30).toInt
+  val b = scope - (Math.random() * 30).toInt
   val g: Int = Math.max(r, g)
+  val size = distance / 2
   def draw(p: PApplet): Unit = {
     p.fill(r, g, b)
     p.noStroke()
-    p.rect(location.x, location.y, 1, 1)
+    p.rect(location.x, location.y, size, size)
   }
   def move: Unit = {
     location.x -= distance / 3
