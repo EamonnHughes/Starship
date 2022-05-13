@@ -17,11 +17,17 @@ case class MenuItem(
     text: String,
     var lightness: Float
 ) {
+  var wasClicked = false
   def box: Box2 = Box2(location, size)
   def isMouseOn(mouseBox: Box2): Boolean = {
 
-    if (mouseBox.intersects(box) && Controls.mousePressed) true
-    else false
+    if (mouseBox.intersects(box) && Controls.mousePressed && !wasClicked) {
+      wasClicked = true
+      true
+    } else {
+      wasClicked = Controls.mousePressed
+      false
+    }
 
   }
   def draw(p: PApplet): Unit = {

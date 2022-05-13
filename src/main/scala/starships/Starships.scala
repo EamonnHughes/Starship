@@ -30,7 +30,6 @@ class Starships extends PApplet {
 
     background(105, 105, 105)
     text("SPACESHIP GAME", 424, 100)
-    var begin = MenuItem(Vec2(424, 200), Vec2(100, 50), "Begin", 1)
     if (mouseBox.intersects(begin.box)) {
       begin.lightness = 0.6f
     } else {
@@ -41,45 +40,66 @@ class Starships extends PApplet {
     if (begin.isMouseOn(mouseBox)) {
       Starships.state = GameState.InGame
     }
-    var exit = world.MenuItem(Vec2(424, 350), Vec2(100, 50), "Exit", 1)
-    if (mouseBox.intersects(exit.box)) {
-      exit.lightness = 0.6f
+    if (mouseBox.intersects(mExit.box)) {
+      mExit.lightness = 0.6f
     } else {
-      exit.lightness = 1f
+      mExit.lightness = 1f
     }
-    exit.draw(this)
-    if (exit.isMouseOn(mouseBox)) {
+    mExit.draw(this)
+    if (mExit.isMouseOn(mouseBox)) {
       System.exit(0)
     }
+    mute = world.MenuItem(Vec2(424, 460), Vec2(100, 30), "Mute", 1)
+    if (mute.isMouseOn(mouseBox)) {
+      if (Starships.volume != 0) {
+        Starships.volume = 0
+      } else {
+        Starships.volume = 1
+      }
+    }
+
+    if (Starships.volume == 0 || mute.box.intersects(mouseBox)) {
+      mute.lightness = 0.6f
+    } else {
+      mute.lightness = 1f
+    }
+
+    mute.draw(this)
   }
 
   def mouseBox: Box2 = Box2(Vec2(mouseX, mouseY), Vec2(1, 1))
+
+  var resumeGame = world.MenuItem(Vec2(20, 20), Vec2(124, 20), "Resume", 1)
+
+  var begin = MenuItem(Vec2(424, 200), Vec2(100, 50), "Begin", 1)
+  var mExit = world.MenuItem(Vec2(424, 350), Vec2(100, 50), "Exit", 1)
+
+  var exitMenu = world.MenuItem(Vec2(20, 50), Vec2(124, 20), "Exit", 1)
+  var mute = world.MenuItem(Vec2(324, 20), Vec2(124, 20), "Mute", 1)
   def inMenu: Unit = {
 
-    var resume = world.MenuItem(Vec2(20, 20), Vec2(124, 20), "Resume", 1)
-    resume.draw(this)
-    if (mouseBox.intersects(resume.box)) {
-      resume.lightness = 0.6f
+    if (mouseBox.intersects(resumeGame.box)) {
+      resumeGame.lightness = 0.6f
     } else {
-      resume.lightness = 1f
+      resumeGame.lightness = 1f
     }
-    if (resume.isMouseOn(mouseBox)) {
+
+    resumeGame.draw(this)
+    if (resumeGame.isMouseOn(mouseBox)) {
 
       Starships.state = GameState.InGame
       time = System.currentTimeMillis
     }
-    var exit = world.MenuItem(Vec2(20, 50), Vec2(124, 20), "Exit", 1)
-    exit.draw(this)
-    if (mouseBox.intersects(exit.box)) {
-      exit.lightness = 0.6f
+    if (mouseBox.intersects(exitMenu.box)) {
+      exitMenu.lightness = 0.6f
     } else {
-      exit.lightness = 1f
+      exitMenu.lightness = 1f
     }
-    if (exit.isMouseOn(mouseBox)) {
+
+    exitMenu.draw(this)
+    if (exitMenu.isMouseOn(mouseBox)) {
       Starships.state = GameState.Home
     }
-    var mute = world.MenuItem(Vec2(20, 80), Vec2(124, 20), "Mute", 1)
-    mute.draw(this)
 
     if (mute.isMouseOn(mouseBox)) {
       if (Starships.volume != 0) {
@@ -88,11 +108,14 @@ class Starships extends PApplet {
         Starships.volume = 1
       }
     }
+
     if (Starships.volume == 0 || mute.box.intersects(mouseBox)) {
       mute.lightness = 0.6f
     } else {
       mute.lightness = 1f
     }
+
+    mute.draw(this)
     fill(255, 255, 255)
     rect(154, 20, 160, 20)
     fill(0, 0, 0)
@@ -196,10 +219,11 @@ class Starships extends PApplet {
   }
   override def mousePressed(event: MouseEvent): Unit = {
     def box: Box2 = Box2(Vec2(mouseX, mouseY), Vec2(1, 1))
+    Controls.mousePressed = true
   }
 
-  override def mouseClicked(event: MouseEvent): Unit = {
-    Controls.mousePressed = true
+  override def mouseReleased(event: MouseEvent): Unit = {
+    Controls.mousePressed = false
   }
 
   override def keyReleased(event: KeyEvent): Unit = {
