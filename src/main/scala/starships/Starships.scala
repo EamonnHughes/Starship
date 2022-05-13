@@ -100,6 +100,7 @@ class Starships extends PApplet {
     if (exitMenu.isMouseOn(mouseBox)) {
       Starships.state = GameState.Home
     }
+    mute = world.MenuItem(Vec2(324, 20), Vec2(124, 20), "Mute", 1)
 
     if (mute.isMouseOn(mouseBox)) {
       if (Starships.volume != 0) {

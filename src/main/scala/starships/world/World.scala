@@ -29,6 +29,7 @@ object World {
   var weaponList: List[Weapon] =
     List(MachineGun(150, 1, 0), MissileArray(500, 3))
   def reset: Unit = {
+    stars = List.empty
     player = Player(Vec2(64, 256), 0, 0.9f, 3, MachineGun(50, 1, 0))
     projectilesList = List.empty[Projectile]
     upgradeList = List.empty[Upgrade]
@@ -43,7 +44,7 @@ object World {
     Starships.scrollspeed = 1.0f
     Spawner.isBossFight = false
     Spawner.hasFoughtBoss = false
-    for (i <- 0 until 90) {
+    for (i <- 0 until 1000) {
       stars = Star(
         Vec2((Math.random() * 1024).toFloat, (Math.random() * 512).toFloat),
         (Math.random() * 4).toFloat
