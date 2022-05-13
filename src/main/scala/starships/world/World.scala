@@ -43,7 +43,7 @@ object World {
     Starships.scrollspeed = 1.0f
     Spawner.isBossFight = false
     Spawner.hasFoughtBoss = false
-    for (i <- 0 until 100) {
+    for (i <- 0 until 90) {
       stars = Star(
         Vec2((Math.random() * 1024).toFloat, (Math.random() * 512).toFloat),
         (Math.random() * 4).toFloat

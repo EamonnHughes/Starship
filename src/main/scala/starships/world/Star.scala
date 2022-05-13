@@ -10,14 +10,22 @@ import starships.traits._
 import starships.upgrades._
 import starships.weapons._
 import starships.world._
-case class Star(location: Vec2, velocity: Float) {
+case class Star(
+    location: Vec2,
+    distance: Float
+) {
+  var scope = (55 + Math.random * distance * 50).toInt
+  val r = scope + (Math.random() * 30).toInt
+
+  val b = scope + (Math.random() * 30).toInt
+  val g: Int = Math.max(r, g)
   def draw(p: PApplet): Unit = {
-    p.fill(255, 255, 255)
+    p.fill(r, g, b)
     p.noStroke()
-    p.rect(location.x, location.y, 2, 2)
+    p.rect(location.x, location.y, 1, 1)
   }
   def move: Unit = {
-    location.x -= velocity
+    location.x -= distance / 3
     if (location.x <= 0) {
       location.x = 1024
       location.y = (math.random() * 512).toFloat
