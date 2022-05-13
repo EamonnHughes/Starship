@@ -16,4 +16,11 @@ case class Star(location: Vec2, velocity: Float) {
     p.noStroke()
     p.rect(location.x, location.y, 2, 2)
   }
+  def move: Unit = {
+    location.x -= velocity
+    if (location.x <= 0) {
+      location.x = 1024
+      location.y = (math.random() * 512).toFloat
+    }
+  }
 }
