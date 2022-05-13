@@ -35,7 +35,7 @@ case class Ancalagon(
         -1
       ) :: World.projectilesList
 
-      Shot.play(1, 0.1f)
+      Shot.play(1, 0.1f * Starships.volume)
       time = currentTime
 
     }

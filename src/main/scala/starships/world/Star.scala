@@ -19,7 +19,7 @@ case class Star(
 
   val b = scope - (Math.random() * 30).toInt
   val g: Int = Math.max(r, g)
-  val size = distance / 2
+  val size = distance / 4
   def draw(p: PApplet): Unit = {
     p.fill(r, g, b)
     p.noStroke()

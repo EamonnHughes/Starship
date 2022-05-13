@@ -45,7 +45,7 @@ case class Combator(
         -Starships.scrollspeed.toInt
       ) :: World.projectilesList
 
-      Shot.play(1, 0.1f)
+      Shot.play(1, 0.1f * Starships.volume)
 
       time = currentTime
 

@@ -198,6 +198,7 @@ object Starships extends App {
   var scrollspeed: Float = 1f
 
   var score = 0
+  var volume = 1
   PApplet.main(classOf[Starships])
 
 }

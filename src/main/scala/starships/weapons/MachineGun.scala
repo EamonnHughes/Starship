@@ -26,7 +26,7 @@ case class MachineGun(var fireRate: Int, var damage: Int, var overHeat: Float)
         1
       ) :: World.projectilesList
 
-      Shot.play(1, 0.1f)
+      Shot.play(1, (0.1f) * Starships.volume)
       overHeat += 1
       time = currentTime
     }
