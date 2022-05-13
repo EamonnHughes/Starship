@@ -76,7 +76,7 @@ class Starships extends PApplet {
     time = currentTime
     background(0, 0, 0)
     World.stars.foreach(star => star.draw(this))
-    World.stars.foreach()
+    World.stars.foreach(star => star.move)
 
     Spawner.checkForSpawn()
 
