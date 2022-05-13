@@ -63,6 +63,16 @@ class Starships extends PApplet {
     if (exit.isMouseOn(mouseBox)) {
       Starships.state = GameState.Home
     }
+    var mute = world.MenuItem(Vec2(20, 80), Vec2(124, 20), "Mute", 1)
+    mute.isMouseOn(mouseBox)
+    mute.draw(this)
+    if (mute.isMouseOn(mouseBox)) {
+      if (Starships.volume != 0) {
+        Starships.volume = 0
+      } else {
+        Starships.volume = 1
+      }
+    }
     fill(255, 255, 255)
     rect(154, 20, 160, 20)
     fill(0, 0, 0)
