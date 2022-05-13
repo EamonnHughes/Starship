@@ -19,11 +19,7 @@ case class MenuItem(
 ) {
   def box: Box2 = Box2(location, size)
   def isMouseOn(mouseBox: Box2): Boolean = {
-    if (mouseBox.intersects(box)) {
-      lightness = 0.6f
-    } else {
-      lightness = 1f
-    }
+
     if (mouseBox.intersects(box) && Controls.mousePressed) true
     else false
 

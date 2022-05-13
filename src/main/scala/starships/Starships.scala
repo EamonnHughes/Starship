@@ -31,15 +31,22 @@ class Starships extends PApplet {
     background(105, 105, 105)
     text("SPACESHIP GAME", 424, 100)
     var begin = MenuItem(Vec2(424, 200), Vec2(100, 50), "Begin", 1)
+    if (mouseBox.intersects(begin.box)) {
+      begin.lightness = 0.6f
+    } else {
+      begin.lightness = 1f
+    }
 
-    begin.isMouseOn(mouseBox)
     begin.draw(this)
     if (begin.isMouseOn(mouseBox)) {
       Starships.state = GameState.InGame
     }
     var exit = world.MenuItem(Vec2(424, 350), Vec2(100, 50), "Exit", 1)
-
-    exit.isMouseOn(mouseBox)
+    if (mouseBox.intersects(exit.box)) {
+      exit.lightness = 0.6f
+    } else {
+      exit.lightness = 1f
+    }
     exit.draw(this)
     if (exit.isMouseOn(mouseBox)) {
       System.exit(0)
@@ -50,28 +57,41 @@ class Starships extends PApplet {
   def inMenu: Unit = {
 
     var resume = world.MenuItem(Vec2(20, 20), Vec2(124, 20), "Resume", 1)
-    resume.isMouseOn(mouseBox)
     resume.draw(this)
+    if (mouseBox.intersects(resume.box)) {
+      resume.lightness = 0.6f
+    } else {
+      resume.lightness = 1f
+    }
     if (resume.isMouseOn(mouseBox)) {
 
       Starships.state = GameState.InGame
       time = System.currentTimeMillis
     }
     var exit = world.MenuItem(Vec2(20, 50), Vec2(124, 20), "Exit", 1)
-    exit.isMouseOn(mouseBox)
     exit.draw(this)
+    if (mouseBox.intersects(exit.box)) {
+      exit.lightness = 0.6f
+    } else {
+      exit.lightness = 1f
+    }
     if (exit.isMouseOn(mouseBox)) {
       Starships.state = GameState.Home
     }
     var mute = world.MenuItem(Vec2(20, 80), Vec2(124, 20), "Mute", 1)
-    mute.isMouseOn(mouseBox)
     mute.draw(this)
+
     if (mute.isMouseOn(mouseBox)) {
       if (Starships.volume != 0) {
         Starships.volume = 0
       } else {
         Starships.volume = 1
       }
+    }
+    if (Starships.volume == 0 || mute.box.intersects(mouseBox)) {
+      mute.lightness = 0.6f
+    } else {
+      mute.lightness = 1f
     }
     fill(255, 255, 255)
     rect(154, 20, 160, 20)
@@ -87,6 +107,7 @@ class Starships extends PApplet {
     background(0, 0, 0)
     World.stars.foreach(star => star.draw(this))
     World.stars.foreach(star => star.move)
+    stroke(0, 0, 0)
 
     Spawner.checkForSpawn()
 
@@ -175,10 +196,10 @@ class Starships extends PApplet {
   }
   override def mousePressed(event: MouseEvent): Unit = {
     def box: Box2 = Box2(Vec2(mouseX, mouseY), Vec2(1, 1))
-    Controls.mousePressed = true
   }
-  override def mouseReleased(event: MouseEvent): Unit = {
-    Controls.mousePressed = false
+
+  override def mouseClicked(event: MouseEvent): Unit = {
+    Controls.mousePressed = true
   }
 
   override def keyReleased(event: KeyEvent): Unit = {
