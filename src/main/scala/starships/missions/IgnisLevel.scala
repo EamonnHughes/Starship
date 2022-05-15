@@ -1,4 +1,7 @@
 package starships.missions
 import starships.traits._
-case class IgnisLevel(var name: String = "Ignition", var enemies: List[Enemy])
-    extends Mission {}
+import starships.world.Spawner.{CombatorFactory, EnemyFactory, PrecursorFactory}
+case class IgnisLevel(
+    var name: String = "Ignition",
+    var enemies: List[EnemyFactory] = List(CombatorFactory, PrecursorFactory)
+) extends Mission {}

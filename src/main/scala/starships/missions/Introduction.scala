@@ -7,8 +7,9 @@ import starships.projectiles._
 import starships.traits._
 import starships.upgrades._
 import starships.weapons._
+import starships.world.Spawner._
 import starships.world._
 case class Introduction(
     var name: String = "Introduction",
-    var enemies: List[Enemy]
+    var enemies: List[EnemyFactory] = List(CombatorFactory, PrecursorFactory)
 ) extends Mission {}
