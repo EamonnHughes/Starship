@@ -127,6 +127,11 @@ class Starships extends PApplet {
     fill(0, 0, 0)
     World.currentMission.foreach(mission => text(mission.name, 329, 35))
   }
+  var missionButtons = List.empty[MenuItem]
+  def missionSelection: Unit = {
+    background(255, 255, 255)
+
+  }
   def playing: Unit = {
     val currentTime = System.currentTimeMillis
     var millisPerFrame = currentTime - time
