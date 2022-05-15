@@ -56,10 +56,7 @@ object Spawner {
       new Combator(Vec2(1040, spawnloc), 0, 0.9f, 1, 1f)
   }
 
-  val enemyFactories: List[EnemyFactory] = List(
-    PrecursorFactory,
-    CombatorFactory
-  )
+  val enemyFactories: List[EnemyFactory] = World.currentMission.enemies
 
   def newEnemy(s: Float): Enemy = {
     val factory = enemyFactories(Random.nextInt(enemyFactories.length))

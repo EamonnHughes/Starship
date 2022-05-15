@@ -28,8 +28,12 @@ object World {
   var explosions = List.empty[Explosion]
   var selectWeapon = 0
   var missionList = List.empty[Mission]
-  var weaponList: List[Weapon] =
+  var weaponList: List[Weapon] = {
     List(MachineGun(150, 1, 0), MissileArray(500, 3))
+
+  }
+  var currentMission = missionList(1)
+
   def reset: Unit = {
     missionList = List(new Introduction, new IgnisLevel)
     stars = List.empty
