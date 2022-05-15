@@ -90,7 +90,7 @@ case class Ancalagon(
       for (i <- World.currentMission) {
         i.finished = true
       }
-      Starships.missionsLoaded = false
+      World.reset
       Starships.state = GameState.Selection
     }
 

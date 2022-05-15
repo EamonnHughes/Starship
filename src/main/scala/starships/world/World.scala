@@ -10,6 +10,7 @@ import starships.upgrades._
 import starships.weapons._
 import starships.world._
 import starships.missions._
+import starships.world.World.missionList
 
 object World {
   var player =
@@ -27,7 +28,8 @@ object World {
   var stars = List.empty[Star]
   var explosions = List.empty[Explosion]
   var selectWeapon = 0
-  var missionList = List.empty[Mission]
+  var missionList: List[Mission] =
+    List(new Introduction, new IgnisLevel)
   var weaponList: List[Weapon] = {
     List(MachineGun(150, 1, 0), MissileArray(500, 3))
 
@@ -35,7 +37,8 @@ object World {
   var currentMission = Option.empty[Mission]
 
   def reset: Unit = {
-    missionList = List(new Introduction, new IgnisLevel)
+
+    Starships.missionsLoaded = false
     currentMission = missionList.headOption
     stars = List.empty
     player = Player(Vec2(64, 256), 0, 0.9f, 3, MachineGun(50, 1, 0))
