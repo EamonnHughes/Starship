@@ -38,7 +38,7 @@ class Starships extends PApplet {
 
     begin.draw(this)
     if (begin.isMouseOn(mouseBox)) {
-      Starships.state = GameState.InGame
+      Starships.state = GameState.Selection
     }
     if (mouseBox.intersects(mExit.box)) {
       mExit.lightness = 0.6f
@@ -196,6 +196,8 @@ class Starships extends PApplet {
       inMenu
     } else if (Starships.state == GameState.Home) {
       mainMenu
+    } else if (Starships.state == GameState.Selection) {
+      missionSelection
     }
 
   }
