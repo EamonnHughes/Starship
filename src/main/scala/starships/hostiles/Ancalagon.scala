@@ -19,6 +19,7 @@ case class Ancalagon(
     var enemyQuantity: Float
 ) extends Boss {
   var goingUp = false
+  var isDead = false
   var time: Long = System.currentTimeMillis
 
   def box: Box2 = Box2(Vec2(0, 0), Vec2(50, 50))
@@ -91,15 +92,19 @@ case class Ancalagon(
       for (i <- World.currentMission) {
         i.finished = true
       }
-
-      val currentTime = System.currentTimeMillis
-
-      if (currentTime > time + 1000) {
-        World.reset
-        Starships.state = GameState.Selection
-      }
+      isDead = true
     }
 
+  }
+  def die: Unit = {
+
+    val currentTime = System.currentTimeMillis
+
+    if (currentTime > time + 1000) {
+      World.reset
+      Starships.state = GameState.Selection
+
+    }
   }
 }
 object Ancalagon {
