@@ -99,7 +99,7 @@ case class Ancalagon(
       }
       val currentTime = System.currentTimeMillis
 
-      if (currentTime > time + 170) {
+      if (currentTime > time + 2000) {
         Spawner.isBossFight = false
         Spawner.hasFoughtBoss = true
         World.reset

@@ -51,7 +51,7 @@ case class Explosion(var location: Vec2, var stage: Int, scale: Int)
       if (stage <= 8) {
 
         val currentTime = System.currentTimeMillis
-        var sprite = BasicExplosion.get((stage - 1) * 640, 0, 640, 640)
+        var sprite = LargeExplosion.get((stage - 1) * 640, 0, 640, 640)
 
         p.image(sprite, location.x, location.y, 50, 50)
 
