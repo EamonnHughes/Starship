@@ -38,6 +38,12 @@ case class Player(
       primary.special()
     }
   }
+  def respawn: Unit = {
+    location = location.set(-120, 256)
+
+    velocity = 0
+
+  }
   def checkForCollision(): Unit = {
     if (
       World.walls.exists(wall =>
@@ -59,8 +65,7 @@ case class Player(
     ) {
       lives -= 1
       World.explosions = Explosion(location.copy(), 0, 4) :: World.explosions
-      location = location.setY(256)
-      velocity = 0
+      respawn
     }
     for (i <- World.enemies) {
       if (
@@ -80,8 +85,7 @@ case class Player(
       ) {
         lives -= 1
         World.explosions = Explosion(location.copy(), 0, 4) :: World.explosions
-        location = location.setY(256)
-        velocity = 0
+        respawn
         i.health = 0
         Starships.score += (i.enemyQuantity * 4).toInt
       }
@@ -104,8 +108,7 @@ case class Player(
       ) {
         lives -= 1
         World.explosions = Explosion(location.copy(), 0, 4) :: World.explosions
-        location = location.setY(256)
-        velocity = 0
+        respawn
         World.projectilesList = World.projectilesList.filterNot(p => p == i)
       }
     }
@@ -126,6 +129,9 @@ case class Player(
     } else
       velocity = velocity * deceleration
     location = location.addY(velocity * timeFactor)
+    if (location.x < 64) {
+      location.x += 2
+    }
   }
 
   def clamp(value: Float, max: Float) = {

@@ -40,7 +40,7 @@ case class Explosion(var location: Vec2, var stage: Int, scale: Int)
 
         p.image(sprite, location.x, location.y, 40, 40)
 
-        if (currentTime > time + 50) {
+        if (currentTime > time + 100) {
           stage += 1
 
           time = currentTime
@@ -55,7 +55,7 @@ case class Explosion(var location: Vec2, var stage: Int, scale: Int)
 
         p.image(sprite, location.x, location.y, 50, 50)
 
-        if (currentTime > time + 50) {
+        if (currentTime > time + 150) {
           stage += 1
 
           time = currentTime
