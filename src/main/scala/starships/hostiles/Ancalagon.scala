@@ -91,8 +91,13 @@ case class Ancalagon(
       for (i <- World.currentMission) {
         i.finished = true
       }
-      World.reset
-      Starships.state = GameState.Selection
+
+      val currentTime = System.currentTimeMillis
+
+      if (currentTime > time + 1000) {
+        World.reset
+        Starships.state = GameState.Selection
+      }
     }
 
   }
