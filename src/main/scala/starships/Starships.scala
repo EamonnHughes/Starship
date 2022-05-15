@@ -2,6 +2,7 @@ package starships
 
 import processing.core._
 import processing.event._
+import starships.Starships.{missionsLoaded, state}
 import starships.geom._
 import starships.hostiles._
 import starships.obstacles._
@@ -148,8 +149,14 @@ class Starships extends PApplet {
     background(255, 255, 255)
     for ((mission, i) <- missionButtons.zipWithIndex) {
       mission.draw(this)
-      if (mission.wasClicked) {
+      if (mission.isMouseOn(mouseBox)) {
         World.currentMission = Some(World.missionList(i))
+        state = GameState.InGame
+      }
+      if (mouseBox.intersects(mission.box)) {
+        mission.lightness = 0.6f
+      } else {
+        mission.lightness = 1f
       }
     }
   }
