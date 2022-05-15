@@ -2,7 +2,7 @@ package starships
 
 import processing.core._
 import processing.event._
-import starships.Starships.{missionsLoaded, state}
+import starships.Starships.{missionsLoaded, score, state}
 import starships.geom._
 import starships.hostiles._
 import starships.obstacles._
@@ -274,6 +274,8 @@ class Starships extends PApplet {
       Controls.sPressed = false
     } else if (event.getKey == ' ') {
       Controls.shooting = false
+    } else if (event.getKey == 'p') {
+      Starships.score = 100
     }
   }
   def drawUI(p: PApplet): Unit = {
