@@ -128,6 +128,18 @@ class Starships extends PApplet {
     World.currentMission.foreach(mission => text(mission.name, 329, 35))
   }
   var missionButtons = List.empty[MenuItem]
+  def fillInButtons: Unit = {
+    missionButtons =
+      for ((mission, i) <- World.missionList.zipWithIndex) yield {
+        MenuItem(
+          Vec2(20, (20 + (i * 40))),
+          Vec2(200, 20),
+          mission.name,
+          1
+        )
+      }
+
+  }
   def missionSelection: Unit = {
     background(255, 255, 255)
 
