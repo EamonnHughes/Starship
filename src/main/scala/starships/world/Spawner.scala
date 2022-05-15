@@ -39,8 +39,9 @@ object Spawner {
     }
   }
   def spawnEnemies(spawnloc: Float): Unit = {
-
-    World.enemies = newEnemy(spawnloc) :: World.enemies
+    World.currentMission.foreach(mission =>
+      World.enemies = newEnemy(mission, spawnloc) :: World.enemies
+    )
 
   }
 
@@ -56,10 +57,8 @@ object Spawner {
       new Combator(Vec2(1040, spawnloc), 0, 0.9f, 1, 1f)
   }
 
-  val enemyFactories: List[EnemyFactory] = World.currentMission.enemies
-
-  def newEnemy(s: Float): Enemy = {
-    val factory = enemyFactories(Random.nextInt(enemyFactories.length))
+  def newEnemy(m: Mission, s: Float): Enemy = {
+    val factory = m.enemies(Random.nextInt(m.enemies.length))
     factory(s)
   }
 

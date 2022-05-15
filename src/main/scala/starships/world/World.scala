@@ -32,10 +32,12 @@ object World {
     List(MachineGun(150, 1, 0), MissileArray(500, 3))
 
   }
-  var currentMission = missionList(1)
+  var currentMission = Option.empty[Mission]
 
   def reset: Unit = {
     missionList = List(new Introduction, new IgnisLevel)
+
+    currentMission = missionList.headOption
     stars = List.empty
     player = Player(Vec2(64, 256), 0, 0.9f, 3, MachineGun(50, 1, 0))
     projectilesList = List.empty[Projectile]
