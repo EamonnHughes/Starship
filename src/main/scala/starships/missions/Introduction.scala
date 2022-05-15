@@ -8,4 +8,7 @@ import starships.traits._
 import starships.upgrades._
 import starships.weapons._
 import starships.world._
-case class Introduction(var name: String = "Introduction") extends Mission {}
+case class Introduction(
+    var name: String = "Introduction",
+    var enemies: List[Enemy]
+) extends Mission {}

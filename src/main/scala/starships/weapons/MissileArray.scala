@@ -20,7 +20,7 @@ case class MissileArray(var fireRate: Int, var damage: Int) extends Weapon {
     val currentTime = System.currentTimeMillis
 
     if (currentTime > time + fireRate && World.enemies.nonEmpty) {
-      Shot.play()
+      Shot.play(1, 1f * Starships.volume)
       World.projectilesList = Missile(
         Vec2(World.player.location.x + 15, World.player.location.y + 15),
         World.enemies.last,

@@ -39,29 +39,33 @@ object Spawner {
     }
   }
   def spawnEnemies(spawnloc: Float): Unit = {
-    if (Math.random() * 2 <= 1) {
-      World.enemies = Precursor(
-        Vec2(1040, spawnloc),
-        0,
-        0.9f,
-        1,
-        0.5f
-      ) :: World.enemies
-    } else if (
-      World.enemies
-        .map(enemy => enemy.enemyQuantity)
-        .sum + 1 <= 3
-    ) {
-      World.enemies = Combator(
-        Vec2(1040, spawnloc),
-        0,
-        0.9f,
-        1,
-        1f
-      ) :: World.enemies
-    }
+
+    World.enemies = newEnemy(spawnloc) :: World.enemies
 
   }
+
+  type EnemyFactory = Float => Enemy;
+
+  object PrecursorFactory extends EnemyFactory {
+    override def apply(spawnloc: Float): Enemy =
+      new Precursor(Vec2(1040, spawnloc), 0, 0.9f, 1, 0.5f)
+  }
+
+  object CombatorFactory extends EnemyFactory {
+    override def apply(spawnloc: Float): Enemy =
+      new Combator(Vec2(1040, spawnloc), 0, 0.9f, 1, 1f)
+  }
+
+  val enemyFactories: List[EnemyFactory] = List(
+    PrecursorFactory,
+    CombatorFactory
+  )
+
+  def newEnemy(s: Float): Enemy = {
+    val factory = enemyFactories(Random.nextInt(enemyFactories.length))
+    factory(s)
+  }
+
   def spawnWalls(): Unit = {
 
     if (
