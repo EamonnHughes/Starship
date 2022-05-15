@@ -147,6 +147,7 @@ class Starships extends PApplet {
     }
     background(255, 255, 255)
     for ((mission, i) <- missionButtons.zipWithIndex) {
+      mission.draw(this)
       if (mission.wasClicked) {
         World.currentMission = Some(World.missionList(i))
       }
