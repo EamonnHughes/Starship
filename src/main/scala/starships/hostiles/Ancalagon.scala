@@ -24,9 +24,11 @@ case class Ancalagon(
 
   def box: Box2 = Box2(Vec2(0, 0), Vec2(50, 50))
   def draw(p: PApplet): Unit = {
-    p.image(Ancalagon.Ancalagon, location.x, location.y, 50, 50)
-    p.fill(255, 0, 0)
-    p.rect(100, 502, health * 20, 10)
+    if (!isDead) {
+      p.image(Ancalagon.Ancalagon, location.x, location.y, 50, 50)
+      p.fill(255, 0, 0)
+      p.rect(100, 502, health * 20, 10)
+    }
   }
   def shoot: Unit = {
     val currentTime = System.currentTimeMillis
@@ -55,8 +57,10 @@ case class Ancalagon(
     }
   }
   def update(timeFactor: Float): Unit = {
-    shoot
-    move(timeFactor)
+    if (!isDead) {
+      shoot
+      move(timeFactor)
+    }
     checkForCollision
   }
   def checkForCollision: Unit = {
@@ -83,29 +87,28 @@ case class Ancalagon(
       }
     }
     if (health <= 0) {
-      Spawner.isBossFight = false
-      Spawner.hasFoughtBoss = true
-      Starships.score += 100
+      if (!isDead) {
+        Starships.score += 100
 
-      World.explosions = Explosion(location.copy(), 0, 5) :: World.explosions
+        World.explosions = Explosion(location.copy(), 0, 5) :: World.explosions
 
+        isDead = true
+      }
       for (i <- World.currentMission) {
         i.finished = true
       }
-      isDead = true
+      val currentTime = System.currentTimeMillis
+
+      if (currentTime > time + 800) {
+        Spawner.isBossFight = false
+        Spawner.hasFoughtBoss = true
+        World.reset
+        Starships.state = GameState.Selection
+      }
     }
 
   }
-  def die: Unit = {
 
-    val currentTime = System.currentTimeMillis
-
-    if (currentTime > time + 1000) {
-      World.reset
-      Starships.state = GameState.Selection
-
-    }
-  }
 }
 object Ancalagon {
   var Ancalagon: PImage = _
