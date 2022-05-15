@@ -34,8 +34,9 @@ case class Ancalagon(
         Vec2(location.x + 10, location.y + 25),
         -1
       ) :: World.projectilesList
-
-      Shot.play(1, 0.1f * Starships.volume)
+      if (Starships.volume > 0) {
+        Shot.play(1, 0.1f * Starships.volume)
+      }
       time = currentTime
 
     }

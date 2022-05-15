@@ -20,7 +20,9 @@ case class MissileArray(var fireRate: Int, var damage: Int) extends Weapon {
     val currentTime = System.currentTimeMillis
 
     if (currentTime > time + fireRate && World.enemies.nonEmpty) {
-      Shot.play(1, 1f * Starships.volume)
+      if (Starships.volume > 0) {
+        Shot.play(1, 1f * Starships.volume)
+      }
       World.projectilesList = Missile(
         Vec2(World.player.location.x + 15, World.player.location.y + 15),
         World.enemies.last,
@@ -30,7 +32,10 @@ case class MissileArray(var fireRate: Int, var damage: Int) extends Weapon {
       ) :: World.projectilesList
       time = currentTime
     } else if (currentTime > time + fireRate && Spawner.isBossFight) {
-      Shot.play(1, 1f * Starships.volume)
+      if (Starships.volume > 0) {
+        Shot.play(1, 1f * Starships.volume)
+      }
+
       World.projectilesList = Missile(
         Vec2(World.player.location.x + 15, World.player.location.y + 15),
         World.bossList(World.currentBoss),
@@ -40,7 +45,9 @@ case class MissileArray(var fireRate: Int, var damage: Int) extends Weapon {
       ) :: World.projectilesList
       time = currentTime
     } else if (currentTime > time + fireRate) {
-      Shot.play(1, 1f * Starships.volume)
+      if (Starships.volume > 0) {
+        Shot.play(1, 1f * Starships.volume)
+      }
       World.projectilesList = Missile(
         Vec2(World.player.location.x + 15, World.player.location.y + 15),
         World.player,

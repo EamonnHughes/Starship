@@ -25,8 +25,9 @@ case class MachineGun(var fireRate: Int, var damage: Int, var overHeat: Float)
         Vec2(World.player.location.x + 27, World.player.location.y + 7),
         1
       ) :: World.projectilesList
-
-      Shot.play(1, (0.1f) * Starships.volume)
+      if (Starships.volume > 0) {
+        Shot.play(1, 0.1f * Starships.volume)
+      }
       overHeat += 1
       time = currentTime
     }
