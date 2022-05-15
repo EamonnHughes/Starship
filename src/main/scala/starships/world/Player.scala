@@ -18,22 +18,25 @@ case class Player(
     var lives: Int,
     var primary: Weapon
 ) extends Actor {
-
+  var isDead = false
+  var time: Long = System.currentTimeMillis
   def box: Box2 = Box2(Vec2(0, 0), Vec2(40, 40))
   def draw(p: PApplet): Unit = {
-
-    p.image(Player.Swordfish, location.x, location.y, 40, 40)
-
+    if (!isDead) {
+      p.image(Player.Swordfish, location.x, location.y, 40, 40)
+    }
   }
 
   def update(timeFactor: Float): Unit = {
     World.player.primary = World.weaponList(World.selectWeapon)
     checkForCollision()
-    moving(timeFactor)
-    if (Controls.shooting) {
-      shooting()
+    if (!isDead) {
+      moving(timeFactor)
+      if (Controls.shooting) {
+        shooting()
+      }
+      primary.special()
     }
-    primary.special()
   }
   def checkForCollision(): Unit = {
     if (
@@ -55,6 +58,7 @@ case class Player(
       ) || box.top + location.y < 20 || box.bottom + location.y > 492
     ) {
       lives -= 1
+      World.explosions = Explosion(location.copy(), 0, 4) :: World.explosions
       location = location.setY(256)
       velocity = 0
     }
@@ -75,6 +79,7 @@ case class Player(
         )
       ) {
         lives -= 1
+        World.explosions = Explosion(location.copy(), 0, 4) :: World.explosions
         location = location.setY(256)
         velocity = 0
         i.health = 0
@@ -98,14 +103,20 @@ case class Player(
         ) && i.direction < 0
       ) {
         lives -= 1
+        World.explosions = Explosion(location.copy(), 0, 4) :: World.explosions
         location = location.setY(256)
         velocity = 0
         World.projectilesList = World.projectilesList.filterNot(p => p == i)
       }
     }
     if (lives <= 0) {
-      println("YOU DIED! SCORE: " + Starships.score)
-      Starships.state = GameState.Home
+
+      val currentTime = System.currentTimeMillis
+
+      isDead = true
+      if (currentTime > time + 2000) {
+        Starships.state = GameState.Home
+      }
     }
   }
   def moving(timeFactor: Float): Unit = {
