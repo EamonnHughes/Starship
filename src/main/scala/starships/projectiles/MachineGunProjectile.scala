@@ -43,7 +43,7 @@ case class MachineGunProjectile(
   def shootForward(timeFactor: Float): Unit = {
     location = location.addX(direction * 6 * timeFactor)
     if (
-      location.x > 1024 || World.walls.exists(wall =>
+      location.x > 1024 || location.x < 0 || World.walls.exists(wall =>
         new Box2(
           location.x + box.left,
           location.y + box.top,
