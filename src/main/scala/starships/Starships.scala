@@ -141,8 +141,16 @@ class Starships extends PApplet {
 
   }
   def missionSelection: Unit = {
+    if (!Starships.missionsLoaded) {
+      fillInButtons
+      Starships.missionsLoaded = true
+    }
     background(255, 255, 255)
-
+    for ((mission, i) <- missionButtons.zipWithIndex) {
+      if (mission.wasClicked) {
+        World.currentMission = Some(World.missionList(i))
+      }
+    }
   }
   def playing: Unit = {
     val currentTime = System.currentTimeMillis
@@ -270,9 +278,8 @@ class Starships extends PApplet {
 object Starships extends App {
 
   var state: GameState = GameState.Home
-
   var scrollspeed: Float = 1f
-
+  var missionsLoaded = false
   var score = 0
   var volume = 1
   PApplet.main(classOf[Starships])
