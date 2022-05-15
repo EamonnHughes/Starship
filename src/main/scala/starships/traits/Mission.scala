@@ -1,3 +1,3 @@
 package starships.traits
 
-trait Mission {}
+trait Mission { var name: String }
