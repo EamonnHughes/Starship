@@ -79,6 +79,8 @@ class Starships extends PApplet {
   var mute = world.MenuItem(Vec2(324, 20), Vec2(124, 20), "Mute", 1)
   def inMenu: Unit = {
 
+    exitMenu = world.MenuItem(Vec2(20, 50), Vec2(124, 20), "Exit", 1)
+
     if (mouseBox.intersects(resumeGame.box)) {
       resumeGame.lightness = 0.6f
     } else {
@@ -139,6 +141,12 @@ class Starships extends PApplet {
           1
         )
       }
+    exitMenu = world.MenuItem(
+      Vec2(50, 20 + (World.missionList.length * 40)),
+      Vec2(124, 20),
+      "Exit",
+      1
+    )
 
   }
   def missionSelection: Unit = {
@@ -160,6 +168,16 @@ class Starships extends PApplet {
       } else {
         mission.lightness = 1f
       }
+    }
+    if (mouseBox.intersects(exitMenu.box)) {
+      exitMenu.lightness = 0.6f
+    } else {
+      exitMenu.lightness = 1f
+    }
+
+    exitMenu.draw(this)
+    if (exitMenu.isMouseOn(mouseBox)) {
+      Starships.state = GameState.Home
     }
   }
   def playing: Unit = {
