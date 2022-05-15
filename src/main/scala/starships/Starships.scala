@@ -164,7 +164,6 @@ class Starships extends PApplet {
     }
 
   }
-
   override def draw(): Unit = {
     if (Starships.state == GameState.InGame) {
       playing
