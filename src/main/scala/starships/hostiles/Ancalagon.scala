@@ -86,6 +86,8 @@ case class Ancalagon(
       Starships.score += 100
 
       World.explosions = Explosion(location.copy(), 0, 5) :: World.explosions
+      World.reset
+      Starships.state = GameState.Selection
     }
 
   }

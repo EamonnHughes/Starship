@@ -142,6 +142,7 @@ class Starships extends PApplet {
 
   }
   def missionSelection: Unit = {
+    World.missionList = World.missionList.filterNot(mission => mission.finished)
     if (!Starships.missionsLoaded) {
       fillInButtons
       Starships.missionsLoaded = true
