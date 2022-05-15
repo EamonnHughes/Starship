@@ -100,7 +100,7 @@ class Starships extends PApplet {
     if (exitMenu.isMouseOn(mouseBox)) {
       Starships.state = GameState.Home
     }
-    mute = world.MenuItem(Vec2(324, 20), Vec2(124, 20), "Mute", 1)
+    mute = world.MenuItem(Vec2(494, 20), Vec2(124, 20), "Mute", 1)
 
     if (mute.isMouseOn(mouseBox)) {
       if (Starships.volume != 0) {
@@ -122,6 +122,10 @@ class Starships extends PApplet {
     fill(0, 0, 0)
     text(s"SPEED: ${Starships.scrollspeed} Gs", 159, 35)
 
+    fill(255, 255, 255)
+    rect(324, 20, 160, 20)
+    fill(0, 0, 0)
+    World.currentMission.foreach(mission => text(mission.name, 329, 35))
   }
   def playing: Unit = {
     val currentTime = System.currentTimeMillis
