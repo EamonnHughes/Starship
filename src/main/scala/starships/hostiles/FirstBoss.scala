@@ -62,7 +62,7 @@ case class FirstBoss(
   }
   def move(timeFactor: Float): Unit = {
     location =
-      location.addY(5 * (Math.signum(World.player.location.y - location.y)))
+      location.addY(1 * (Math.signum(World.player.location.y - location.y)))
 
   }
   def checkForCollision: Unit = {
