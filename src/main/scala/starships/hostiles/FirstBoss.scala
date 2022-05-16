@@ -16,18 +16,18 @@ import starships.world._
 import scala.util.Random
 case class FirstBoss(
     var location: Vec2,
-    var velocity: Float,
-    var deceleration: Float,
     var health: Int,
     var enemyQuantity: Float
-) extends Scrolling
-    with Enemy {
+) extends Boss {
 
   def box: Box2 = Box2(0, 0, 50, 50)
-
+  var isDead = false
   var time: Long = System.currentTimeMillis
   def draw(p: PApplet): Unit = {
     p.image(Combator.Stingray, location.x, location.y, 50, 50)
+
+    p.fill(255, 0, 0)
+    p.rect(100, 502, health * 20, 10)
   }
 
   def update(timeFactor: Float): Unit = {
@@ -88,28 +88,24 @@ case class FirstBoss(
       }
     }
     if (health <= 0) {
-      World.enemies = World.enemies.filterNot(enemy => enemy == this)
-      var pChance = Math.random()
-      if (pChance < 0.1) {
-        World.upgradeList = HealthUpgrade(location) :: World.upgradeList
-      } else if (pChance < 0.2) {
-        World.upgradeList = newWeapon(
-          location,
-          World.weaponOptions(
-            Random.nextInt(World.weaponOptions.length)
-          )
-        ) :: World.upgradeList
-      } else if (pChance < 0.3) {
-        World.upgradeList = SpeedUp(location.copy()) :: World.upgradeList
-      }
-      World.explosions = Explosion(location.copy(), 0, 4) :: World.explosions
-    }
+      if (!isDead) {
+        Starships.score += 100
 
-    if (box.top + location.y <= 20 || box.bottom + location.y >= 492) {
-      velocity = -velocity
-    }
-    if (box.right + location.x <= 0) {
-      World.enemies = World.enemies.filterNot(enemy => enemy == this)
+        World.explosions = Explosion(location.copy(), 0, 5) :: World.explosions
+
+        isDead = true
+      }
+      for (i <- World.currentMission) {
+        i.finished = true
+      }
+      val currentTime = System.currentTimeMillis
+
+      if (currentTime > time + 2000) {
+        Spawner.isBossFight = false
+        Spawner.hasFoughtBoss = true
+        World.reset
+        Starships.state = GameState.Selection
+      }
     }
   }
 

@@ -19,7 +19,8 @@ object World {
   var walls = List.empty[Wall]
   var worldBorder = Border()
   var enemies = List.empty[Enemy]
-  var bossList = List(Ancalagon(20, Vec2(900, 236), 0f))
+  var bossList: List[Boss] =
+    List(FirstBoss(Vec2(850, 236), 20, 4), Ancalagon(20, Vec2(900, 236), 0f))
   var currentBoss = 0
   def everything: List[Actor] = {
     player :: enemies ::: walls ::: upgradeList ::: projectilesList
@@ -47,7 +48,8 @@ object World {
     walls = List.empty[Wall]
     worldBorder = Border()
     enemies = List.empty[Combator]
-    bossList = List(Ancalagon(20, Vec2(900, 236), 0f))
+    bossList =
+      List(FirstBoss(Vec2(850, 236), 20, 4), Ancalagon(20, Vec2(900, 236), 0f))
     currentBoss = 0
     weaponList = List(MachineGun(150, 1, 0), MissileArray(500, 3))
     selectWeapon = 0
