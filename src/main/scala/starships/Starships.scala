@@ -162,6 +162,7 @@ class Starships extends PApplet {
       if (mission.isMouseOn(mouseBox)) {
         World.currentMission = Some(World.missionList(i))
         state = GameState.InGame
+        World.missionList(i).load
       }
       if (mouseBox.intersects(mission.box)) {
         mission.lightness = 0.6f
