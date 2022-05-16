@@ -23,14 +23,13 @@ case class FirstBoss(
 ) extends Scrolling
     with Enemy {
 
-  def box: Box2 = Box2(0, 0, 40, 40)
+  def box: Box2 = Box2(0, 0, 50, 50)
 
   var time: Long = System.currentTimeMillis
   def draw(p: PApplet): Unit = {
-    p.image(Combator.Stingray, location.x, location.y, 40, 40)
+    p.image(Combator.Stingray, location.x, location.y, 50, 50)
   }
 
-  var goingUp = false
   def update(timeFactor: Float): Unit = {
     move(timeFactor)
     shoot
@@ -58,16 +57,8 @@ case class FirstBoss(
     else value
   }
   def move(timeFactor: Float): Unit = {
-    if (!goingUp && box.bottom + location.y < 487) {
-      location = location.addY(1.3f * timeFactor)
-    } else if (!goingUp && box.bottom + location.y >= 487) {
-      goingUp = true
-    }
-    if (goingUp && location.y > 25) {
-      location = location.addY(-1.3f * timeFactor)
-    } else if (goingUp && location.y <= 25) {
-      goingUp = false
-    }
+    location =
+      location.addY(5 * (Math.signum(World.player.location.y - location.y)))
 
   }
   def checkForCollision: Unit = {
