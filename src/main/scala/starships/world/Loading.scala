@@ -1,7 +1,7 @@
 package starships.world
 
 import processing.core.PApplet
-import starships.hostiles.{Ancalagon, Combator, Precursor}
+import starships.hostiles.{Ancalagon, Combator, FirstBoss, Precursor}
 import starships.obstacles.Wall
 import starships.projectiles.{EnergyOrb, MachineGunProjectile, Missile}
 import starships.weapons.{MachineGun, MissileArray}
@@ -23,5 +23,7 @@ object Loading {
     Ancalagon.loadSounds(p)
     Combator.loadSounds(p)
     MissileArray.loadSounds(p)
+    FirstBoss.loadImages(p)
+    FirstBoss.loadSounds(p)
   }
 }

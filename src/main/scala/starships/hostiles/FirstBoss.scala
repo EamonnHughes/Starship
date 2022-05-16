@@ -4,7 +4,7 @@ import processing.core.{PApplet, PImage}
 import processing.sound.SoundFile
 import starships.Starships
 import starships.geom._
-import starships.hostiles.Combator.Shot
+import starships.hostiles.FirstBoss.Shot
 import starships.hostiles._
 import starships.obstacles._
 import starships.projectiles._
@@ -24,15 +24,19 @@ case class FirstBoss(
   var isDead = false
   var time: Long = System.currentTimeMillis
   def draw(p: PApplet): Unit = {
-    p.image(Combator.Stingray, location.x, location.y, 50, 50)
+    if (!isDead) {
+      p.image(FirstBoss.Stingray, location.x, location.y, 50, 50)
 
-    p.fill(255, 0, 0)
-    p.rect(100, 502, health * 20, 10)
+      p.fill(255, 0, 0)
+      p.rect(100, 502, health * 20, 10)
+    }
   }
 
   def update(timeFactor: Float): Unit = {
-    move(timeFactor)
-    shoot
+    if (!isDead) {
+      move(timeFactor)
+      shoot
+    }
     checkForCollision
   }
   def shoot: Unit = {

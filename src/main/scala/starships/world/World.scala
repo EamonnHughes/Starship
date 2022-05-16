@@ -48,7 +48,7 @@ object World {
     walls = List.empty[Wall]
     worldBorder = Border()
     enemies = List.empty[Combator]
-    bossList = weaponList = List(MachineGun(150, 1, 0), MissileArray(500, 3))
+    weaponList = List(MachineGun(150, 1, 0), MissileArray(500, 3))
     selectWeapon = 0
     Starships.score = 0
     Starships.scrollspeed = 1.0f
