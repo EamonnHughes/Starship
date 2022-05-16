@@ -19,6 +19,7 @@ case class Player(
     var primary: Weapon
 ) extends Actor {
   var isDead = false
+  var invuln = false
   var time: Long = System.currentTimeMillis
   def box: Box2 = Box2(Vec2(0, 0), Vec2(40, 40))
   def draw(p: PApplet): Unit = {
@@ -29,7 +30,12 @@ case class Player(
 
   def update(timeFactor: Float): Unit = {
     World.player.primary = World.weaponList(World.selectWeapon)
-    checkForCollision()
+    if (location.x == 64) {
+      invuln = false
+    }
+    if (!invuln) {
+      checkForCollision()
+    }
     if (!isDead) {
       moving(timeFactor)
       if (Controls.shooting) {
@@ -39,6 +45,7 @@ case class Player(
     }
   }
   def respawn: Unit = {
+    invuln = true
     location = location.set(-120, 256)
 
     velocity = 0

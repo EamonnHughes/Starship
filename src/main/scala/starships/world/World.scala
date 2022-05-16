@@ -37,6 +37,7 @@ object World {
 
   def reset: Unit = {
     player.isDead = false
+    player.invuln = true
     Starships.missionsLoaded = false
     currentMission = missionList.headOption
     stars = List.empty
