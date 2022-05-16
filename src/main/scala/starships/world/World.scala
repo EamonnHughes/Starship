@@ -11,10 +11,9 @@ import starships.weapons._
 import starships.world._
 import starships.missions._
 import starships.world.World.missionList
-
 object World {
   var player =
-    Player(Vec2(64, 256), 0, 0.9f, 3, MachineGun(50, 1, 0))
+    Player(Vec2(-120, 256), 0, 0.9f, 3, MachineGun(50, 1, 0))
   var projectilesList = List.empty[Projectile]
   var upgradeList = List.empty[Upgrade]
   var walls = List.empty[Wall]
@@ -41,7 +40,7 @@ object World {
     Starships.missionsLoaded = false
     currentMission = missionList.headOption
     stars = List.empty
-    player = Player(Vec2(64, 256), 0, 0.9f, 3, MachineGun(50, 1, 0))
+    player = Player(Vec2(-120, 256), 0, 0.9f, 3, MachineGun(50, 1, 0))
     projectilesList = List.empty[Projectile]
     upgradeList = List.empty[Upgrade]
     walls = List.empty[Wall]
