@@ -23,8 +23,15 @@ case class Player(
   var time: Long = System.currentTimeMillis
   def box: Box2 = Box2(Vec2(0, 0), Vec2(40, 40))
   def draw(p: PApplet): Unit = {
+
     if (!isDead) {
-      p.image(Player.Swordfish, location.x, location.y, 40, 40)
+      if (!invuln) {
+        p.tint(255, 255, 255, 255)
+        p.image(Player.Swordfish, location.x, location.y, 40, 40)
+      } else {
+        p.tint(255, 255, 255, 70)
+        p.image(Player.Swordfish, location.x, location.y, 40, 40)
+      }
     }
   }
 

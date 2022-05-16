@@ -194,7 +194,10 @@ class Starships extends PApplet {
 
     World.worldBorder.draw(this)
     World.explosions.foreach(exp => exp.draw(this))
-    World.everything.foreach(actor => actor.draw(this))
+    World.everything.foreach(actor => {
+      actor.draw(this)
+      tint(255, 255, 255, 255)
+    })
 
     World.everything.foreach(actor => actor.update(timeMulti))
 
