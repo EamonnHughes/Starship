@@ -12,4 +12,5 @@ import starships.world._
 
 trait Boss extends Enemy {
   var health: Int
+
 }

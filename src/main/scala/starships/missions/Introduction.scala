@@ -11,6 +11,10 @@ import starships.world.Spawner._
 import starships.world._
 case class Introduction(
     var name: String = "Introduction",
-    var enemies: List[EnemyFactory] = List(CombatorFactory, PrecursorFactory),
+    var enemies: List[EnemyFactory] = List(PrecursorFactory),
     var finished: Boolean = false
-) extends Mission {}
+) extends Mission {
+  def load: Unit = {
+    World.currentBoss = 0
+  }
+}
