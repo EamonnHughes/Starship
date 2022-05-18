@@ -222,6 +222,7 @@ class Starships extends PApplet {
 
   }
   override def draw(): Unit = {
+    Starships.cols = 0
     if (Starships.state == GameState.InGame) {
       playing
     } else if (Starships.state == GameState.Menu) {
@@ -231,7 +232,7 @@ class Starships extends PApplet {
     } else if (Starships.state == GameState.Selection) {
       missionSelection
     }
-
+    println(Starships.cols)
   }
 
   def scroll(timeFactor: Float): Unit = {
@@ -312,7 +313,7 @@ class Starships extends PApplet {
 }
 
 object Starships extends App {
-
+  var cols = 0
   var state: GameState = GameState.Home
   var scrollspeed: Float = 1f
   var missionsLoaded = false

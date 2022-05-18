@@ -1,6 +1,7 @@
 package starships.geom
 
 import processing.core.PApplet
+import starships.Starships
 import starships.geom._
 import starships.hostiles._
 import starships.obstacles._
@@ -14,6 +15,7 @@ case class Box2(left: Float, top: Float, width: Float, height: Float) {
   def bottom: Float = top + height
 
   def intersects(box: Box2): Boolean = {
+    Starships.cols += 1
     left < box.right && right >= box.left && top < box.bottom && bottom >= box.top
   }
   def union(box: Box2): Box2 = {
