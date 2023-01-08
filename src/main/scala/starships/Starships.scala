@@ -232,7 +232,7 @@ class Starships extends PApplet {
     } else if (Starships.state == GameState.Selection) {
       missionSelection
     }
-    println(Starships.cols)
+    println(Starships.score)
   }
 
   def scroll(timeFactor: Float): Unit = {

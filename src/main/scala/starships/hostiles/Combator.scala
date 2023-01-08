@@ -88,7 +88,6 @@ case class Combator(
         ) && i.direction > 0
       ) {
 
-        if (health <= 0) Starships.score += 4
         health -= World.player.primary.damage
 
         if (!i.isInstanceOf[EnergyOrb])
@@ -97,6 +96,8 @@ case class Combator(
       }
     }
     if (health <= 0) {
+      if (health <= 0) Starships.score += 6
+
       World.enemies = World.enemies.filterNot(enemy => enemy == this)
       var pChance = Math.random()
       if (pChance < 0.1) {
